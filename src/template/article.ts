@@ -6,16 +6,12 @@ interface TemplateVars {
   }
   summary: string
   content: string
-  publishedAt: Date
+  publishedAt: string
   siteDomain?: string
 }
 
 const UTM_PARAMETER = "utm_source=ipfs"
 const SITE_DOMAIN = "http://matters.news/"
-
-const toDateString = (date: Date) => {
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-}
 
 const style =
   // prettier-ignore
@@ -155,7 +151,7 @@ export const articleTemplate = ({
           <a href="${siteDomain}/@${author.userName}?${UTM_PARAMETER}" target="_blank" itemprop="author">
             ${author.displayName} (@${author.userName})
           </a>
-          <time itemprop="datePublished" datetime="${publishedAt.toISOString()}">${toDateString(publishedAt)}</time>
+          <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
           <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
             from <span itemprops="name">Matters</span>
             <meta itemprops="url" content="https://matters.news">
