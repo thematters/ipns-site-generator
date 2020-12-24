@@ -1,7 +1,13 @@
 {
-  "name": "matters-html-formatter",
+  "name": "@matters/matters-html-formatter",
   "version": "0.0.1",
   "description": "Format HTML string before publish to IPFS or ISCN",
+  "author": "https://github.com/thematters",
+  "homepage": "https://github.com/thematters/matters-html-formatter",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:thematters/matters-html-formatter.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,10 +17,14 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "keywords": [],
-  "author": "",
   "license": "APACHE-2.0",
   "devDependencies": {
     "@types/cheerio": "^0.22.23",

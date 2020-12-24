@@ -10,8 +10,8 @@ interface TemplateVars {
   siteDomain?: string
 }
 
-const UTM_PARAMETER = "utm_source=ipfs"
-const SITE_DOMAIN = "http://matters.news/"
+const UTM_PARAMETER = 'utm_source=ipfs'
+const SITE_DOMAIN = 'http://matters.news/'
 
 const style =
   // prettier-ignore

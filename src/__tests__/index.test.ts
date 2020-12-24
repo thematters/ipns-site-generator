@@ -1,11 +1,11 @@
-import { makeHtmlBundle, makeMetaData } from "../index"
+import { makeHtmlBundle, makeMetaData } from '../index'
 
-test("Generate HTML bundle", async () => {
+test('Generate HTML bundle', async () => {
   const bundle = await makeHtmlBundle(testContent)
   expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
 })
 
-test("Generate content meta data", async () => {
+test('Generate content meta data', async () => {
   expect(makeMetaData(testMetaData)).toMatchSnapshot()
 })
 
@@ -25,21 +25,21 @@ const deserializeHtmlBundle = (
 
 // test data
 const testMetaData = {
-  contentHash: "ipfs-hash",
+  contentHash: 'ipfs-hash',
   author: {
-    name: "Test User",
-    url: "user-home-page",
-    description: "this is a test user",
+    name: 'Test User',
+    url: 'user-home-page',
+    description: 'this is a test user',
   },
-  description: "This is a piece of test content",
-  image: "image-url",
+  description: 'This is a piece of test content',
+  image: 'image-url',
 }
 
 const testContent = {
-  title: "test article",
+  title: 'test article',
   author: {
-    userName: "test-user",
-    displayName: "test display name",
+    userName: 'test-user',
+    displayName: 'test display name',
   },
   content: `
   <h1 id="hello-world">Hello World</h1>

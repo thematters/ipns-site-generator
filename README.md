@@ -36,6 +36,8 @@ const articleInfo = {
   image: "image-url",
 }
 
+// this create the standard format of meta data,
+// should be merged with ISCN standard in the future
 const metaData = makeMetaData(articleInfo)
 
 const cid = await ipfs.dag.put(metaData, {

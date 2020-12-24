@@ -1,7 +1,7 @@
-import * as cheerio from "cheerio"
-import { resolve as urlResolve } from "url"
-import fetch from "isomorphic-fetch"
-import { articleTemplate } from "./template"
+import * as cheerio from 'cheerio'
+import { resolve as urlResolve } from 'url'
+import fetch from 'isomorphic-fetch'
+import { articleTemplate } from './template'
 export interface FormatterVars {
   title: string
   author: {
@@ -30,9 +30,9 @@ export const formatHTML = ({
   summary,
 }: FormatterVars) => {
   let now = toDateString(new Date())
-  if (process.env.NODE_ENV === "test") {
+  if (process.env.NODE_ENV === 'test') {
     // for snapshot testing
-    now = "2020-12-23"
+    now = '2020-12-23'
   }
 
   const htmlSummary = summary || makeSummary(content)
@@ -67,7 +67,7 @@ export const getAsset = async ({
   url,
   path,
   updateSrc,
-  domain = "https://matters.news/",
+  domain = 'https://matters.news/',
 }: {
   url: string
   path: string
@@ -78,7 +78,7 @@ export const getAsset = async ({
     return
   }
   try {
-    const fullUrl = url.indexOf("://") >= 0 ? url : urlResolve(domain, url)
+    const fullUrl = url.indexOf('://') >= 0 ? url : urlResolve(domain, url)
     const response = await fetch(fullUrl)
 
     const data = await response.arrayBuffer()
@@ -99,9 +99,9 @@ export const getAsset = async ({
  * @param html - html string
  * @param replacement - string to replace tags
  */
-export const stripHtml = (html: string, replacement = " ") =>
-  (String(html) || "")
-    .replace(/(<\/p><p>|&nbsp;)/g, " ") // replace line break and space first
+export const stripHtml = (html: string, replacement = ' ') =>
+  (String(html) || '')
+    .replace(/(<\/p><p>|&nbsp;)/g, ' ') // replace line break and space first
     .replace(/(<([^>]+)>)/gi, replacement)
 
 /**
@@ -112,14 +112,14 @@ export const stripHtml = (html: string, replacement = " ") =>
  */
 export const makeSummary = (html: string, length = 140, buffer = 20) => {
   // split on sentence breaks
-  const sections = stripHtml(html, "")
-    .replace(/([?!。？！]|(\.\s))\s*/g, "$1|")
-    .split("|")
+  const sections = stripHtml(html, '')
+    .replace(/([?!。？！]|(\.\s))\s*/g, '$1|')
+    .split('|')
 
   // grow summary within buffer
-  let summary = ""
+  let summary = ''
   while (summary.length < length - buffer && sections.length > 0) {
-    const el = sections.shift() || ""
+    const el = sections.shift() || ''
 
     const addition =
       el.length + summary.length > length + buffer
@@ -145,7 +145,7 @@ export const outputCleanHTML = (html: string) => {
   const $ = cheerio.load(html, { decodeEntities: false, xmlMode: true })
 
   // remove audio player
-  $(".player").remove()
+  $('.player').remove()
 
   return $.html()
 }

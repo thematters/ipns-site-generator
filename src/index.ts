@@ -1,9 +1,9 @@
-import cheerio from "cheerio"
-import { uniqBy } from "lodash"
+import cheerio from 'cheerio'
+import { uniqBy } from 'lodash'
 
-import { formatHTML, getAsset, toDateString, FormatterVars } from "./utils"
+import { formatHTML, getAsset, toDateString, FormatterVars } from './utils'
 
-export * from "./utils"
+export * from './utils'
 
 /**
  * Make HTML bundle object from HTML string before adding to IPFS
@@ -21,7 +21,7 @@ export const makeHtmlBundle = async ({
   siteDomain,
   summary,
 }: FormatterVars) => {
-  const prefix = "article"
+  const prefix = 'article'
   // format html
   const html = formatHTML({ title, author, content, siteDomain, summary })
 
@@ -35,18 +35,18 @@ export const makeHtmlBundle = async ({
 
   // function to get assets and push them to array
   const addAssetToPromises = (index: number, element: cheerio.Element) => {
-    const elementSrc = $(element).attr("src")
+    const elementSrc = $(element).attr('src')
     // check if it's data url
-    if (elementSrc && !elementSrc.startsWith("data:")) {
-      let tagName = "text"
-      if ("tagName" in element) {
+    if (elementSrc && !elementSrc.startsWith('data:')) {
+      let tagName = 'text'
+      if ('tagName' in element) {
         tagName = element.tagName
       }
       // assuming it's http url
       const assetPath =
-        elementSrc.split("/").pop() || `${index.toString()}-${tagName}`
+        elementSrc.split('/').pop() || `${index.toString()}-${tagName}`
 
-      const updateSrc = () => $(element).attr("src", assetPath)
+      const updateSrc = () => $(element).attr('src', assetPath)
 
       assetsPromises.push(
         getAsset({
@@ -59,17 +59,17 @@ export const makeHtmlBundle = async ({
   }
 
   // handle images
-  $("img").each((index, image) => {
+  $('img').each((index, image) => {
     addAssetToPromises(index, image)
   })
 
   // handle audios
-  $("audio source").each((index, audio) => {
+  $('audio source').each((index, audio) => {
     addAssetToPromises(index, audio)
   })
 
   // add analytics segment
-  $("head").append(
+  $('head').append(
     `<script type="text/javascript" src="//static.matters.news/analytics.js"></script>`
   )
 
@@ -83,7 +83,7 @@ export const makeHtmlBundle = async ({
     },
     ...uniqBy(
       assets.filter((asset) => asset),
-      "path"
+      'path'
     ),
   ]
 }
@@ -108,15 +108,15 @@ export const makeMetaData = ({
   image: string
 }) => {
   let now = toDateString(new Date())
-  if (process.env.NODE_ENV === "test") {
+  if (process.env.NODE_ENV === 'test') {
     // for snapshot testing
-    now = "2020-12-23"
+    now = '2020-12-23'
   }
 
   return {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "@id": `ipfs://ipfs/${contentHash}`,
+    '@context': 'http://schema.org',
+    '@type': 'Article',
+    '@id': `ipfs://ipfs/${contentHash}`,
     author,
     dateCreated: now,
     description,
