@@ -1,2 +1,12 @@
 node_modules
 /dist
+.DS_Store
+*.swp
+*.rdb
+*.log
+yarn.lock
+node_modules
+webpack-stats.json
+logs
+npm-install.log
+coverage/
