@@ -11,6 +11,7 @@ export interface FormatterVars {
   content: string
   summary?: string
   siteDomain?: string
+  prefix?: string
 }
 
 /**

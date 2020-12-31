@@ -5,7 +5,7 @@ Utility functions to format HTML string, generate HTML bundle, and create conten
 ## example
 
 ```
-import { makeHtmlBundle, makeMetaData } from "matters-html-formatter"
+import { makeHtmlBundle, makeMetaData } from "@matters/matters-html-formatter"
 
 const article = {
   title: "test article",
@@ -18,7 +18,7 @@ const article = {
 
 // this creates an array of object containing path and buffer data,
 // which IPFS recognizes as a folder
-const bundle = makeHtmlBundle(article)
+const bundle = await makeHtmlBundle(article)
 
 // this is the hash that will render out html content on IPFS gateways,
 // or use ipfs-only-hash if you only want to get the hash

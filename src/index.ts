@@ -20,8 +20,8 @@ export const makeHtmlBundle = async ({
   content,
   siteDomain,
   summary,
+  prefix = 'article',
 }: FormatterVars) => {
-  const prefix = 'article'
   // format html
   const html = formatHTML({ title, author, content, siteDomain, summary })
 
@@ -103,9 +103,14 @@ export const makeMetaData = ({
   image,
 }: {
   contentHash: string
-  author: { name: string; image?: string; url: string; description: string }
+  author: {
+    name: string
+    image?: string | null
+    url: string
+    description: string
+  }
   description: string
-  image: string
+  image?: string | null
 }) => {
   let now = toDateString(new Date())
   if (process.env.NODE_ENV === 'test') {
