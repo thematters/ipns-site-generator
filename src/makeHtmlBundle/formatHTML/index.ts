@@ -16,7 +16,8 @@ export type FormatterVars = TemplateOptions & {
  * @param data.content - Content in HTML string format
  * @param data.siteDomain - Optional site domain to assemble author link
  * @param data.summary - Optional content summary
- * @param readMore - Link to full article for paywalled content
+ * @param data.readMore - Optional link (text & url) to full article for paywalled content
+ * @param data.paymentPointer - Optional ILP payment pointer
  */
 export default ({
   title,
@@ -25,6 +26,7 @@ export default ({
   siteDomain,
   summary,
   readMore,
+  paymentPointer,
 }: FormatterVars) => {
   let now = toDateString(new Date())
   if (process.env.NODE_ENV === 'test') {
@@ -42,6 +44,7 @@ export default ({
     content: cleanHtml(content),
     publishedAt: now,
     siteDomain,
+    paymentPointer,
   })
 }
 

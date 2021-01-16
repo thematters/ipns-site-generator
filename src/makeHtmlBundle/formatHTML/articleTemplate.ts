@@ -9,8 +9,9 @@ export type TemplateOptions = {
     userName: string
     displayName: string
   }
-  readMore?: Link
   content: string
+  readMore?: Link
+  paymentPointer?: string
   siteDomain?: string
 }
 
@@ -21,6 +22,78 @@ export type TemplateVars = TemplateOptions & {
 
 const UTM_PARAMETER = 'utm_source=ipfs'
 const SITE_DOMAIN = 'http://matters.news/'
+
+export default ({
+  title,
+  author,
+  summary,
+  content,
+  publishedAt,
+  readMore,
+  paymentPointer,
+  siteDomain = SITE_DOMAIN,
+}: TemplateVars) =>
+  // prettier-ignore
+  /*html*/ `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${title}</title>
+    <meta name="description" content="${summary}">
+    <meta property="og:title" content="${author.displayName}: ${title}">
+    <meta property="og:description" content="${summary}">
+    <meta property="article:author" content="${author.displayName} (@${
+    author.userName
+  })">
+    <meta name="twitter:title" content="${author.displayName}: ${title}">
+    <meta name="twitter:description" content="${summary}">
+${
+  paymentPointer
+    ? /*html*/`
+    <meta
+      name="monetization"
+      content="${paymentPointer}">`
+    : ``
+}
+    ${style}
+  </head>
+  <body itemscope itemtype="http://schema.org/Article">
+    <main>
+      <header>
+        <h1 itemprop="headline">${title}</h1>
+        <figure class="byline">
+          <a href="${siteDomain}/@${
+    author.userName
+  }?${UTM_PARAMETER}" target="_blank" itemprop="author">
+            ${author.displayName} (@${author.userName})
+          </a>
+          <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
+          <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+            from <span itemprops="name">Matters</span>
+            <meta itemprops="url" content="https://matters.news">
+          </span>
+        </figure>
+      </header>
+      <article itemprop="articleBody">
+        ${content}
+      </article>
+${
+  readMore
+    ? /*html*/ `
+     <figure class="byline">
+        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+          Read more: <span itemprops="name">${readMore.text}</span>
+          <meta itemprops="url" content="${readMore.url}">
+        </span>
+      </figure>`
+    : ``
+}
+    </main>
+  </body>
+</html>
+`
 
 const style =
   // prettier-ignore
@@ -124,68 +197,4 @@ const style =
     height: 100%;
   }
 </style>
-
-`
-
-export default ({
-  title,
-  author,
-  summary,
-  content,
-  publishedAt,
-  readMore,
-  siteDomain = SITE_DOMAIN,
-}: TemplateVars) =>
-  // prettier-ignore
-  /*html*/ `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${title}</title>
-    <meta name="description" content="${summary}">
-    <meta property="og:title" content="${author.displayName}: ${title}">
-    <meta property="og:description" content="${summary}">
-    <meta property="article:author" content="${author.displayName} (@${
-    author.userName
-  })">
-    <meta name="twitter:title" content="${author.displayName}: ${title}">
-    <meta name="twitter:description" content="${summary}">
-    ${style}
-  </head>
-  <body itemscope itemtype="http://schema.org/Article">
-    <main>
-      <header>
-        <h1 itemprop="headline">${title}</h1>
-        <figure class="byline">
-          <a href="${siteDomain}/@${
-    author.userName
-  }?${UTM_PARAMETER}" target="_blank" itemprop="author">
-            ${author.displayName} (@${author.userName})
-          </a>
-          <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
-          <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-            from <span itemprops="name">Matters</span>
-            <meta itemprops="url" content="https://matters.news">
-          </span>
-        </figure>
-      </header>
-      <article itemprop="articleBody">
-        ${content}
-      </article>
-${
-  readMore
-    ? /*html*/ `
-     <figure class="byline">
-        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-          Read more: <span itemprops="name">${readMore.text}</span>
-          <meta itemprops="url" content="${readMore.url}">
-        </span>
-      </figure>`
-    : ``
-}
-    </main>
-  </body>
-</html>
 `
