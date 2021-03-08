@@ -6,23 +6,22 @@ import getAsset from './getAsset'
 
 /**
  * Make HTML bundle object from HTML string before adding to IPFS
+ *
  * @param data - All data needed for html bundle
  * @param data.title - Content title
  * @param data.author - Content author information
  * @param data.content - Content in HTML string format
  * @param data.siteDomain - Optional site domain to assemble author link
  * @param data.summary - Optional content summary
+ * @param data.readMore - Optional link (text & url) to full article for paywalled content
+ * @param data.paymentPointer - Optional ILP payment pointer
  */
 export const makeHtmlBundle = async ({
-  title,
-  author,
-  content,
-  siteDomain,
-  summary,
   prefix = 'article',
+  ...data
 }: FormatterVars) => {
   // format single page html
-  const html = formatHTML({ title, author, content, siteDomain, summary })
+  const html = formatHTML(data)
 
   // load to cheerio to parse assets
   const $ = cheerio.load(html, { decodeEntities: false })

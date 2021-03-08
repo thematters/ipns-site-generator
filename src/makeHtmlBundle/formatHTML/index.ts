@@ -5,11 +5,11 @@ import { makeSummary } from './text'
 
 export type FormatterVars = TemplateOptions & {
   prefix?: string
-  summary?: string
 }
 
 /**
- * turn HTML string into Matters content format
+ * Turn HTML string into Matters content format
+ *
  * @param data - All data needed for content
  * @param data.title - Content title
  * @param data.author - Content author information
@@ -19,32 +19,20 @@ export type FormatterVars = TemplateOptions & {
  * @param data.readMore - Optional link (text & url) to full article for paywalled content
  * @param data.paymentPointer - Optional ILP payment pointer
  */
-export default ({
-  title,
-  author,
-  content,
-  siteDomain,
-  summary,
-  readMore,
-  paymentPointer,
-}: FormatterVars) => {
+export default (data: FormatterVars) => {
+  const { content, summary } = data
+
   let now = toDateString(new Date())
   if (process.env.NODE_ENV === 'test') {
     // for snapshot testing
     now = '2020-12-23'
   }
 
-  // use content as summary for paywalled content
-  const htmlSummary = readMore ? content : summary || makeSummary(content)
-
   return articleTemplate({
-    title,
-    author,
-    summary: htmlSummary,
+    ...data,
+    summary: summary || makeSummary(content),
     content: cleanHtml(content),
     publishedAt: now,
-    siteDomain,
-    paymentPointer,
   })
 }
 
