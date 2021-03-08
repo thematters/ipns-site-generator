@@ -9,6 +9,8 @@ export type TemplateOptions = {
     userName: string
     displayName: string
   }
+  summary?: string
+  summaryCustomized?: boolean
   content: string
   readMore?: Link
   paymentPointer?: string
@@ -21,12 +23,13 @@ export type TemplateVars = TemplateOptions & {
 }
 
 const UTM_PARAMETER = 'utm_source=ipfs'
-const SITE_DOMAIN = 'http://matters.news/'
+const SITE_DOMAIN = 'https://matters.news/'
 
 export default ({
   title,
   author,
   summary,
+  summaryCustomized,
   content,
   publishedAt,
   readMore,
@@ -64,9 +67,7 @@ ${
       <header>
         <h1 itemprop="headline">${title}</h1>
         <figure class="byline">
-          <a href="${siteDomain}/@${
-    author.userName
-  }?${UTM_PARAMETER}" target="_blank" itemprop="author">
+          <a href="${siteDomain}/@${author.userName}?${UTM_PARAMETER}" target="_blank" itemprop="author">
             ${author.displayName} (@${author.userName})
           </a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
@@ -75,21 +76,28 @@ ${
             <meta itemprops="url" content="https://matters.news">
           </span>
         </figure>
+
+        ${summary && summaryCustomized ? /* html */`
+          <figure class="summary">
+            <p>${summary}</p>
+          </figure>
+        ` : ''}
       </header>
+
       <article itemprop="articleBody">
         ${content}
       </article>
-${
-  readMore
-    ? /*html*/ `
-     <figure class="byline">
-        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-          Read more: <span itemprops="name">${readMore.text}</span>
-          <meta itemprops="url" content="${readMore.url}">
-        </span>
-      </figure>`
-    : ``
-}
+
+      ${readMore ? /*html*/ `
+        <footer>
+          <figure class="read_more">
+            <p>
+              Read more: <a href="${readMore.url}" target="_blank" itemprop="name">${readMore.text}</a>
+            </p>
+          </figure>
+        </footer>
+      ` : ''}
+
     </main>
   </body>
 </html>
@@ -143,26 +151,48 @@ const style =
     color: #5F5F5F;
   }
 
+  pre {
+    white-space: pre-wrap;
+  }
+
   header {
     margin-bottom: 40px;
   }
   header h1 {
     font-size: 32px;
   }
-  header figure.byline {
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
     font-size: 16px;
     margin: 0;
   }
-  header figure.byline * + * {
+  figure.byline * + * {
     padding-left: 10px;
   }
-  header figure.byline time {
+  figure.byline time {
     color: #b3b3b3;
   }
-  header figure.byline [ref="source"]::before {
+  figure.byline [ref="source"]::before {
     content: '';
     border-left: 1px solid currentColor;
     padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
   }
 
   article > * {
