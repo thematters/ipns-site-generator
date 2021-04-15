@@ -72,7 +72,7 @@ ${
           </a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
           <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-            from <span itemprops="name">Matters</span>
+            from <a href="${siteDomain}?${UTM_PARAMETER}" target="_blank"  itemprops="name">Matters</a>
             <meta itemprops="url" content="https://matters.news">
           </span>
         </figure>
@@ -92,7 +92,7 @@ ${
         <footer>
           <figure class="read_more">
             <p>
-              Read more: <a href="${readMore.url}" target="_blank" itemprop="name">${readMore.text}</a>
+              Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
             </p>
           </figure>
         </footer>
