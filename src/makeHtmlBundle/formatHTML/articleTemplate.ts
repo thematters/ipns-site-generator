@@ -23,7 +23,7 @@ export type TemplateVars = TemplateOptions & {
 }
 
 const UTM_PARAMETER = 'utm_source=ipfs'
-const SITE_DOMAIN = 'https://matters.news/'
+const SITE_DOMAIN = 'https://matters.news'
 
 export default ({
   title,
