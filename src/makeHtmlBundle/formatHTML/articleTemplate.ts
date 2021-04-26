@@ -6,15 +6,14 @@ type Link = {
 export type TemplateOptions = {
   title: string
   author: {
-    userName: string
-    displayName: string
+    name: string
+    link: Link
   }
   summary?: string
-  summaryCustomized?: boolean
   content: string
   readMore?: Link
   paymentPointer?: string
-  siteDomain?: string
+  from?: Link
 }
 
 export type TemplateVars = TemplateOptions & {
@@ -22,19 +21,15 @@ export type TemplateVars = TemplateOptions & {
   summary: string
 }
 
-const UTM_PARAMETER = 'utm_source=ipfs'
-const SITE_DOMAIN = 'https://matters.news'
-
 export default ({
   title,
   author,
   summary,
-  summaryCustomized,
   content,
   publishedAt,
   readMore,
   paymentPointer,
-  siteDomain = SITE_DOMAIN,
+  from,
 }: TemplateVars) =>
   // prettier-ignore
   /*html*/ `
@@ -45,12 +40,10 @@ export default ({
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
     <meta name="description" content="${summary}">
-    <meta property="og:title" content="${author.displayName}: ${title}">
+    <meta property="og:title" content="${author.name}: ${title}">
     <meta property="og:description" content="${summary}">
-    <meta property="article:author" content="${author.displayName} (@${
-    author.userName
-  })">
-    <meta name="twitter:title" content="${author.displayName}: ${title}">
+    <meta property="article:author" content="${author.name}">
+    <meta name="twitter:title" content="${author.name}: ${title}">
     <meta name="twitter:description" content="${summary}">
 ${
   paymentPointer
@@ -67,17 +60,22 @@ ${
       <header>
         <h1 itemprop="headline">${title}</h1>
         <figure class="byline">
-          <a href="${siteDomain}/@${author.userName}?${UTM_PARAMETER}" target="_blank" itemprop="author">
-            ${author.displayName} (@${author.userName})
-          </a>
+          <a href="${author.link.url}" target="_blank">${author.link.text}</a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
-          <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-            from <a href="${siteDomain}?${UTM_PARAMETER}" target="_blank"  itemprops="name">Matters</a>
-            <meta itemprops="url" content="https://matters.news">
-          </span>
+          ${
+            from
+            ? /*html*/`
+            <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+              from <a href="${from.url}" target="_blank"  itemprops="name">${from.text}</a>
+              <meta itemprops="url" content="${from.url}">
+            </span>
+            `
+            : ``
+          }
+
         </figure>
 
-        ${summary && summaryCustomized ? /* html */`
+        ${summary ? /* html */`
           <figure class="summary">
             <p>${summary}</p>
           </figure>
