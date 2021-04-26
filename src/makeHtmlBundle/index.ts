@@ -1,8 +1,8 @@
-import cheerio from "cheerio"
-import { uniqBy } from "lodash"
+import cheerio from 'cheerio'
+import { uniqBy } from 'lodash'
 
-import formatHTML, { TemplateOptions } from "./formatHTML"
-import getAsset from "./getAsset"
+import formatHTML, { TemplateOptions } from './formatHTML'
+import getAsset from './getAsset'
 
 /**
  * Make HTML bundle object from HTML string before adding to IPFS
@@ -30,18 +30,18 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
 
   // function to get assets and push them to array
   const addAssetToPromises = (index: number, element: cheerio.Element) => {
-    const elementSrc = $(element).attr("src")
+    const elementSrc = $(element).attr('src')
     // check if it's data url
-    if (elementSrc && !elementSrc.startsWith("data:")) {
-      let tagName = "text"
-      if ("tagName" in element) {
+    if (elementSrc && !elementSrc.startsWith('data:')) {
+      let tagName = 'text'
+      if ('tagName' in element) {
         tagName = element.tagName
       }
       // assuming it's http url
       const assetPath =
-        elementSrc.split("/").pop() || `${index.toString()}-${tagName}`
+        elementSrc.split('/').pop() || `${index.toString()}-${tagName}`
 
-      const updateSrc = () => $(element).attr("src", assetPath)
+      const updateSrc = () => $(element).attr('src', assetPath)
 
       assetsPromises.push(
         getAsset({
@@ -54,17 +54,17 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
   }
 
   // handle images
-  $("img").each((index, image) => {
+  $('img').each((index, image) => {
     addAssetToPromises(index, image)
   })
 
   // handle audios
-  $("audio source").each((index, audio) => {
+  $('audio source').each((index, audio) => {
     addAssetToPromises(index, audio)
   })
 
   // add analytics segment
-  $("head").append(
+  $('head').append(
     `<script type="text/javascript" src="//static.matters.news/analytics.js"></script>`
   )
 
@@ -78,8 +78,8 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
       path: `index.html`,
       content: Buffer.from($.html()),
     },
-    ...uniqBy(assets, "path"),
+    ...uniqBy(assets, 'path'),
   ]
 }
 
-export * from "./formatHTML"
+export * from './formatHTML'

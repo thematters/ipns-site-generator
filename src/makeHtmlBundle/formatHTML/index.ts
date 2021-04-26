@@ -1,7 +1,7 @@
-import { toDateString } from "../../utils"
-import articleTemplate, { TemplateOptions } from "./articleTemplate"
-import cleanHtml from "./cleanHtml"
-import { makeSummary } from "./text"
+import { toDateString } from '../../utils'
+import articleTemplate, { TemplateOptions } from './articleTemplate'
+import cleanHtml from './cleanHtml'
+import { makeSummary } from './text'
 
 /**
  * Turn HTML string into Matters content format
@@ -19,9 +19,9 @@ export default (data: TemplateOptions) => {
   const { content, summary } = data
 
   let now = toDateString(new Date())
-  if (process.env.NODE_ENV === "test") {
+  if (process.env.NODE_ENV === 'test') {
     // for snapshot testing
-    now = "2020-12-23"
+    now = '2020-12-23'
   }
 
   return articleTemplate({
@@ -32,5 +32,5 @@ export default (data: TemplateOptions) => {
   })
 }
 
-export * from "./text"
-export { TemplateOptions } from "./articleTemplate"
+export * from './text'
+export { TemplateOptions } from './articleTemplate'
