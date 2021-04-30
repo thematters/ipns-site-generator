@@ -1,8 +1,8 @@
-import cheerio from "cheerio"
-import { uniqBy } from "lodash"
+import cheerio from 'cheerio'
+import { uniqBy } from 'lodash'
 
-import formatHTML, { FormatterVars } from "./formatHTML"
-import getAsset from "./getAsset"
+import formatHTML, { FormatterVars } from './formatHTML'
+import getAsset from './getAsset'
 
 /**
  * Make HTML bundle object from HTML string before adding to IPFS
@@ -17,7 +17,7 @@ import getAsset from "./getAsset"
  * @param data.paymentPointer - Optional ILP payment pointer
  */
 export const makeHtmlBundle = async ({
-  prefix = "article",
+  prefix = 'article',
   ...data
 }: FormatterVars) => {
   // format single page html
@@ -33,18 +33,18 @@ export const makeHtmlBundle = async ({
 
   // function to get assets and push them to array
   const addAssetToPromises = (index: number, element: cheerio.Element) => {
-    const elementSrc = $(element).attr("src")
+    const elementSrc = $(element).attr('src')
     // check if it's data url
-    if (elementSrc && !elementSrc.startsWith("data:")) {
-      let tagName = "text"
-      if ("tagName" in element) {
+    if (elementSrc && !elementSrc.startsWith('data:')) {
+      let tagName = 'text'
+      if ('tagName' in element) {
         tagName = element.tagName
       }
       // assuming it's http url
       const assetPath =
-        elementSrc.split("/").pop() || `${index.toString()}-${tagName}`
+        elementSrc.split('/').pop() || `${index.toString()}-${tagName}`
 
-      const updateSrc = () => $(element).attr("src", assetPath)
+      const updateSrc = () => $(element).attr('src', assetPath)
 
       assetsPromises.push(
         getAsset({
@@ -57,17 +57,17 @@ export const makeHtmlBundle = async ({
   }
 
   // handle images
-  $("img").each((index, image) => {
+  $('img').each((index, image) => {
     addAssetToPromises(index, image)
   })
 
   // handle audios
-  $("audio source").each((index, audio) => {
+  $('audio source').each((index, audio) => {
     addAssetToPromises(index, audio)
   })
 
   // add analytics segment
-  $("head").append(
+  $('head').append(
     `<script type="text/javascript" src="//static.matters.news/analytics.js"></script>`
   )
 
@@ -81,8 +81,8 @@ export const makeHtmlBundle = async ({
       path: `${prefix}/index.html`,
       content: Buffer.from($.html()),
     },
-    ...uniqBy(assets, "path"),
+    ...uniqBy(assets, 'path'),
   ]
 }
 
-export * from "./formatHTML"
+export * from './formatHTML'

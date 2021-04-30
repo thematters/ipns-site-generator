@@ -14,21 +14,21 @@ export const deserializeHtmlBundle = (
 
 // test data
 export const testMetaData = {
-  contentHash: "ipfs-hash",
+  contentHash: 'ipfs-hash',
   author: {
-    name: "Test User",
-    url: "user-home-page",
-    description: "this is a test user",
+    name: 'Test User',
+    url: 'user-home-page',
+    description: 'this is a test user',
   },
-  description: "This is a piece of test content",
-  image: "image-url",
+  description: 'This is a piece of test content',
+  image: 'image-url',
 }
 
 export const testContent = {
-  title: "test article",
+  title: 'test article',
   author: {
-    userName: "test-user",
-    displayName: "test display name",
+    userName: 'test-user',
+    displayName: 'test display name',
   },
   content: `
   <h1 id="hello-world">Hello World</h1>
