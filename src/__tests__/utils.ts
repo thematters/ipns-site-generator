@@ -14,21 +14,21 @@ export const deserializeHtmlBundle = (
 
 // test data
 export const testMetaData = {
-  contentHash: 'ipfs-hash',
+  contentHash: "ipfs-hash",
   author: {
-    name: 'Test User',
-    url: 'user-home-page',
-    description: 'this is a test user',
+    name: "Test User",
+    url: "user-home-page",
+    description: "this is a test user",
   },
-  description: 'This is a piece of test content',
-  image: 'image-url',
+  description: "This is a piece of test content",
+  image: "image-url",
 }
 
 export const testContent = {
-  title: 'test article',
+  title: "test article",
   author: {
-    userName: 'test-user',
-    displayName: 'test display name',
+    userName: "test-user",
+    displayName: "test display name",
   },
   content: `
   <h1 id="hello-world">Hello World</h1>
@@ -42,7 +42,15 @@ export const testContent = {
   <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
   <figure>
     <img src="https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg" alt="And this is a fine dog.">
-    <figcaption>This is a fine dog.</figcaption>
+    <figcaption>This is a fine dog hosted on another domain.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://assets.matters.news/processed/1080w/embed/9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp" alt="">
+    <figcaption>This is a random figure from matters.news production.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://assets-develop.matters.news/embed/da642df3-8828-4584-bc51-e10fb56437df.gif" alt="">
+    <figcaption>This is a random figure from matters.news development.</figcaption>
   </figure>
   <figure>
     <div class="iframe-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/cbP2N1BQdYc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>

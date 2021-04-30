@@ -1,5 +1,5 @@
-import { resolve as urlResolve } from 'url'
-import fetch from 'isomorphic-fetch'
+import { resolve as urlResolve, parse as urlParse } from "url"
+import fetch from "isomorphic-fetch"
 
 /**
  * fetch asset and return JSON object with buffer data
@@ -13,7 +13,7 @@ export default async ({
   url,
   path,
   updateSrc,
-  domain = 'https://matters.news/',
+  domain = "matters.news",
 }: {
   url: string
   path: string
@@ -24,9 +24,17 @@ export default async ({
     return
   }
   try {
-    const fullUrl = url.indexOf('://') >= 0 ? url : urlResolve(domain, url)
-    const response = await fetch(fullUrl)
+    let fullUrl = url
 
+    if (url.indexOf("://") < 0) {
+      // relative path
+      fullUrl = new URL(url, `https://${domain}/`).href
+    } else if (!new URL(url).hostname.endsWith(domain)) {
+      // skip assets from other domain
+      return
+    }
+
+    const response = await fetch(fullUrl)
     const data = await response.arrayBuffer()
 
     if (updateSrc) {
