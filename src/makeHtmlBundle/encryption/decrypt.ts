@@ -11,27 +11,27 @@ async function decrypt(content: string, keyString: string) {
 
   // import key from keyString
   const key = await crypto.subtle.importKey(
-    "jwk",
+    'jwk',
     {
-      alg: "A128CTR",
+      alg: 'A128CTR',
       ext: true,
       k: keyString,
-      key_ops: ["encrypt", "decrypt"],
-      kty: "oct",
+      key_ops: ['encrypt', 'decrypt'],
+      kty: 'oct',
     },
     {
-      name: "AES-CTR",
+      name: 'AES-CTR',
       length: 128,
     },
     true,
-    ["encrypt", "decrypt"]
+    ['encrypt', 'decrypt']
   )
 
   // decrypt and return
-  return new TextDecoder("utf-8").decode(
+  return new TextDecoder('utf-8').decode(
     await crypto.subtle.decrypt(
       {
-        name: "AES-CTR",
+        name: 'AES-CTR',
         counter: new Uint8Array(16),
         length: 16 * 8,
       },
@@ -42,12 +42,12 @@ async function decrypt(content: string, keyString: string) {
 }
 
 // global parameter name
-const paramName = "key"
+const paramName = 'key'
 
 // handle input UI
 const showInput = (hasKey: boolean) => {
   // get encrypted element
-  const elEncrypted = document.querySelector(".encrypted") as HTMLElement | null
+  const elEncrypted = document.querySelector('.encrypted') as HTMLElement | null
   if (elEncrypted) {
     // blur effect
     elEncrypted.style.cssText = `
@@ -56,20 +56,20 @@ const showInput = (hasKey: boolean) => {
             `
 
     // create input place holder
-    const elInput = document.createElement("input")
-    elInput.setAttribute("type", "password")
-    elInput.setAttribute("name", paramName)
-    elInput.style.height = "20px"
+    const elInput = document.createElement('input')
+    elInput.setAttribute('type', 'password')
+    elInput.setAttribute('name', paramName)
+    elInput.style.height = '20px'
 
     if (hasKey) {
-      elInput.setAttribute("placeholder", `wrong ${paramName}, try again`)
+      elInput.setAttribute('placeholder', `wrong ${paramName}, try again`)
     } else {
-      elInput.setAttribute("placeholder", "enter key")
+      elInput.setAttribute('placeholder', 'enter key')
     }
 
     // create form
-    const elForm = document.createElement("form")
-    elForm.setAttribute("method", "get")
+    const elForm = document.createElement('form')
+    elForm.setAttribute('method', 'get')
     elForm.style.cssText = `
                 top: 0;
                 position: absolute;
@@ -83,12 +83,12 @@ const showInput = (hasKey: boolean) => {
   }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // get secret
   const urlParams = new URLSearchParams(window.location.search)
   const keyString = urlParams.get(paramName)
 
-  const elEncrypted = document.querySelector(".encrypted")
+  const elEncrypted = document.querySelector('.encrypted')
 
   if (elEncrypted) {
     if (!keyString) {
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // update classname
         elEncrypted.className = elEncrypted.className.replace(
           /(?:^|\s)encrypted(?!\S)/,
-          "decrypted"
+          'decrypted'
         )
       } catch (err) {
         showInput(true)
