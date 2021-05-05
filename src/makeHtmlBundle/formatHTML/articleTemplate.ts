@@ -1,3 +1,6 @@
+import encryptHandler from './encryption/encrypt'
+import fs from 'fs'
+
 type Link = {
   text: string
   url: string
@@ -14,6 +17,7 @@ export type TemplateOptions = {
   readMore?: Link
   paymentPointer?: string
   from?: Link
+  encrypt?: boolean
 }
 
 export type TemplateVars = TemplateOptions & {
@@ -21,7 +25,7 @@ export type TemplateVars = TemplateOptions & {
   summary: string
 }
 
-export default ({
+export default async ({
   title,
   author,
   summary,
@@ -30,9 +34,16 @@ export default ({
   readMore,
   paymentPointer,
   from,
-}: TemplateVars) =>
+  encrypt = false,
+}: TemplateVars) => {
+  let contentProcessed = content
+  if (encrypt) {
+    const { key, encrypted } = await encryptHandler(content)
+    contentProcessed = encrypted
+  }
+
   // prettier-ignore
-  /*html*/ `
+  return /*html*/ `
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,15 +56,16 @@ export default ({
     <meta property="article:author" content="${author.name}">
     <meta name="twitter:title" content="${author.name}: ${title}">
     <meta name="twitter:description" content="${summary}">
-${
-  paymentPointer
-    ? /*html*/`
-    <meta
-      name="monetization"
-      content="${paymentPointer}">`
-    : ``
+${encrypt && /*html*/`
+    <script type="text/javascript"> ${fs.readFileSync(
+        './encryption/decrypt.js',
+        'binary')}
+    </script>`
 }
-    ${style}
+${paymentPointer && /*html*/`
+    <meta name="monetization" content="${paymentPointer}">`
+}
+  ${style}
   </head>
   <body itemscope itemtype="http://schema.org/Article">
     <main>
@@ -62,49 +74,43 @@ ${
         <figure class="byline">
           <a href="${author.link.url}" target="_blank">${author.link.text}</a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
-          ${
-            from
-            ? /*html*/`
-            <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-              from <a href="${from.url}" target="_blank"  itemprops="name">${from.text}</a>
-              <meta itemprops="url" content="${from.url}">
-            </span>
-            `
-            : ``
-          }
+${
+  from && /*html*/`
+        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+          from <a href="${from.url}" target="_blank"  itemprops="name">${from.text}</a>
+          <meta itemprops="url" content="${from.url}">
+        </span>`
+}
 
         </figure>
-
-        ${summary ? /* html */`
-          <figure class="summary">
-            <p>${summary}</p>
-          </figure>
-        ` : ''}
+        <figure class="summary">
+          <p>${summary}</p>
+        </figure>
       </header>
 
-      <article itemprop="articleBody">
-        ${content}
+      <article itemprop="articleBody" ${encrypt && `class="encrypted"`}>
+        ${contentProcessed}
       </article>
 
-      ${readMore ? /*html*/ `
-        <footer>
-          <figure class="read_more">
-            <p>
-              Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
-            </p>
-          </figure>
-        </footer>
-      ` : ''}
+${readMore && /*html*/ `
+      <footer>
+        <figure class="read_more">
+          <p>
+            Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
+          </p>
+        </figure>
+      </footer>`
+}
 
     </main>
   </body>
 </html>
 `
+}
 
 const style =
   // prettier-ignore
   /*html*/ `
-
 <style>
   html, body {
     margin: 0;

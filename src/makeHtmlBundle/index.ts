@@ -63,11 +63,6 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
     addAssetToPromises(index, audio)
   })
 
-  // add analytics segment
-  $('head').append(
-    `<script type="text/javascript" src="//static.matters.news/analytics.js"></script>`
-  )
-
   const assets = await Promise.all(assetsPromises).then((results) =>
     results.filter((asset) => asset)
   )
