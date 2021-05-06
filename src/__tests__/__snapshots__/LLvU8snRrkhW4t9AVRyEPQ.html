@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test article</title>
+    <meta name="description" content="
+  Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum ...">
+    <meta property="og:title" content="test-user: test article">
+    <meta property="og:description" content="
+  Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum ...">
+    <meta property="article:author" content="test-user">
+    <meta name="twitter:title" content="test-user: test article">
+    <meta name="twitter:description" content="
+  Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum ...">
+
+    <script type="text/javascript"> "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+// reference implementation of decryption
+function decrypt(content, keyString) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // translate hex string to buffer
+        function hex2buf(hex) {
+            const bytes = [];
+            for (let i = 0; i < hex.length; i += 2) {
+                bytes.push(Number.parseInt(hex.slice(i, i + 2), 16));
+            }
+            return new Uint8Array(bytes);
+        }
+        // import key from keyString
+        const key = yield crypto.subtle.importKey('jwk', {
+            alg: 'A128CTR',
+            ext: true,
+            k: keyString,
+            key_ops: ['encrypt', 'decrypt'],
+            kty: 'oct',
+        }, {
+            name: 'AES-CTR',
+            length: 128,
+        }, true, ['encrypt', 'decrypt']);
+        // decrypt and return
+        return new TextDecoder('utf-8').decode(yield crypto.subtle.decrypt({
+            name: 'AES-CTR',
+            counter: new Uint8Array(16),
+            length: 16 * 8,
+        }, key, hex2buf(content)));
+    });
+}
+// global parameter name
+const paramName = 'key';
+// handle input UI
+const showInput = (hasKey) => {
+    // get encrypted element
+    const elEncrypted = document.querySelector('.encrypted');
+    if (elEncrypted) {
+        // blur effect
+        elEncrypted.style.cssText = `
+                color:transparent;
+                text-shadow:0px 0px 5px #000;
+            `;
+        // create input place holder
+        const elInput = document.createElement('input');
+        elInput.setAttribute('type', 'password');
+        elInput.setAttribute('name', paramName);
+        elInput.style.height = '20px';
+        if (hasKey) {
+            elInput.setAttribute('placeholder', `wrong ${paramName}, try again`);
+        }
+        else {
+            elInput.setAttribute('placeholder', 'enter key');
+        }
+        // create form
+        const elForm = document.createElement('form');
+        elForm.setAttribute('method', 'get');
+        elForm.style.cssText = `
+                top: 0;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+            `;
+        // insert form and input
+        elForm.appendChild(elInput);
+        elEncrypted.appendChild(elForm);
+    }
+};
+document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void 0, function* () {
+    // get secret
+    const urlParams = new URLSearchParams(window.location.search);
+    const keyString = urlParams.get(paramName);
+    const elEncrypted = document.querySelector('.encrypted');
+    if (elEncrypted) {
+        if (!keyString) {
+            showInput(false);
+        }
+        else {
+            try {
+                const decrypted = yield decrypt(elEncrypted.innerHTML.trim(), keyString);
+                // write to decrypted section
+                elEncrypted.innerHTML = decrypted;
+                // update classname
+                elEncrypted.className = elEncrypted.className.replace(/(?:^|\s)encrypted(?!\S)/, 'decrypted');
+            }
+            catch (err) {
+                showInput(true);
+            }
+        }
+    }
+}));
+//# sourceMappingURL=decrypt.js.map
+    </script>
+
+  
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 673px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  hr { height: 1px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.4; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+  li ul, li ol { margin: 0 20px; }
+  li { margin: 20px 0; }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ol ol { list-style: upper-alpha; }
+  ol ol ol { list-style: lower-roman; }
+  ol ol ol ol { list-style: lower-alpha; }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  audio {
+    width: 100%;
+  }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #5F5F5F;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
+    font-size: 16px;
+    margin: 0;
+  }
+  figure.byline * + * {
+    padding-left: 10px;
+  }
+  figure.byline time {
+    color: #b3b3b3;
+  }
+  figure.byline [ref="source"]::before {
+    content: '';
+    border-left: 1px solid currentColor;
+    padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
+  }
+
+  article {
+    position: relative;
+  }
+
+  article > * {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+  article a {
+    border-bottom: 1px solid currentcolor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+  article p {
+    line-height: 1.8;
+  }
+  figure figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b3b3b3;
+  }
+
+  figure .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  figure .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .encrypted {
+    overflow-wrap: break-word;
+  }
+</style>
+
+  </head>
+  <body itemscope itemtype="http://schema.org/Article">
+    <main>
+      <header>
+        <h1 itemprop="headline">test article</h1>
+        <figure class="byline">
+          <a href="https://matters.news/@test-user" target="_blank">Test User</a>
+          <time itemprop="datePublished" datetime="2020-12-23">2020-12-23</time>
+
+        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+          from <a href="https://matters.news" target="_blank"  itemprops="name">Matters</a>
+          <meta itemprops="url" content="https://matters.news">
+        </span>
+
+        </figure>
+        <figure class="summary">
+          <p>
+  Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum ...</p>
+        </figure>
+      </header>
+
+      <article itemprop="articleBody" class="encrypted">
+        420ee2df038594a68cc459d548efdfa28471f1e23cb448f8691c1120eaecc2a832b8cf427b87d03f3db20e39897c637c9ae67a30e66bb10e9625230746b8f01c5528628b07d968aa42ee24a25dcdf67de27517e737b70f471301345d55fd50534708bb99fbb0acf30463eee085b26f24fe99efd67fc815b0fb328c17d852af6e33730d327236d6756d511c88462ac43d8a503d27982c5be3de2156c63a1b37b81a248677d23312735540af2a95579abb4c7681dffe18579dad14bb069f4e69d1bed5e8282ae80bd0c5e38d27e6cf9657b3a3ede107401310585a0b8a855600f373feb29da41095ac579ad70882cdc91e48b52aa9367cc77f843e877fc507a086284cd2f2aa3c9773fcb7613d23eb2a930612dc987a7b7174ee5bd21305ccec78b3c52da6ead5775d94d213ccf0abcb4d58c5811d6a8efc6e7439890087b4f52dcf1f962b4cc3bab32d40b5272f681ff4a2ac95ce3334e480d6faf1b38126aba7105bf6a821ae77686c657fca36b0dcd64400d66e697f90f8191db84e55a6c8a64195b5d3390895cb2d1d0e3ec0cdb18856b79724a9640f178788531c5b9026ffbf79b25cd433336bbe2e3b26104d1b58c8e20e15d963fe4d1ee61fedd3119daf6169597770d41e8de8cb39c89263e4ddd30c3c6962e662c628d7e1ddaf0609bc684b375267c755bc9b5caa76e1a6f1e1b62ed5a4121afca8cebcdb68d033932f40eeac08b150778c77145de439b55ef27851c97b59c525f668e96d1d14b3ccd7a13d3b8791e0f4566f9a02a8b949845034c21ea9ac4b9d50a7781eb5198ad64b5d96d268d054de01511073ab47839a916ba4271bf651f9ecdc2f7d07e7d80fcbedf848a42031e2aa87b4644350a69f1d90e9ab633e5ae8aa7f255a54143b4d67eaae1ea2ab40405dfe7d12774b5df8af724df4b8ff00750483bd4e0142a0b20319973a3917fcc66f512dfe0ba757640153385aba3bae20c39ee09266f755e7f8f85678f23e26db7852872dc34b9e375959d031d9cba05d7180a95a28ebb6edb0400daa6f47233e464bee08be15176430b5759f09e6ed319f67ff5314d672cec06848f6ff959df20f98b3245926aa58f873bf0a2cba56a3b2962c3349919d5bb143115f5596dc71a8873c952bd3bbb4a351508755fe61f84b0adbea4b90f3427ef96fb6c0b0ac90e8810c0103f5497526f9776fb65433a14c1400f1f22c18faa2bc410ac5ae8e57d6606f198e77402c610080e484187a98a8ce9b071ae2b493a5d9e2d58665dd9bb6501c1aefadafe4bd95a79eac914df3f518d8618e721f01857957c2c63eb8385730cc372b5db0d3e473b44791e36bb3855d066a4e4acf713531bdcdb98f37c4512b167f3dc4f826c42533b6ce6f53f5aba4970b69702e312858ea763ec154ed618e6dbeaa96609bdf8714512a2386a66f764329c018fa5907bbfd511273265674b3adc0c5a126f5ae0433250bebd44b7e525c489f5dfb977f6d7e1bab0bd55af2c24e9e704d3c24d63177db1ca6cd8f481d922ebe9a7ec72ab9053a4f6ba7afac55b4e008fefdabae24827df40f5c73c7b57d5d66e4a256636fd5c5a3ded4e277caf0f3bcdf1549bcfd8225e85b9b23f16684bbc99a9e403b4f2652e846ff7d0cada9a1ddb6303b92e3c073ddfc7da6cd21706420448856ab5ff6232feebec974bff438422d10e733a1a48d228e542b3b95fd74eafc6cc874fcc1ca42618d8b6174c2175a7547c56633be52dae4aaab9925fdc9b7ef10940d93b14cb8a8308fc111fca2c4ec9001a5edd0b70d92e718ef86718a1b4885f7d198a8fdf4701dbd38bf2dd9dfea4d60e0cb64df5814bfd510b8b56d1dfc28ddc0f71f33662d03ae930c7fc2109cc682fe2583d7bc15dcd5a74617cadaf9bf57d3ed5bda0da8f52111be3131ec235ef6429ad1e334e112c5c2d48eab2e14de27bd245836875bbc18ce50d66ec37c60d26954eccf26b145e5a8e8a465f81ba3a7dda4493bd30bece65a8509bc0d5ef5559a99ea21d32d8b7e19f621d24447d0a791e453ee314e68ddc4d8a59e0e6442b618d7c83a8c4dc49ae97b0b52de17da45800de480ff86401f3ad1531c748799be6b08f542e4164e43eb753b33fe3a506d707326e374dbe2649ede3eb98bd65df922b4200c4ee9199d6ce3d6d73bc993264ad31b9db97a0600e30f5f3e987d4c0d2a8ddda0d6d28b1796379b86c8b41cf8cb63f2446dd47f8111084edc740f475901772af1478db3d83c754462ac868ced299f002c595797d174fd7e33f88d1dc5a142cbc1f5bc2cd3d5419a3f95335d7fc4bc9366b6d0e5949907fd769af66262138a4e436a35e644ca6ced00c21385d6eaee388e652dd0af3575bc6ce5fd763327fdd9dacd75ce72944d6f9192119725de7ec6546e0bdef5bf32e6f3bec939c282aa24b2499ccb6a0f2aff63b6ae332c14507a50e0330817b709ad2bdaf9c5c13ed2c2b2918549042854aca8134d7c92850da76880a36635caeed7af2e051da5fdc00c9ed20e0c01d07cdb4fb0949c4a165bc01297b9fbbce3378d07949d9f5cd8f355a65c0c201446820de1ab119115c6aa1b57f4c270f7b73c65682bc32e53fb83cf57c158a52ff9ceb4db9f71d59b65a4f56d4e8336e0c2cb02a63cf1a021d8a1b1c9e0ed695a67be0589e8a06780ac5b65c7f9d3f2e32f96b53872f176de50e10424f85453dfc53ebc75eaacd6ef79c409e5b547c139eab52f8654161c5432173bd72411082ea9b33a2c556f674062d776b7084420339587b28761b338046ce3274c5fa3ba38eaebf11c46cdb2eb6c6fcf5f0095f19f5e8867dbd535b130b823d182312f58acaaf3bc54664eea08b3ba94b606c70497edf1eeb453b1c05b5801800d16400d26e96ddfa146d1eb34c7caddb0a19d2aba31bec2840f8ff2eb85b08c765971d29652cdf0f373c3adb4646008274d9ae52072b7a6902851f4765a0bce336c4e327db39d7476196aca6dd56edf75ef92f61d17c806743fefe7492dab04684a934d74e8435eb5c7e533fdb90507263a97cd26187ecd3bbcc80c3b7cc4d31f5133311d4da3a31208b8aa01038532b5eb07497bf5384b5064a76006bb829872ac24d17554918a0317a98c32f37f3ce8b864609e476de940745250e5ff00e56a8e63d6c605259fca6dd352215edd770861baecc7865f62d257d172142e0dedb526c9139b3d25ff32d24126a5d7605ac3dec5926a8d21e61893bcddf1889c1cd56713ff5a0ae1196822241fe8845540d69d63c860e6a96591973f050887082db1d9c146211db04c9f7da398f088237b53af747cffa5a8abada3a8b0ea25c0f16b20c9bcda77195af75dac8a9e20f9053f09236c99099e1e972b84915af334256269c73fb99ebef7513bf8984240758a1a95c0ff5ab0a719d2d9b5d0ab2f96abcfdf2cbf6bfc478d896f4781084417dd79
+      </article>
+
+
+      <footer>
+        <figure class="read_more">
+          <p>
+            Read more: <a href="test-circle-url" target="_blank">test circle</a>
+          </p>
+        </figure>
+      </footer>
+
+    </main>
+  </body>
+</html>

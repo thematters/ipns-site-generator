@@ -15,7 +15,7 @@ import { makeSummary } from './text'
  * @param data.readMore - Optional link (text & url) to full article for paywalled content
  * @param data.paymentPointer - Optional ILP payment pointer
  */
-export default (data: TemplateOptions) => {
+export const formatHTML = (data: TemplateOptions) => {
   const { content, summary } = data
 
   let now = toDateString(new Date())

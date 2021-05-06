@@ -1,7 +1,7 @@
 import cheerio from 'cheerio'
 import { uniqBy } from 'lodash'
 
-import formatHTML, { TemplateOptions } from './formatHTML'
+import { formatHTML, TemplateOptions } from './formatHTML'
 import getAsset from './getAsset'
 
 /**
@@ -18,7 +18,7 @@ import getAsset from './getAsset'
  */
 export const makeHtmlBundle = async (data: TemplateOptions) => {
   // format single page html
-  const html = formatHTML(data)
+  const { html, key } = await formatHTML(data)
 
   // load to cheerio to parse assets
   const $ = cheerio.load(html, { decodeEntities: false })
@@ -68,13 +68,16 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
   )
 
   // bundle html
-  return [
-    {
-      path: `index.html`,
-      content: Buffer.from($.html()),
-    },
-    ...uniqBy(assets, 'path'),
-  ]
+  return {
+    bundle: [
+      {
+        path: `index.html`,
+        content: Buffer.from($.html()),
+      },
+      ...uniqBy(assets, 'path'),
+    ],
+    key,
+  }
 }
 
 export * from './formatHTML'

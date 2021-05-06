@@ -1,5 +1,6 @@
 import encryptHandler from './encryption/encrypt'
 import fs from 'fs'
+import path from 'path'
 
 type Link = {
   text: string
@@ -33,17 +34,19 @@ export default async ({
   publishedAt,
   readMore,
   paymentPointer,
-  from,
+  from = { text: 'Matters', url: 'https://matters.news' },
   encrypt = false,
 }: TemplateVars) => {
   let contentProcessed = content
+  let key = null
   if (encrypt) {
-    const { key, encrypted } = await encryptHandler(content)
+    const { key: decryptionKey, encrypted } = await encryptHandler(content)
     contentProcessed = encrypted
+    key = decryptionKey
   }
 
   // prettier-ignore
-  return /*html*/ `
+  const html = /*html*/ `
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,14 +59,15 @@ export default async ({
     <meta property="article:author" content="${author.name}">
     <meta name="twitter:title" content="${author.name}: ${title}">
     <meta name="twitter:description" content="${summary}">
-${encrypt && /*html*/`
-    <script type="text/javascript"> ${fs.readFileSync(
-        './encryption/decrypt.js',
+${encrypt ? /*html*/`
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/decrypt.js"),
         'binary')}
-    </script>`
+    </script>` : ``
 }
-${paymentPointer && /*html*/`
-    <meta name="monetization" content="${paymentPointer}">`
+${paymentPointer ? /*html*/`
+    <meta name="monetization" content="${paymentPointer}">` : ``
 }
   ${style}
   </head>
@@ -75,11 +79,11 @@ ${paymentPointer && /*html*/`
           <a href="${author.link.url}" target="_blank">${author.link.text}</a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
 ${
-  from && /*html*/`
+  from ? /*html*/`
         <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
           from <a href="${from.url}" target="_blank"  itemprops="name">${from.text}</a>
           <meta itemprops="url" content="${from.url}">
-        </span>`
+        </span>` : ``
 }
 
         </figure>
@@ -92,20 +96,21 @@ ${
         ${contentProcessed}
       </article>
 
-${readMore && /*html*/ `
+${readMore ? /*html*/ `
       <footer>
         <figure class="read_more">
           <p>
             Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
           </p>
         </figure>
-      </footer>`
+      </footer>` : ``
 }
 
     </main>
   </body>
 </html>
 `
+  return { html, key }
 }
 
 const style =
@@ -199,6 +204,10 @@ const style =
     margin: 40px 0; 
   }
 
+  article {
+    position: relative;
+  }
+
   article > * {
     margin-top: 20px;
     margin-bottom: 24px;
@@ -226,9 +235,11 @@ const style =
   figure .iframe-container iframe {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+  }
+  .encrypted {
+    overflow-wrap: break-word;
   }
 </style>
 `
