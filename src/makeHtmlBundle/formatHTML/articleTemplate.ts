@@ -2,6 +2,8 @@ import encryptHandler from './encryption/encrypt'
 import fs from 'fs'
 import path from 'path'
 
+const encryptionVersion = '0.0.7'
+
 type Link = {
   text: string
   url: string
@@ -64,7 +66,18 @@ ${encrypt ? /*html*/`
       fs.readFileSync(
         path.resolve(__dirname, "./encryption/decrypt.js"),
         'binary')}
-    </script>` : ``
+    </script>
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/inputUI.js"),
+        'binary')}
+    </script>
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/listener.js"),
+        'binary')}
+    </script>
+    ` : ``
 }
 ${paymentPointer ? /*html*/`
     <meta name="monetization" content="${paymentPointer}">` : ``
@@ -92,7 +105,10 @@ ${
         </figure>
       </header>
 
-      <article itemprop="articleBody" ${encrypt && `class="encrypted"`}>
+      <article itemprop="articleBody"
+      ${encrypt
+          ? `class="encrypted" data-encryption-version=${encryptionVersion}`
+          : ``}>
         ${contentProcessed}
       </article>
 
@@ -238,8 +254,11 @@ const style =
     width: 100%;
     height: 100%;
   }
+
   .encrypted {
-    overflow-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
   }
 </style>
 `

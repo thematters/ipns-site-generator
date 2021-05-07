@@ -160,8 +160,11 @@ Together with some test quotations
     width: 100%;
     height: 100%;
   }
+
   .encrypted {
-    overflow-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
   }
 </style>
 
@@ -393,8 +396,11 @@ Together with some test quotations
     width: 100%;
     height: 100%;
   }
+
   .encrypted {
-    overflow-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
   }
 </style>
 
