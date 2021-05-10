@@ -17,11 +17,8 @@ import getAsset from './getAsset'
  * @param data.paymentPointer - Optional ILP payment pointer
  */
 export const makeHtmlBundle = async (data: TemplateOptions) => {
-  // format single page html
-  const { html, key } = await formatHTML(data)
-
   // load to cheerio to parse assets
-  const $ = cheerio.load(html, { decodeEntities: false })
+  const $ = cheerio.load(data.content, { decodeEntities: false })
 
   // array for Promisses to get assets
   const assetsPromises: Promise<
@@ -67,12 +64,15 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
     results.filter((asset) => asset)
   )
 
+  // format single page html
+  const { html, key } = await formatHTML({ ...data, content: $.html() })
+
   // bundle html
   return {
     bundle: [
       {
         path: `index.html`,
-        content: Buffer.from($.html()),
+        content: Buffer.from(html),
       },
       ...uniqBy(assets, 'path'),
     ],
