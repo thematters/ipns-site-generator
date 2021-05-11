@@ -89,3 +89,15 @@ const cid = await ipfs.dag.put(metaData, {
 // this is the final media hash used in the end of article url at matters.news
 const mediaHash = cid.toBaseEncodedString()
 ```
+
+## Unit test
+
+Run test with:
+
+```
+npm run test
+```
+
+Tests were run with Jest after compiled to JavaScript. Most test are run with snapshots located in `src/__tests__/__snapshots__`.
+
+Encryption with `formatHTML` changes in every run, since encryption is random, and we cannot use snapshot. Therefore the test write out a HTML file to `src/__tests__/__snapshots__` with decryption key as filename. You can open and test the decryption manually.
