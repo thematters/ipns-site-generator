@@ -1,7 +1,6 @@
 import { toDateString } from '../../utils'
 import articleTemplate, { TemplateOptions } from './articleTemplate'
 import cleanHtml from './cleanHtml'
-import { makeSummary } from './text'
 
 /**
  * Turn HTML string into Matters content format
@@ -26,7 +25,7 @@ export const formatHTML = (data: TemplateOptions) => {
 
   return articleTemplate({
     ...data,
-    summary: summary || makeSummary(content),
+    summary,
     content: cleanHtml(content),
     publishedAt: now,
   })

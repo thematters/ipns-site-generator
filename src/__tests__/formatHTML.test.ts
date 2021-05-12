@@ -21,6 +21,7 @@ describe('formatHTML', () => {
     const { html, key } = await formatHTML({
       readMore: { text: 'test circle', url: 'test-circle-url' },
       encrypt: true,
+      summary: 'Hello World',
       ...testContent,
     })
 

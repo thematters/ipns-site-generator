@@ -1,6 +1,8 @@
-import encryptHandler from './encryption/encrypt'
 import fs from 'fs'
 import path from 'path'
+
+import encryptHandler from './encryption/encrypt'
+import { makeSummary } from './text'
 
 const encryptionVersion = '0.0.7'
 
@@ -25,7 +27,6 @@ export type TemplateOptions = {
 
 export type TemplateVars = TemplateOptions & {
   publishedAt: string
-  summary: string
 }
 
 export default async ({
@@ -47,6 +48,8 @@ export default async ({
     key = decryptionKey
   }
 
+  const description = summary || makeSummary(content)
+
   // prettier-ignore
   const html = /*html*/ `
 <!DOCTYPE html>
@@ -55,12 +58,12 @@ export default async ({
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
-    <meta name="description" content="${summary}">
+    <meta name="description" content="${description}">
     <meta property="og:title" content="${author.name}: ${title}">
-    <meta property="og:description" content="${summary}">
+    <meta property="og:description" content="${description}">
     <meta property="article:author" content="${author.name}">
     <meta name="twitter:title" content="${author.name}: ${title}">
-    <meta name="twitter:description" content="${summary}">
+    <meta name="twitter:description" content="${description}">
 ${encrypt ? /*html*/`
     <script type="text/javascript"> ${
       fs.readFileSync(
@@ -100,14 +103,17 @@ ${
 }
 
         </figure>
+${
+  summary ? /*html*/`
         <figure class="summary">
           <p>${summary}</p>
-        </figure>
+        </figure>` : ``
+}
       </header>
 
       <article itemprop="articleBody"
       ${encrypt
-          ? `class="encrypted" data-encryption-version=${encryptionVersion}`
+          ? `class="encrypted" data-encryption-version="${encryptionVersion}"`
           : ``}>
         ${contentProcessed}
       </article>
