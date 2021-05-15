@@ -1,3 +1,11 @@
+import fs from 'fs'
+import path from 'path'
+
+import encryptHandler from './encryption/encrypt'
+import { makeSummary } from './text'
+
+const encryptionVersion = '0.0.7'
+
 type Link = {
   text: string
   url: string
@@ -6,107 +14,130 @@ type Link = {
 export type TemplateOptions = {
   title: string
   author: {
-    userName: string
-    displayName: string
+    name: string
+    link: Link
   }
   summary?: string
-  summaryCustomized?: boolean
   content: string
   readMore?: Link
   paymentPointer?: string
-  siteDomain?: string
+  from?: Link
+  encrypt?: boolean
 }
 
 export type TemplateVars = TemplateOptions & {
   publishedAt: string
-  summary: string
 }
 
-const UTM_PARAMETER = 'utm_source=ipfs'
-const SITE_DOMAIN = 'https://matters.news'
-
-export default ({
+export default async ({
   title,
   author,
   summary,
-  summaryCustomized,
   content,
   publishedAt,
   readMore,
   paymentPointer,
-  siteDomain = SITE_DOMAIN,
-}: TemplateVars) =>
+  from = { text: 'Matters', url: 'https://matters.news' },
+  encrypt = false,
+}: TemplateVars) => {
+  let contentProcessed = content
+  let key = null
+  if (encrypt) {
+    const { key: decryptionKey, encrypted } = await encryptHandler(content)
+    contentProcessed = encrypted
+    key = decryptionKey
+  }
+
+  const description = summary || makeSummary(content)
+
   // prettier-ignore
-  /*html*/ `
+  const html = /*html*/ `
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${title}</title>
-    <meta name="description" content="${summary}">
-    <meta property="og:title" content="${author.displayName}: ${title}">
-    <meta property="og:description" content="${summary}">
-    <meta property="article:author" content="${author.displayName} (@${
-    author.userName
-  })">
-    <meta name="twitter:title" content="${author.displayName}: ${title}">
-    <meta name="twitter:description" content="${summary}">
-${
-  paymentPointer
-    ? /*html*/`
-    <meta
-      name="monetization"
-      content="${paymentPointer}">`
-    : ``
+    <meta name="description" content="${description}">
+    <meta property="og:title" content="${author.name}: ${title}">
+    <meta property="og:description" content="${description}">
+    <meta property="article:author" content="${author.name}">
+    <meta name="twitter:title" content="${author.name}: ${title}">
+    <meta name="twitter:description" content="${description}">
+${encrypt ? /*html*/`
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/decrypt.js"),
+        'binary')}
+    </script>
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/inputUI.js"),
+        'binary')}
+    </script>
+    <script type="text/javascript"> ${
+      fs.readFileSync(
+        path.resolve(__dirname, "./encryption/listener.js"),
+        'binary')}
+    </script>
+    ` : ``
 }
-    ${style}
+${paymentPointer ? /*html*/`
+    <meta name="monetization" content="${paymentPointer}">` : ``
+}
+  ${style}
   </head>
   <body itemscope itemtype="http://schema.org/Article">
     <main>
       <header>
         <h1 itemprop="headline">${title}</h1>
         <figure class="byline">
-          <a href="${siteDomain}/@${author.userName}?${UTM_PARAMETER}" target="_blank" itemprop="author">
-            ${author.displayName} (@${author.userName})
-          </a>
+          <a href="${author.link.url}" target="_blank">${author.link.text}</a>
           <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
-          <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
-            from <a href="${siteDomain}?${UTM_PARAMETER}" target="_blank"  itemprops="name">Matters</a>
-            <meta itemprops="url" content="https://matters.news">
-          </span>
-        </figure>
+${
+  from ? /*html*/`
+        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+          from <a href="${from.url}" target="_blank"  itemprops="name">${from.text}</a>
+          <meta itemprops="url" content="${from.url}">
+        </span>` : ``
+}
 
-        ${summary && summaryCustomized ? /* html */`
-          <figure class="summary">
-            <p>${summary}</p>
-          </figure>
-        ` : ''}
+        </figure>
+${
+  summary ? /*html*/`
+        <figure class="summary">
+          <p>${summary}</p>
+        </figure>` : ``
+}
       </header>
 
-      <article itemprop="articleBody">
-        ${content}
+      <article itemprop="articleBody"
+      ${encrypt
+          ? `class="encrypted" data-encryption-version="${encryptionVersion}"`
+          : ``}>
+        ${contentProcessed}
       </article>
 
-      ${readMore ? /*html*/ `
-        <footer>
-          <figure class="read_more">
-            <p>
-              Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
-            </p>
-          </figure>
-        </footer>
-      ` : ''}
+${readMore ? /*html*/ `
+      <footer>
+        <figure class="read_more">
+          <p>
+            Read more: <a href="${readMore.url}" target="_blank">${readMore.text}</a>
+          </p>
+        </figure>
+      </footer>` : ``
+}
 
     </main>
   </body>
 </html>
 `
+  return { html, key }
+}
 
 const style =
   // prettier-ignore
   /*html*/ `
-
 <style>
   html, body {
     margin: 0;
@@ -195,6 +226,10 @@ const style =
     margin: 40px 0; 
   }
 
+  article {
+    position: relative;
+  }
+
   article > * {
     margin-top: 20px;
     margin-bottom: 24px;
@@ -222,9 +257,14 @@ const style =
   figure .iframe-container iframe {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .encrypted {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
   }
 </style>
 `

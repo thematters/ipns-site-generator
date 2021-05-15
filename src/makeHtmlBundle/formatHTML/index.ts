@@ -1,11 +1,6 @@
 import { toDateString } from '../../utils'
 import articleTemplate, { TemplateOptions } from './articleTemplate'
 import cleanHtml from './cleanHtml'
-import { makeSummary } from './text'
-
-export type FormatterVars = TemplateOptions & {
-  prefix?: string
-}
 
 /**
  * Turn HTML string into Matters content format
@@ -19,7 +14,7 @@ export type FormatterVars = TemplateOptions & {
  * @param data.readMore - Optional link (text & url) to full article for paywalled content
  * @param data.paymentPointer - Optional ILP payment pointer
  */
-export default (data: FormatterVars) => {
+export const formatHTML = (data: TemplateOptions) => {
   const { content, summary } = data
 
   let now = toDateString(new Date())
@@ -30,10 +25,11 @@ export default (data: FormatterVars) => {
 
   return articleTemplate({
     ...data,
-    summary: summary || makeSummary(content),
+    summary,
     content: cleanHtml(content),
     publishedAt: now,
   })
 }
 
 export * from './text'
+export { TemplateOptions } from './articleTemplate'

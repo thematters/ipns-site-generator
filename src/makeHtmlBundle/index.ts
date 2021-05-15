@@ -1,7 +1,7 @@
 import cheerio from 'cheerio'
 import { uniqBy } from 'lodash'
 
-import formatHTML, { FormatterVars } from './formatHTML'
+import { formatHTML, TemplateOptions } from './formatHTML'
 import getAsset from './getAsset'
 
 /**
@@ -16,15 +16,9 @@ import getAsset from './getAsset'
  * @param data.readMore - Optional link (text & url) to full article for paywalled content
  * @param data.paymentPointer - Optional ILP payment pointer
  */
-export const makeHtmlBundle = async ({
-  prefix = 'article',
-  ...data
-}: FormatterVars) => {
-  // format single page html
-  const html = formatHTML(data)
-
+export const makeHtmlBundle = async (data: TemplateOptions) => {
   // load to cheerio to parse assets
-  const $ = cheerio.load(html, { decodeEntities: false })
+  const $ = cheerio.load(data.content, { decodeEntities: false })
 
   // array for Promisses to get assets
   const assetsPromises: Promise<
@@ -49,7 +43,7 @@ export const makeHtmlBundle = async ({
       assetsPromises.push(
         getAsset({
           url: elementSrc,
-          path: `${prefix}/${assetPath}`,
+          path: assetPath,
           updateSrc,
         })
       )
@@ -66,23 +60,24 @@ export const makeHtmlBundle = async ({
     addAssetToPromises(index, audio)
   })
 
-  // add analytics segment
-  $('head').append(
-    `<script type="text/javascript" src="//static.matters.news/analytics.js"></script>`
-  )
-
   const assets = await Promise.all(assetsPromises).then((results) =>
     results.filter((asset) => asset)
   )
 
+  // format single page html
+  const { html, key } = await formatHTML({ ...data, content: $.html() })
+
   // bundle html
-  return [
-    {
-      path: `${prefix}/index.html`,
-      content: Buffer.from($.html()),
-    },
-    ...uniqBy(assets, 'path'),
-  ]
+  return {
+    bundle: [
+      {
+        path: `index.html`,
+        content: Buffer.from(html),
+      },
+      ...uniqBy(assets, 'path'),
+    ],
+    key,
+  }
 }
 
 export * from './formatHTML'

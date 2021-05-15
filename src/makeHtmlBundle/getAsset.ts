@@ -1,4 +1,4 @@
-import fetch from "isomorphic-fetch"
+import fetch from 'isomorphic-fetch'
 
 /**
  * fetch asset and return JSON object with buffer data
@@ -12,7 +12,7 @@ export default async ({
   url,
   path,
   updateSrc,
-  domain = "matters.news",
+  domain = 'matters.news',
 }: {
   url: string
   path: string
@@ -25,7 +25,7 @@ export default async ({
   try {
     let fullUrl = url
 
-    if (url.indexOf("://") < 0) {
+    if (url.indexOf('://') < 0) {
       // relative path
       fullUrl = new URL(url, `https://${domain}/`).href
     } else if (!new URL(url).hostname.endsWith(domain)) {

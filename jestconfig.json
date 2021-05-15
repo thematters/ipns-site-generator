@@ -1,7 +1,6 @@
 {
-  "transform": {
-    "^.+\\.(t|j)sx?$": "ts-jest"
-  },
-  "testRegex": "(test|spec)\\.(jsx?|tsx?)$",
-  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+  "testMatch": ["**/dist/**/*.test.js"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "testEnvironment": "<rootDir>/dist/__tests__/utils/setupEnv.js",
+  "snapshotResolver": "<rootDir>/dist/__tests__/utils/snapshotResolver.js"
 }

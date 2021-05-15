@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test article</title>
+    <meta name="description" content="Hello World">
+    <meta property="og:title" content="test-user: test article">
+    <meta property="og:description" content="Hello World">
+    <meta property="article:author" content="test-user">
+    <meta name="twitter:title" content="test-user: test article">
+    <meta name="twitter:description" content="Hello World">
+
+    <script type="text/javascript"> "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+// reference implementation of decryption
+function decrypt(content, keyString) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // translate hex string to buffer
+        function hex2buf(hex) {
+            const bytes = [];
+            for (let i = 0; i < hex.length; i += 2) {
+                bytes.push(Number.parseInt(hex.slice(i, i + 2), 16));
+            }
+            return new Uint8Array(bytes);
+        }
+        // import key from keyString
+        const key = yield crypto.subtle.importKey('jwk', {
+            alg: 'A128CTR',
+            ext: true,
+            k: keyString,
+            key_ops: ['encrypt', 'decrypt'],
+            kty: 'oct',
+        }, {
+            name: 'AES-CTR',
+            length: 128,
+        }, true, ['encrypt', 'decrypt']);
+        // decrypt and return
+        return new TextDecoder('utf-8').decode(yield crypto.subtle.decrypt({
+            name: 'AES-CTR',
+            counter: new Uint8Array(16),
+            length: 16 * 8,
+        }, key, hex2buf(content)));
+    });
+}
+//# sourceMappingURL=decrypt.js.map
+    </script>
+    <script type="text/javascript"> "use strict";
+// handle input UI
+const showInput = (hasKey) => {
+    // get encrypted element
+    const elEncrypted = document.querySelector('.encrypted');
+    if (elEncrypted) {
+        // blur effect
+        elEncrypted.style.cssText = `
+                color:transparent;
+                text-shadow: black 0px 0px 10px;
+            `;
+        // create form
+        const elForm = document.createElement('form');
+        elForm.setAttribute('method', 'get');
+        elForm.style.cssText = `
+                top: 0;
+                position: absolute;
+                text-align: center;
+                width: 320px;
+                height: 172px;
+                background: white;
+                border: 1px solid black;
+                box-sizing: border-box;
+                border-radius: 8px;
+                margin-top: 0;
+                padding: 16px;
+            `;
+        elEncrypted.appendChild(elForm);
+        // create label
+        const elLabel = document.createElement('label');
+        elForm.appendChild(elLabel);
+        // create label content
+        const elLabelContent = document.createElement('span');
+        elLabelContent.style.cssText = `
+        color: black;
+        text-shadow: none;
+        display: flex;
+        align-items: center;
+    `;
+        elLabel.appendChild(elLabelContent);
+        // create label content icon
+        const elLabelContentIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        elLabelContentIcon.setAttribute('viewBox', '2 2 18 18');
+        elLabelContentIcon.setAttribute('width', '20');
+        elLabelContentIcon.setAttribute('height', '20');
+        elLabelContentIcon.style.padding = '4px';
+        const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path1.setAttribute('fill', 'grey');
+        path1.setAttribute('d', 'M17 8C17 8.26522 16.8946 8.51957 16.7071 8.70711C16.5196 8.89465 16.2652 9.00001 16 9.00001C15.7348 9.00001 15.4804 8.89465 15.2929 8.70711C15.1054 8.51957 15 8.26522 15 8C15 7.73479 15.1054 7.48043 15.2929 7.29289C15.4804 7.10536 15.7348 7 16 7C16.2652 7 16.5196 7.10536 16.7071 7.29289C16.8946 7.48043 17 7.73479 17 8Z');
+        elLabelContentIcon.appendChild(path1);
+        const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path2.setAttribute('fill', 'grey');
+        path2.setAttribute('d', 'M14.5 4C11.424 4 9.00001 6.42401 9.00001 9.50002C9.00001 9.89702 9.04002 10.296 9.12202 10.675C9.18002 10.945 9.11402 11.179 8.98001 11.313L4.44 15.853C4.30043 15.9924 4.18973 16.158 4.11423 16.3402C4.03873 16.5224 3.99991 16.7178 4 16.915V18.5C4 18.8979 4.15804 19.2794 4.43934 19.5607C4.72065 19.842 5.10218 20 5.5 20H7.50001C7.89784 20 8.27937 19.842 8.56067 19.5607C8.84198 19.2794 9.00001 18.8979 9.00001 18.5V18H10C10.2652 18 10.5196 17.8947 10.7071 17.7071C10.8947 17.5196 11 17.2653 11 17V16H12C12.2652 16 12.5196 15.8947 12.7071 15.7071C12.8947 15.5196 13 15.2653 13 15V14.82C13.493 14.954 14.007 15 14.5 15C17.576 15 20 12.576 20 9.50002C20 6.42401 17.576 4 14.5 4ZM10 9.50002C10 6.97601 11.976 5 14.5 5C17.024 5 19 6.97601 19 9.50002C19 12.024 17.024 14 14.5 14C13.84 14 13.227 13.905 12.724 13.653C12.6478 13.6148 12.5631 13.5968 12.4779 13.6005C12.3927 13.6043 12.3099 13.6298 12.2374 13.6746C12.1648 13.7194 12.1049 13.782 12.0634 13.8565C12.0218 13.9309 12 14.0148 12 14.1V15H11C10.7348 15 10.4804 15.1054 10.2929 15.2929C10.1054 15.4805 10 15.7348 10 16V17H9.00001C8.7348 17 8.48044 17.1054 8.29291 17.2929C8.10537 17.4805 8.00001 17.7348 8.00001 18V18.5C8.00001 18.6327 7.94733 18.7598 7.85356 18.8536C7.7598 18.9474 7.63262 19 7.50001 19H5.5C5.3674 19 5.24022 18.9474 5.14645 18.8536C5.05268 18.7598 5 18.6327 5 18.5V16.914C5.00003 16.7817 5.05253 16.6547 5.146 16.561L9.68702 12.02C10.119 11.588 10.209 10.976 10.099 10.464C10.0323 10.147 9.99913 9.82393 10 9.50002Z');
+        elLabelContentIcon.appendChild(path2);
+        elLabelContent.appendChild(elLabelContentIcon);
+        // create label content text
+        const elLabelContentText = document.createElement('span');
+        elLabelContentText.style.cssText = `
+      margin: 0 4px;
+      font-size: 16px;
+    `;
+        elLabelContentText.textContent = 'Enter key';
+        elLabelContent.appendChild(elLabelContentText);
+        // create input
+        const elInput = document.createElement('input');
+        elInput.setAttribute('type', 'password');
+        elInput.setAttribute('name', paramName);
+        elInput.style.cssText = `
+      width: 100%;
+      height: 40px;
+      outline: 0;
+      border-width: 0 0 1px;
+      border-color: lightGrey;
+      margin: 8px 0;
+    `;
+        // prompt for wrong key
+        if (hasKey) {
+            elInput.setAttribute('placeholder', `wrong ${paramName}, try again`);
+        }
+        else {
+            elInput.setAttribute('placeholder', 'Enter key...');
+        }
+        elLabel.appendChild(elInput);
+        // create submit button
+        const elSubmit = document.createElement('input');
+        elSubmit.setAttribute('type', 'submit');
+        elSubmit.style.cssText = `
+      border-radius: 100px;
+      width: 100%;
+      height: 32px;
+      color: white;
+      background: dimGrey;
+      border: none;
+      margin: 16px 0;
+    `;
+        elLabel.appendChild(elSubmit);
+    }
+};
+//# sourceMappingURL=inputUI.js.map
+    </script>
+    <script type="text/javascript"> "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+// global parameter name
+const paramName = 'key';
+document.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void 0, function* () {
+    // get secret
+    const urlParams = new URLSearchParams(window.location.search);
+    const keyString = urlParams.get(paramName);
+    const elEncrypted = document.querySelector('.encrypted');
+    if (elEncrypted) {
+        if (!keyString) {
+            showInput(false);
+        }
+        else {
+            try {
+                const decrypted = yield decrypt(elEncrypted.innerHTML.trim(), keyString);
+                // write to decrypted section
+                elEncrypted.innerHTML = decrypted;
+                // update classname
+                elEncrypted.className = elEncrypted.className.replace(/(?:^|\s)encrypted(?!\S)/, 'decrypted');
+            }
+            catch (err) {
+                showInput(true);
+            }
+        }
+    }
+}));
+//# sourceMappingURL=listener.js.map
+    </script>
+    
+
+  
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 673px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  hr { height: 1px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.4; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+  li ul, li ol { margin: 0 20px; }
+  li { margin: 20px 0; }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ol ol { list-style: upper-alpha; }
+  ol ol ol { list-style: lower-roman; }
+  ol ol ol ol { list-style: lower-alpha; }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  audio {
+    width: 100%;
+  }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #5F5F5F;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
+    font-size: 16px;
+    margin: 0;
+  }
+  figure.byline * + * {
+    padding-left: 10px;
+  }
+  figure.byline time {
+    color: #b3b3b3;
+  }
+  figure.byline [ref="source"]::before {
+    content: '';
+    border-left: 1px solid currentColor;
+    padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
+  }
+
+  article {
+    position: relative;
+  }
+
+  article > * {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+  article a {
+    border-bottom: 1px solid currentcolor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+  article p {
+    line-height: 1.8;
+  }
+  figure figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b3b3b3;
+  }
+
+  figure .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  figure .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .encrypted {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+  }
+</style>
+
+  </head>
+  <body itemscope itemtype="http://schema.org/Article">
+    <main>
+      <header>
+        <h1 itemprop="headline">test article</h1>
+        <figure class="byline">
+          <a href="https://matters.news/@test-user" target="_blank">Test User</a>
+          <time itemprop="datePublished" datetime="2020-12-23">2020-12-23</time>
+
+        <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+          from <a href="https://matters.news" target="_blank"  itemprops="name">Matters</a>
+          <meta itemprops="url" content="https://matters.news">
+        </span>
+
+        </figure>
+
+        <figure class="summary">
+          <p>Hello World</p>
+        </figure>
+      </header>
+
+      <article itemprop="articleBody"
+      class="encrypted" data-encryption-version="0.0.7">
+        787f04dcb1382d913d35f7db2225f13df8d74484211783dfb32c306584c94504c49963ee41a4ffeeb948d04fbca9221499d3fc74e15b02863232337432b95438e8756f266a6284f01a9fe235ba8eca68030ba1145e1e4954e9168ce9dda41064289077e2ed30565fd5f40747f31390d4e744124ae3361ce6a56d7830b937b23da9937798f82616fe7fab3b11a0e382003a73015c06967e6805a1542171cf519a6e5dc3caef584a4783e433fa6a3741c864d0f3fffbd7adc2563f2e1e5a1f971aa5859162d775c644aec9fda5f0e5600f84bdb214e7390f6395871d4f8a8dbc7ee14c32dbe714e36844d8ee5a75dcd6f35edd90f5c275d4ef0ad2806964f4df296b8c5c5cabfc2fd371d09a6e7bc0ac845e5b57bb30fcfb9b8eece8b06b6f67e20cb94c858b36218c36cfcfe610fe4ac035f8575b5864419f8fd22c3ec5f5c64e84a6b25e2ab1f3dd3fff62d180b211e3a3a181fd9df50c858db539143129064b753fa757c81f8f85beb0d1fe2c20842e3fb0c54603b47ef6f13c0301c0ab9e41f1e3012daf4098700ac27083e6bd57820484481dfc9b46b7338c3776da3130851054cef869897bdcb108a73a10f008ac450ca777c1df0bfa5362ce38855d1414f0e4afcb98ac6ed35d8c7620ffbefc833382cbb19ba62ac81ca3784cb1e8d1c2500d8bd0350757cf559c60cb4254e70a0bddbfa34b524e3db56584f794639b7b81d540506316bd315b0ecf1d146111d275476fe7713f87ff6040ba139e32b49d41368aecc2e5ab17930818d4fe5f95395add48ea97bbfcc61e7d18d4a1ef2dfe1d23b8a9e42a1fda3b2f9b88148a2109a21b8d3b60d2289bce6a0775ebf7e0808f2c15479e31c8543babf950dffc2c12f11b34ad1d111e95ede1303a30fd02f93666d91c9e8d111e582ebf6ea16d335644058427be1eb1c7f7d575e54d6aec9c7e17de3c59174d8e402740d0e942db1a7da4bb4e9a219587f2537aa7bbd78283d6125663c042e6d95e2f57982ff3cc5a87668ce73c15b482ceca8c4cea473dde49f36be33ad811546dfea7459c94f875f4deea6f6833d2523a09328a9a25da78ce521321042b7248e5be3984dba32c3e25cf0edcaf13d8348d110624680931c9e272a618322fa1f97b2e2acd3c71b63dfe2bd7ff28d47644129583f80e84435bf23eba6ef559885d93225f9605899c6abcaf3205677fbe384190349b2a148d557a2dd55f99097899d5edfd89260e43dd5dc1727e95406c9a0a8593ad9eed55893687e572735de4957674cbb6d357f78d0cd9a6d8b419d9ae0c5a5373ba847aa6e509bed9a4cc7a2f2b1f8b49aa910b19b1c0527290f2e7d06178abf5ccdd11af95a98364e81d2b4a0f0e8c91a5410f173c9cbd8b399336f1aec9d9a339b869091774478b1818bbeaf5464b02493b2c2563be7fc50e84aa207e0f8b72bc28608cbb6336817da7ffc54bdff6b007feb3f9b94aaa53766186698af901e334378aba37720e4beb83b1c555420b9b339eea938f7126b2632a9f844f64dcaa2774bf4fabc7ea378ba797c82adcc94652208df2955c1f2057fad994f8afb14d7ff28695d4d92677cc8a0b5fb2f1152cb87b8dbb70c925389ee5f8e59cfdda5651723ab4accf46f51fa049e98ea900cf4b166baedb12ebbf79625f48d32918902273244e208177edb3629537a2c12c691b8d104bffe20be5a143cd845c4f98b9b2529cd01f525c7198907ea461e910a738838e96022bc64697ecd34dcf8320314e74d6b13b5dd4182c0fc911318c321be895a78626b25df28b3fa67ff643616574906409089e3353d1fed39e22d30389a020ed949725832693c03132ccacea4e502fbbebcec753431440002af206b951f6e37db1a93500acfd1d81d5f783286af413076571763da36c290713048837247f286195f4d9057e4f55bfe8406c6548b055b6aeb4d60ed117570c2f5c0125e95efbfbe929f6ade3ea8b30b4503f397ccf5c01b57a2fc38fc3b0047f74a0d48c03e6481d6636274e8516e978382bec7a59da92607938ea0dc0eab2672eb1ba8de6fdc8bd5d2892eeec017f422d68618e34d5278310318349e68e7515ec7cc9c4575f9884d78b77e82594a8f5ed8e2f6a81936033564eb4c4b58d27b380b4e53700392306f30fc88edee5a83b2a27a60add2128ead8384ddd9c3fd06f656928ca1b57e32898dc2edafc9cb663a078d0cdcba97b89e4f58c7e00331562293c7b91a80e24c889f43fe93703bd25f1fe768e8d9344413af7723e4d9875f286118cdead6d8c88fea154a69f1ab34977555b11a2d81f431ecda3664828941bf227e02bf2a95890b30325b992876bdb2fbd0da8e339956054a75c4bb45d2f98638f9d064c17fa090f6c8305394ca6c4a98b442a23beb5c9f19e4f4e9560e0d76dd6ed5219eba458b871a4a43a66b4de62a83bf84de4e92e22299c3182af9e3d9a1d6cc201a059b3e91845614d2ba8abde0b960982403c2e0d3f4b5de0bde695a068ab321420071feee66ddb452cbe5e1fb08c3ec6dbce4d666b968f4d3c36214b33864584ba8b07b35e8ef75612a4ed8f8a3702858a39e2001fe4bac25edb2843091bee8b53c461e4d7792377ccb3a64d3f0fd8e283c9b70fce097ebe4704a21f2327e4d7f75adf023da8cee1f9a2ad8c2139c0c998b7b7e2a3cb9e0b24ecc51b8290181b57cfc6ded774a32101f59f7eda9a5119c7784a02fe3f29aef6f26a292f815c44904945c67b8b57289cb6d8fffa3705b425ee15a620f218f5cbd5bc3e5b54fa976e732297c51030bd16915a703a51f9a96efde7ca13701eace3b7b440c2db24dd588b42c41c494cd412a50bc591d69e8d8114a6d0b8b3e2998fd2d350520ef23a02bcb6d5fdf9edba1d63d29b01dae637a268fd54516d871bf33b451d87fd8347e953040368931314c3e217f6e89ab9c5dd712128aaec700acf1c3d4f786f42d559d2cb3cc7df77765824ecdc04c1eaf88f68c59ed1230bcfcbf9cecf3c5912aeac621ff7ea15cdce50fbf802bd690d4ab3537d3c0267c5715494525ad9b817702d3841ee98c882ff9d41a0d3bcf706a15764429a7bbd4a9425dbb9209b0e018dbe8ecc76ff570d2f57447f1a66f6d1242f82bf3be7e755a31cd85ac0e996b3fdb306619b7a5b329ee67f7db19cff6c2fe6450b3934af9a16a81f6a7023ee74a9317fb3b5c766147a0549e4ba35e4d783e9ce507108a805dbd1b1cc78e98366e4e30f47d3f526290992da197534d9daff9b6dde6220f2a4f7d4e5f39311ea69fa1678056649155250c43bcf40c666391aba2cb588bb919882c2a0730471658f67aa630b7e63e92afd50ea0c7f262e32049dbabb4fcd5661b0c0a8829066ff0e05c32eb3277b03ec01ecbe2268685b9c61eb3fe61f8511e563301613339126a7d5785fc87516d45f0b5c5cad09d4abc13733b27f72af67
+      </article>
+
+
+      <footer>
+        <figure class="read_more">
+          <p>
+            Read more: <a href="test-circle-url" target="_blank">test circle</a>
+          </p>
+        </figure>
+      </footer>
+
+    </main>
+  </body>
+</html>
