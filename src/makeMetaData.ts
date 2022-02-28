@@ -33,7 +33,7 @@ export const makeMetaData = ({
   return {
     '@context': 'http://schema.org',
     '@type': 'Article',
-    '@id': `ipfs://ipfs/${contentHash}`,
+    '@id': `ipfs://${contentHash}`,
     author,
     dateCreated: now,
     description,
