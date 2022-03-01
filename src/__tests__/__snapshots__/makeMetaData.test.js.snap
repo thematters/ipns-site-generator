@@ -3,7 +3,7 @@
 exports[`makeMetaData can generate content meta data 1`] = `
 Object {
   "@context": "http://schema.org",
-  "@id": "ipfs://ipfs/ipfs-hash",
+  "@id": "ipfs://ipfs-hash",
   "@type": "Article",
   "author": Object {
     "description": "this is a test user",
