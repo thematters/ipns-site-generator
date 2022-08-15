@@ -21,7 +21,7 @@ Support payment pointer for Web Monetization. See [test](./src/__tests__/formatH
 ```js
 import { makeHtmlBundle } from "@matters/matters-html-formatter"
 
-const { html, key } = await makeHtmlBundle({
+const { bundle, key } = await makeHtmlBundle({
   title: "test article",
   author: {
     name: "test-user",
