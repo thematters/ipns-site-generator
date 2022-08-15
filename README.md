@@ -19,7 +19,7 @@ Pass in a HTML string as content, and return a HTML string with the content encr
 Support payment pointer for Web Monetization. See [test](./src/__tests__/formatHTML.test.ts) for more detail.
 
 ```js
-import { formatHTML } from "@matters/matters-html-formatter"
+import { makeHtmlBundle } from "@matters/matters-html-formatter"
 
 const { html, key } = await makeHtmlBundle({
   title: "test article",
