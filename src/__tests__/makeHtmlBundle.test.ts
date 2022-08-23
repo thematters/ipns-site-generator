@@ -14,6 +14,14 @@ describe('makeHtmlBundle', () => {
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 
+  test('can generate basic HTML bundle when `getAsset` fails', async () => {
+
+    mockedFetch.mockImplementation(() => {throw new Error()})
+
+    const { bundle } = await makeHtmlBundle(testContent)
+    expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
+  })
+
   test('can generate HTML bundle with payment pointer', async () => {
 
     mockedFetch.mockResolvedValue({arrayBuffer: () => Promise.resolve(new ArrayBuffer(1))})
