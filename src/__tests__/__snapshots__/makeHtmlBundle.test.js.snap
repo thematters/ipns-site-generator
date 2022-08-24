@@ -188,7 +188,7 @@ Together with some test quotations
 
       <article itemprop=\\"articleBody\\"
       >
-        <html><head/><body><h1 id=\\"hello-world\\">Hello World</h1>
+        <h1 id=\\"hello-world\\">Hello World</h1>
   <p>This is some test text.</p>
   <blockquote>
     <p>Together with some test quotations</p>
@@ -200,21 +200,21 @@ Together with some test quotations
   <figure>
     <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
     <figcaption>This is a fine dog hosted on another domain.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news production.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news development.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
-    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"/></div>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
     <figcaption>And this is a cat video.</figcaption>
   </figure>
   <p>Good bye.</p>
-  </body></html>
+  
       </article>
 
 
@@ -415,7 +415,7 @@ Together with some test quotations
 
       <article itemprop=\\"articleBody\\"
       >
-        <html><head/><body><h1 id=\\"hello-world\\">Hello World</h1>
+        <h1 id=\\"hello-world\\">Hello World</h1>
   <p>This is some test text.</p>
   <blockquote>
     <p>Together with some test quotations</p>
@@ -427,21 +427,21 @@ Together with some test quotations
   <figure>
     <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
     <figcaption>This is a fine dog hosted on another domain.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news production.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news development.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
-    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"/></div>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
     <figcaption>And this is a cat video.</figcaption>
   </figure>
   <p>Good bye.</p>
-  </body></html>
+  
       </article>
 
 
@@ -642,7 +642,7 @@ Together with some test quotations
 
       <article itemprop=\\"articleBody\\"
       >
-        <html><head/><body><h1 id=\\"hello-world\\">Hello World</h1>
+        <h1 id=\\"hello-world\\">Hello World</h1>
   <p>This is some test text.</p>
   <blockquote>
     <p>Together with some test quotations</p>
@@ -654,21 +654,21 @@ Together with some test quotations
   <figure>
     <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
     <figcaption>This is a fine dog hosted on another domain.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"https://assets.matters.news/processed/1080w/embed/9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news production.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
     <img src=\\"https://assets-develop.matters.news/embed/da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
     <figcaption>This is a random figure from matters.news development.</figcaption>
-  </img></figure>
+  </figure>
   <figure>
-    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"/></div>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
     <figcaption>And this is a cat video.</figcaption>
   </figure>
   <p>Good bye.</p>
-  </body></html>
+  
       </article>
 
 
