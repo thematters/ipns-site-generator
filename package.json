@@ -27,7 +27,6 @@
   "keywords": [],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/cheerio": "^0.22.23",
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.165",
@@ -43,7 +42,7 @@
   },
   "dependencies": {
     "@peculiar/webcrypto": "^1.1.6",
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.9",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.20"
   },

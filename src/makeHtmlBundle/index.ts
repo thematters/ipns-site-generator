@@ -1,3 +1,4 @@
+import type { Element } from 'domhandler'
 import cheerio from 'cheerio'
 import { uniqBy } from 'lodash'
 
@@ -26,7 +27,7 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
   >[] = []
 
   // function to get assets and push them to array
-  const addAssetToPromises = (index: number, element: cheerio.Element) => {
+  const addAssetToPromises = (index: number, element: Element) => {
     const elementSrc = $(element).attr('src')
     // check if it's data url
     if (elementSrc && !elementSrc.startsWith('data:')) {
