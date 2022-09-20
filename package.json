@@ -1,6 +1,6 @@
 {
   "name": "@matters/matters-html-formatter",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Format HTML string before publish to IPFS or ISCN",
   "author": "https://github.com/thematters",
   "homepage": "https://github.com/thematters/matters-html-formatter",
