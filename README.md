@@ -87,7 +87,7 @@ const cid = await ipfs.dag.put(metaData, {
   hashAlg: "sha2-256",
 })
 // this is the final media hash used in the end of article url at matters.news
-const mediaHash = cid.toBaseEncodedString()
+const mediaHash = cid.toV1().toString()	// cid.toBaseEncodedString()
 ```
 
 ## Unit test

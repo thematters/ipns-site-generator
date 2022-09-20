@@ -5,7 +5,6 @@ import * as cheerio from 'cheerio'
  * @param html - html string to be cleaned
  */
 export default (html: string) => {
-
   const $ = cheerio.load(html, { decodeEntities: false }, false)
 
   // remove audio player
