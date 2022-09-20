@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeMetaData can generate content meta data 1`] = `
+Object {
+  "@context": "http://schema.org",
+  "@id": "ipfs://ipfs-hash",
+  "@type": "Article",
+  "author": Object {
+    "description": "this is a test user",
+    "name": "Test User",
+    "url": "user-home-page",
+  },
+  "dateCreated": "2020-12-23",
+  "description": "This is a piece of test content",
+  "image": "image-url",
+}
+`;

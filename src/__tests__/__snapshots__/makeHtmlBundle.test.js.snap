@@ -1,0 +1,689 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeHtmlBundle can generate HTML bundle with payment pointer 1`] = `
+Array [
+  Object {
+    "content": "
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"UTF-8\\" />
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <title>test article</title>
+    <meta name=\\"description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"og:title\\" content=\\"test-user: test article\\">
+    <meta property=\\"og:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"article:author\\" content=\\"test-user\\">
+    <meta name=\\"twitter:title\\" content=\\"test-user: test article\\">
+    <meta name=\\"twitter:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+
+
+    <meta name=\\"monetization\\" content=\\"$pay-me\\">
+  
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 673px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  hr { height: 1px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.4; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+  li ul, li ol { margin: 0 20px; }
+  li { margin: 20px 0; }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ol ol { list-style: upper-alpha; }
+  ol ol ol { list-style: lower-roman; }
+  ol ol ol ol { list-style: lower-alpha; }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  audio {
+    width: 100%;
+  }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #5F5F5F;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
+    font-size: 16px;
+    margin: 0;
+  }
+  figure.byline * + * {
+    padding-left: 10px;
+  }
+  figure.byline time {
+    color: #b3b3b3;
+  }
+  figure.byline [ref=\\"source\\"]::before {
+    content: '';
+    border-left: 1px solid currentColor;
+    padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
+  }
+
+  article {
+    position: relative;
+  }
+
+  article > * {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+  article a {
+    border-bottom: 1px solid currentcolor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+  article p {
+    line-height: 1.8;
+  }
+  figure figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b3b3b3;
+  }
+
+  figure .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  figure .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .encrypted {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+  }
+</style>
+
+  </head>
+  <body itemscope itemtype=\\"http://schema.org/Article\\">
+    <main>
+      <header>
+        <h1 itemprop=\\"headline\\">test article</h1>
+        <figure class=\\"byline\\">
+          <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
+          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+
+        <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
+          from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>
+          <meta itemprops=\\"url\\" content=\\"https://matters.news\\">
+        </span>
+
+        </figure>
+
+      </header>
+
+      <article itemprop=\\"articleBody\\"
+      >
+        <h1 id=\\"hello-world\\">Hello World</h1>
+  <p>This is some test text.</p>
+  <blockquote>
+    <p>Together with some test quotations</p>
+  </blockquote>
+  <pre><code><span class=\\"hljs-keyword\\">And </span>test <span class=\\"hljs-meta\\">code</span>
+  </code></pre>
+  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\"de Finibus Bonorum et Malorum\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\"Lorem ipsum dolor sit amet..\\", comes from a line in section 1.10.32.</p>
+  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\"de Finibus Bonorum et Malorum\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+  <figure>
+    <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
+    <figcaption>This is a fine dog hosted on another domain.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news production.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news development.</figcaption>
+  </figure>
+  <figure>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
+    <figcaption>And this is a cat video.</figcaption>
+  </figure>
+  <p>Good bye.</p>
+  
+      </article>
+
+
+
+    </main>
+<script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>
+  </body>
+</html>
+",
+    "path": "index.html",
+  },
+]
+`;
+
+exports[`makeHtmlBundle can generate basic HTML bundle 1`] = `
+Array [
+  Object {
+    "content": "
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"UTF-8\\" />
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <title>test article</title>
+    <meta name=\\"description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"og:title\\" content=\\"test-user: test article\\">
+    <meta property=\\"og:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"article:author\\" content=\\"test-user\\">
+    <meta name=\\"twitter:title\\" content=\\"test-user: test article\\">
+    <meta name=\\"twitter:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+
+
+  
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 673px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  hr { height: 1px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.4; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+  li ul, li ol { margin: 0 20px; }
+  li { margin: 20px 0; }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ol ol { list-style: upper-alpha; }
+  ol ol ol { list-style: lower-roman; }
+  ol ol ol ol { list-style: lower-alpha; }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  audio {
+    width: 100%;
+  }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #5F5F5F;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
+    font-size: 16px;
+    margin: 0;
+  }
+  figure.byline * + * {
+    padding-left: 10px;
+  }
+  figure.byline time {
+    color: #b3b3b3;
+  }
+  figure.byline [ref=\\"source\\"]::before {
+    content: '';
+    border-left: 1px solid currentColor;
+    padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
+  }
+
+  article {
+    position: relative;
+  }
+
+  article > * {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+  article a {
+    border-bottom: 1px solid currentcolor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+  article p {
+    line-height: 1.8;
+  }
+  figure figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b3b3b3;
+  }
+
+  figure .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  figure .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .encrypted {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+  }
+</style>
+
+  </head>
+  <body itemscope itemtype=\\"http://schema.org/Article\\">
+    <main>
+      <header>
+        <h1 itemprop=\\"headline\\">test article</h1>
+        <figure class=\\"byline\\">
+          <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
+          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+
+        <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
+          from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>
+          <meta itemprops=\\"url\\" content=\\"https://matters.news\\">
+        </span>
+
+        </figure>
+
+      </header>
+
+      <article itemprop=\\"articleBody\\"
+      >
+        <h1 id=\\"hello-world\\">Hello World</h1>
+  <p>This is some test text.</p>
+  <blockquote>
+    <p>Together with some test quotations</p>
+  </blockquote>
+  <pre><code><span class=\\"hljs-keyword\\">And </span>test <span class=\\"hljs-meta\\">code</span>
+  </code></pre>
+  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\"de Finibus Bonorum et Malorum\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\"Lorem ipsum dolor sit amet..\\", comes from a line in section 1.10.32.</p>
+  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\"de Finibus Bonorum et Malorum\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+  <figure>
+    <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
+    <figcaption>This is a fine dog hosted on another domain.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news production.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news development.</figcaption>
+  </figure>
+  <figure>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
+    <figcaption>And this is a cat video.</figcaption>
+  </figure>
+  <p>Good bye.</p>
+  
+      </article>
+
+
+
+    </main>
+<script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>
+  </body>
+</html>
+",
+    "path": "index.html",
+  },
+]
+`;
+
+exports[`makeHtmlBundle can generate basic HTML bundle when \`getAsset\` fails 1`] = `
+Array [
+  Object {
+    "content": "
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"UTF-8\\" />
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <title>test article</title>
+    <meta name=\\"description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"og:title\\" content=\\"test-user: test article\\">
+    <meta property=\\"og:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+    <meta property=\\"article:author\\" content=\\"test-user\\">
+    <meta name=\\"twitter:title\\" content=\\"test-user: test article\\">
+    <meta name=\\"twitter:description\\" content=\\"Hello World
+  This is some test text.
+Together with some test quotations
+  
+  And test code
+  
+  Contrary to popular belief, Lorem Ipsum is ...\\">
+
+
+  
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 673px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  hr { height: 1px; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.4; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
+  li ul, li ol { margin: 0 20px; }
+  li { margin: 20px 0; }
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ol ol { list-style: upper-alpha; }
+  ol ol ol { list-style: lower-roman; }
+  ol ol ol ol { list-style: lower-alpha; }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  audio {
+    width: 100%;
+  }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #5F5F5F;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 32px;
+  }
+
+
+  figure {
+    margin: 0;
+  }
+
+  figure.byline {
+    font-size: 16px;
+    margin: 0;
+  }
+  figure.byline * + * {
+    padding-left: 10px;
+  }
+  figure.byline time {
+    color: #b3b3b3;
+  }
+  figure.byline [ref=\\"source\\"]::before {
+    content: '';
+    border-left: 1px solid currentColor;
+    padding-left: 10px;
+  }
+
+  figure.summary {
+    margin: 40px 0; 
+    color: #808080;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  figure.read_more {
+    margin: 40px 0; 
+  }
+
+  article {
+    position: relative;
+  }
+
+  article > * {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+  article a {
+    border-bottom: 1px solid currentcolor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+  article p {
+    line-height: 1.8;
+  }
+  figure figcaption {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #b3b3b3;
+  }
+
+  figure .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  figure .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .encrypted {
+    display: flex;
+    justify-content: center;
+    word-break: break-all;
+  }
+</style>
+
+  </head>
+  <body itemscope itemtype=\\"http://schema.org/Article\\">
+    <main>
+      <header>
+        <h1 itemprop=\\"headline\\">test article</h1>
+        <figure class=\\"byline\\">
+          <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
+          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+
+        <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
+          from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>
+          <meta itemprops=\\"url\\" content=\\"https://matters.news\\">
+        </span>
+
+        </figure>
+
+      </header>
+
+      <article itemprop=\\"articleBody\\"
+      >
+        <h1 id=\\"hello-world\\">Hello World</h1>
+  <p>This is some test text.</p>
+  <blockquote>
+    <p>Together with some test quotations</p>
+  </blockquote>
+  <pre><code><span class=\\"hljs-keyword\\">And </span>test <span class=\\"hljs-meta\\">code</span>
+  </code></pre>
+  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\"de Finibus Bonorum et Malorum\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\"Lorem ipsum dolor sit amet..\\", comes from a line in section 1.10.32.</p>
+  <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\"de Finibus Bonorum et Malorum\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+  <figure>
+    <img src=\\"https://pyxis.nymag.com/v1/imgs/9ef/336/775d89db9c8ffcd8589f3acdf37d0e323f-25-this-is-fine-lede-new.2x.rsocial.w600.jpg\\" alt=\\"And this is a fine dog.\\">
+    <figcaption>This is a fine dog hosted on another domain.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"https://assets.matters.news/processed/1080w/embed/9bc4a39b-9eee-486b-8242-196d2c91ec3c.webp\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news production.</figcaption>
+  </figure>
+  <figure>
+    <img src=\\"https://assets-develop.matters.news/embed/da642df3-8828-4584-bc51-e10fb56437df.gif\\" alt=\\"\\">
+    <figcaption>This is a random figure from matters.news development.</figcaption>
+  </figure>
+  <figure>
+    <div class=\\"iframe-container\\"><iframe width=\\"560\\" height=\\"315\\" src=\\"https://www.youtube.com/embed/cbP2N1BQdYc\\" frameborder=\\"0\\" allow=\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\\" allowfullscreen=\\"\\"></iframe></div>
+    <figcaption>And this is a cat video.</figcaption>
+  </figure>
+  <p>Good bye.</p>
+  
+      </article>
+
+
+
+    </main>
+<script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>
+  </body>
+</html>
+",
+    "path": "index.html",
+  },
+]
+`;
