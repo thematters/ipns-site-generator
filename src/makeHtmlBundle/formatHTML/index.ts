@@ -1,4 +1,3 @@
-import { toDateString } from '../../utils'
 import articleTemplate, { TemplateOptions } from './articleTemplate'
 import cleanHtml from './cleanHtml'
 
@@ -17,10 +16,10 @@ import cleanHtml from './cleanHtml'
 export const formatHTML = (data: TemplateOptions) => {
   const { content, summary } = data
 
-  let now = toDateString(new Date())
+  let now = new Date()
   if (process.env.NODE_ENV === 'test') {
     // for snapshot testing
-    now = '2020-12-23'
+    now = new Date('2022-11-22T10:55:38.292Z')
   }
 
   return articleTemplate({
