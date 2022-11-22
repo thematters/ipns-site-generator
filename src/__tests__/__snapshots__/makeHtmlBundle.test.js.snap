@@ -175,7 +175,7 @@ Together with some test quotations
         <h1 itemprop=\\"headline\\">test article</h1>
         <figure class=\\"byline\\">
           <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
-          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+          <time itemprop=\\"datePublished\\" datetime=\\"2022-11-22T10:55:38.292Z\\">2022-11-22</time>
 
         <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
           from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>
@@ -404,7 +404,7 @@ Together with some test quotations
         <h1 itemprop=\\"headline\\">test article</h1>
         <figure class=\\"byline\\">
           <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
-          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+          <time itemprop=\\"datePublished\\" datetime=\\"2022-11-22T10:55:38.292Z\\">2022-11-22</time>
 
         <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
           from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>
@@ -633,7 +633,7 @@ Together with some test quotations
         <h1 itemprop=\\"headline\\">test article</h1>
         <figure class=\\"byline\\">
           <a href=\\"https://matters.news/@test-user\\" target=\\"_blank\\">Test User</a>
-          <time itemprop=\\"datePublished\\" datetime=\\"2020-12-23\\">2020-12-23</time>
+          <time itemprop=\\"datePublished\\" datetime=\\"2022-11-22T10:55:38.292Z\\">2022-11-22</time>
 
         <span itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
           from <a href=\\"https://matters.news\\" target=\\"_blank\\"  itemprops=\\"name\\">Matters</a>

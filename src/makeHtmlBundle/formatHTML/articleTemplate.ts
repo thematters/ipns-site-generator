@@ -3,6 +3,7 @@ import path from 'path'
 
 import encryptHandler from './encryption/encrypt'
 import { makeSummary } from './text'
+import { toDateString } from '../../utils'
 
 const encryptionVersion = '0.0.7'
 
@@ -26,7 +27,7 @@ export type TemplateOptions = {
 }
 
 export type TemplateVars = TemplateOptions & {
-  publishedAt: string
+  publishedAt: Date
 }
 
 export default async ({
@@ -93,7 +94,7 @@ ${paymentPointer ? /*html*/`
         <h1 itemprop="headline">${title}</h1>
         <figure class="byline">
           <a href="${author.link.url}" target="_blank">${author.link.text}</a>
-          <time itemprop="datePublished" datetime="${publishedAt}">${publishedAt}</time>
+          <time itemprop="datePublished" datetime="${publishedAt.toISOString()}">${toDateString(publishedAt)}</time>
 ${
   from ? /*html*/`
         <span itemprops="provider" itemscope itemtype="http://schema.org/Organization">
