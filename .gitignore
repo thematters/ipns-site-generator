@@ -10,3 +10,5 @@ webpack-stats.json
 logs
 npm-install.log
 coverage/
+.husky/
+tags
