@@ -1,12 +1,12 @@
 {
   "name": "@matters/ipns-site-generator",
   "version": "0.1.0-alpha.0",
-  "description": "Format HTML string before publish to IPFS or ISCN",
+  "description": "IPNS site generator for matters.news",
   "author": "https://github.com/thematters",
-  "homepage": "https://github.com/thematters/ipns-site-generator",
+  "homepage": "https://github.com/matters-ipns-site-generator",
   "repository": {
     "type": "git",
-    "url": "git@github.com:thematters/ipns-site-generator.git"
+    "url": "git@github.com:matters-ipns-site-generator.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
