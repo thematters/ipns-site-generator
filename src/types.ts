@@ -19,7 +19,6 @@ type PageMeta = {
     description: string
     authorName?: string
     image?: string
-    paymentPointer?: string
   }
   byline: {
     date?: string
@@ -37,6 +36,7 @@ type PageMeta = {
     xml: string
     json: string
   }
+  paymentPointer?: string
 }
 
 export type HomepageContext = PageMeta & {

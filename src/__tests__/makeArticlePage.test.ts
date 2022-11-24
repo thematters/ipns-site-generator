@@ -32,7 +32,7 @@ describe('makeArticlePage', () => {
 
     const { bundle } = await makeArticlePage({
       ...MOCK_ARTICLE_PAGE,
-      meta: { ...MOCK_ARTICLE_PAGE.meta, paymentPointer: '$pay-me' },
+      paymentPointer: '$pay-me',
     })
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })

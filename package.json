@@ -1,12 +1,12 @@
 {
-  "name": "@matters/matters-html-formatter",
+  "name": "@matters/ipns-site-generator",
   "version": "0.1.0-alpha.0",
   "description": "Format HTML string before publish to IPFS or ISCN",
   "author": "https://github.com/thematters",
-  "homepage": "https://github.com/thematters/matters-html-formatter",
+  "homepage": "https://github.com/thematters/ipns-site-generator",
   "repository": {
     "type": "git",
-    "url": "git@github.com:thematters/matters-html-formatter.git"
+    "url": "git@github.com:thematters/ipns-site-generator.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

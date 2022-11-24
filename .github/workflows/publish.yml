@@ -54,5 +54,5 @@ jobs:
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          author_name: matters-html-formatter
+          author_name: ipns-site-generator
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took

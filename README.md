@@ -1,13 +1,15 @@
-# Matters HTML Formatter
+# Matters IPNS Site Generator
 
-Utility functions to format HTML string. Can be used to create encrypted HTML page with decryption code embedded, generate HTML bundle, and create content metadata. Used at matters.news before adding content to IPFS.
+Matters IPNS Site Generator is currently used by matters.news, to genereate HTML files of article & user homepage before adding to IPFS & IPNS.
+
+It can be used to create encrypted HTML page with decryption code embedded, generate HTML bundle, and create content metadata.
 
 ## Installation
 
 ### NPM
 
 ```sh
-npm install --save @matters/matters-html-formatter
+npm install --save @matters/ipns-site-generator
 ```
 
 ## Usage
@@ -16,23 +18,18 @@ npm install --save @matters/matters-html-formatter
 
 Pass in a HTML string as content, and return a HTML string with the content encrypted and the encrytion key. The returned HTML can be then written to a file or add to IPFS. During rendering, the HTML will be decrypted by adding `key=${encrytion-key}` in query parameter, and also include a simple UI to prompt key enter.
 
-Support payment pointer for Web Monetization. See [test](./src/__tests__/formatHTML.test.ts) for more detail.
+Support payment pointer for Web Monetization. See [test](./src/__tests__/makeArticlePage.test.ts) for more detail.
 
 ```js
-import { makeArticlePage } from '@matters/matters-html-formatter'
+import { makeArticlePage } from '@matters/ipns-site-generator'
 
 const { bundle, key } = await makeArticlePage({
-  title: 'test article',
-  author: {
-    name: 'test-user',
-    link: {
-      url: 'https://matters.news/@test-user',
-      text: 'Test User',
-    },
-  },
-  content: `<p>test article</p>`,
+  encrypted: true, // argument for whether encrypt or not, if false returned key will be null
   paymentPointer: '$pay-me', // used for Web Monetization
-  encrypt: true, // argument for whether encrypt or not, if false returned key will be null
+  meta: { ... },
+  byline: { ... },
+  rss: { ... },
+  article: { ... },
 })
 ```
 
@@ -43,18 +40,16 @@ const { bundle, key } = await makeArticlePage({
 `makeMetaData` returns content metadata object used at Matters. See [test](./src/__tests__/makeMetaData.test.ts) for more detail.
 
 ```js
-import { makeArticlePage, makeMetaData } from '@matters/matters-html-formatter'
+import {
+  makeArticlePage,
+  makeMetaData,
+} from '@matters/ipns-site-generator'
 
 const article = {
-  title: 'test article',
-  author: {
-    name: 'test-user',
-    link: {
-      url: 'https://matters.news/@test-user',
-      text: 'Test User',
-    },
-  },
-  content: `<p>test article</p>`,
+  meta: { ... },
+  byline: { ... },
+  rss: { ... },
+  article: { ... },
 }
 
 // this creates an array of object containing path and buffer data,
