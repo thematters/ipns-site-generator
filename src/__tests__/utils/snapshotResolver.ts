@@ -22,4 +22,4 @@ export const resolveTestPath = (
 
 // Example test path, used for preflight consistency check of the implementation above
 export const testPathForConsistencyCheck =
-  'dist/__tests__/makeHtmlBundle.test.js'
+  'dist/__tests__/makeArticlePage.test.js'

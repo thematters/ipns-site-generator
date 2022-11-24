@@ -1,0 +1,9 @@
+{% macro articleDigest(title, description, date, uri) %}
+<li>
+  <section class="articleDigest">
+    <h2><a href="{{ uri }}">{{ title }}</a></h2>
+    <p>{{ description }}</p>
+    <time itemprop="datePublished" datetime="{{ date }}">{{ date | shortDate }}</time>
+  </section>
+</li>
+{% endmacro %}

@@ -1,25 +1,20 @@
 import type { Element } from 'domhandler'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 import { uniqBy } from 'lodash'
 
-import { formatHTML, TemplateOptions } from './formatHTML'
 import getAsset from './getAsset'
+import { ArticlePageContext } from '../types'
+import { renderArticlePage } from '../render'
+import { encrypt } from '../utils'
+
+export type MakeArticlePageData = ArticlePageContext
 
 /**
- * Make HTML bundle object from HTML string before adding to IPFS
- *
- * @param data - All data needed for html bundle
- * @param data.title - Content title
- * @param data.author - Content author information
- * @param data.content - Content in HTML string format
- * @param data.siteDomain - Optional site domain to assemble author link
- * @param data.summary - Optional content summary
- * @param data.readMore - Optional link (text & url) to full article for paywalled content
- * @param data.paymentPointer - Optional ILP payment pointer
+ * Make HTML bundle object from article data
  */
-export const makeHtmlBundle = async (data: TemplateOptions) => {
+export const makeArticlePage = async (data: MakeArticlePageData) => {
   // load to cheerio to parse assets
-  const $ = cheerio.load(data.content, { decodeEntities: false })
+  const $ = cheerio.load(data.article.content, { decodeEntities: false })
 
   // array for Promisses to get assets
   const assetsPromises: Promise<
@@ -65,8 +60,21 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
     results.filter((asset) => asset)
   )
 
-  // format single page html
-  const { html, key } = await formatHTML({ ...data, content: $.html() })
+  // generate html
+  let content = $.html()
+
+  // paywalled content
+  let key = null
+  if (data.encrypted) {
+    const { key: decryptionKey, encrypted } = await encrypt(content)
+    content = encrypted
+    key = decryptionKey
+  }
+
+  const html = renderArticlePage({
+    ...data,
+    article: { ...data.article, content },
+  })
 
   // bundle html
   return {
@@ -80,5 +88,3 @@ export const makeHtmlBundle = async (data: TemplateOptions) => {
     key,
   }
 }
-
-export * from './formatHTML'

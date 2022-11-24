@@ -1,0 +1,17 @@
+<header>
+  <nav>
+    {% include "../shared/rssEntrances.njk" %}
+    {% include "../shared/themeSwitch.njk" %}
+  </nav>
+
+  <section class="backToHomepage">
+    <a href="../">
+      {% include "../shared/icons/back.njk" %}
+      View All Articles
+    </a>
+  </section>
+
+  <h1 itemprop="headline">{{ article.title }}</h1>
+
+  {% include "../shared/byline.njk" %}
+</header>

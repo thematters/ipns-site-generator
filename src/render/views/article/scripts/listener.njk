@@ -1,3 +1,4 @@
+<script type="text/javascript">
 // global parameter name
 const paramName = 'key'
 
@@ -6,24 +7,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   const urlParams = new URLSearchParams(window.location.search)
   const keyString = urlParams.get(paramName)
 
-  const elEncrypted = document.querySelector('.encrypted')
+  const $encrypted = document.querySelector('.encrypted')
 
-  if (elEncrypted) {
+  if ($encrypted) {
     if (!keyString) {
       showInput(false)
     } else {
       try {
-        const decrypted = await decrypt(elEncrypted.innerHTML.trim(), keyString)
+        const decrypted = await decrypt($encrypted.innerHTML.trim(), keyString)
         // write to decrypted section
-        elEncrypted.innerHTML = decrypted
+        $encrypted.innerHTML = decrypted
         // update classname
-        elEncrypted.className = elEncrypted.className.replace(
-          /(?:^|\s)encrypted(?!\S)/,
-          'decrypted'
-        )
+        $encrypted.className = $encrypted.classList.remove('encrypted')
       } catch (err) {
         showInput(true)
       }
     }
   }
 })
+</script>

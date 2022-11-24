@@ -1,6 +1,6 @@
 {
   "name": "@matters/matters-html-formatter",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "description": "Format HTML string before publish to IPFS or ISCN",
   "author": "https://github.com/thematters",
   "homepage": "https://github.com/thematters/matters-html-formatter",
@@ -18,7 +18,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "npm run build && jest --config jestconfig.json",
-    "prepare": "npm run build",
+    "prepare": "husky install",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -30,26 +30,22 @@
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.165",
+    "@types/nunjucks": "^3.2.1",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^6.0.0",
+    "husky": "^8.0.2",
     "jest": "^26.6.3",
     "jest-environment-jsdom": "^26.6.2",
-    "prettier": "^2.2.1",
+    "prettier": "^2.8.0",
     "ts-jest": "^26.4.4",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "@peculiar/webcrypto": "^1.1.6",
     "cheerio": "^1.0.0-rc.9",
     "isomorphic-fetch": "^3.0.0",
-    "lodash": "^4.17.20"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run format && git add -u",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
+    "lodash": "^4.17.20",
+    "nunjucks": "^3.2.3"
   }
 }

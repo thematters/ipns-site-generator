@@ -1,0 +1,31 @@
+<html>
+  <head>
+    {% include "../shared/meta.njk" %}
+    {% include "../shared/styles/index.njk" %}
+    {% include "./styles.njk" %}
+  </head>
+
+  <body>
+    <main>
+      {% include "./header.njk" %}
+
+      {% if article.summary %}
+      <figure class="summary">
+        <p>{{ article.summary }}</p>
+      </figure>
+      {% endif %}
+
+      {% include "./content.njk" %}
+    </main>
+
+    {# scripts #}
+    {% include "../shared/scripts/theme.njk" %}
+    {% include "../shared/scripts/clipboard.njk" %}
+    {% if encrypted %}
+      {% include "./scripts/decrypt.njk" %}
+      {% include "./scripts/inputUI.njk" %}
+      {% include "./scripts/listener.njk" %}
+    {% endif %}
+    {% include "../shared/scripts/ga.njk" %}
+  </body>
+</html>

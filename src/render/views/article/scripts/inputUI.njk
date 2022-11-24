@@ -1,0 +1,15 @@
+<script type="text/javascript">
+// handle input UI
+function showInput(hasKey) {
+  var $encrypted = document.querySelector('.encrypted');
+
+  if ($encrypted) {
+    var $form = document.createElement('form');
+    $form.innerHTML = `
+      <input type="password" name="key" placeholder="Enter key to decrypt the content..." />
+      <button type="submit">Submit</button>
+    `;
+    $encrypted.appendChild($form)
+  }
+};
+</script>

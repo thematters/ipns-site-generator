@@ -1,3 +1,20 @@
+import * as cheerio from 'cheerio'
+
+export * from './encrypt'
+
+/**
+ * Output clean HTML for IPFS, remove unsupported tags
+ * @param html - html string to be cleaned
+ */
+export default (html: string) => {
+  const $ = cheerio.load(html, { decodeEntities: false }, false)
+
+  // remove audio player
+  $('.player').remove()
+
+  return $.html()
+}
+
 /**
  * Strip html tags from html string to get text.
  * @param html - html string
@@ -34,4 +51,12 @@ export const makeSummary = (html: string, length = 140, buffer = 20) => {
   }
 
   return summary
+}
+
+/**
+ * Return date string from Date data
+ * @param date - Date data
+ */
+export const toDateString = (date: Date) => {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 }

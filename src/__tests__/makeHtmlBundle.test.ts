@@ -1,17 +1,18 @@
 import fetch from 'isomorphic-fetch'
-import { makeHtmlBundle } from '..'
-import { testContent, deserializeHtmlBundle } from './utils'
+import { makeArticlePage } from '..'
+import { MOCK_ARTICLE_PAGE } from '../render/mock'
+import { deserializeHtmlBundle } from './utils'
 
 jest.mock('isomorphic-fetch')
 const mockedFetch = fetch as jest.Mock
 
-describe('makeHtmlBundle', () => {
+describe('makeArticlePage', () => {
   test('can generate basic HTML bundle', async () => {
     mockedFetch.mockResolvedValue({
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const { bundle } = await makeHtmlBundle(testContent)
+    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE)
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 
@@ -20,7 +21,7 @@ describe('makeHtmlBundle', () => {
       throw new Error()
     })
 
-    const { bundle } = await makeHtmlBundle(testContent)
+    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE)
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 
@@ -29,10 +30,7 @@ describe('makeHtmlBundle', () => {
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const { bundle } = await makeHtmlBundle({
-      paymentPointer: '$pay-me',
-      ...testContent,
-    })
+    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE)
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 })

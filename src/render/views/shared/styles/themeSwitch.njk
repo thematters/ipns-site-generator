@@ -1,0 +1,20 @@
+<style>
+.themeSwitch {
+  display: inline-flex;
+}
+
+.themeSwitch svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* light mode */
+:root:not(.dark) .themeSwitch .dark {
+  display: none;
+}
+
+/* dark mode */
+:root.dark .themeSwitch .light {
+  display: none;
+}
+</style>
