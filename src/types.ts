@@ -19,6 +19,7 @@ type PageMeta = {
     description: string
     authorName?: string
     image?: string
+    paymentPointer?: string
   }
   byline: {
     date?: string

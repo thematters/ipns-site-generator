@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils "makeSummary" can produce summary text from HTML 1`] = `
+"
+  
+    
+    Reprehenderit proident sit consectetur id consequat officia.
+Duis ea voluptate cupidatat ad
+  Elit consequat labore tempor Lore..."
+`;
+
+exports[`utils "stripHtml" can generate clean text from HTML 1`] = `
+"
+   
+     
+      Reprehenderit proident sit consectetur id consequat officia.  
+   
+
+   Duis ea voluptate cupidatat ad 
+   Elit consequat labore tempor Lorem voluptate occaecat nostrud laborum minim. Cillum veniam ea cupidatat nulla commodo sunt amet magna amet sit culpa nulla deserunt  reprehenderit  duis. Et nostrud sunt ad cupidatat laboris. Reprehenderit dolor dolore elit voluptate ex. Fugiat in in officia non eiusmod irure et. Velit ut aliquip ipsum exercitation exercitation nisi voluptate enim amet exercitation. Et consectetur ex nisi anim id consequat eiusmod veniam ipsum ullamco nulla deserunt nostrud. 
+
+   
+     
+       
+       
+     
+      Nulla in fugiat labore ad.  
+   
+
+   Cupidatat amet fugiat culpa id 
+   Et ut dolore dolore ex. Deserunt adipisicing id dolor eiusmod minim ea. Pariatur veniam velit ad culpa nisi sit. Non nostrud irure nulla pariatur ipsum irure fugiat anim id Lorem duis. Ullamco incididunt ex ullamco elit. Amet voluptate minim laborum anim duis aliquip officia enim Lorem mollit aliquip laboris.  Mollit pariatur sunt pariatur occaecat deserunt esse . Est eu ut elit id nisi duis id magna  commodo ex et id sint laboris . 
+
+   
+     Enim aliqua est proident commodo dolor incididunt eiusmod. Anim anim eu pariatur aliqua qui. Sit non commodo enim ut aute officia eu. Adipisicing proident eu velit id proident. 
+   
+
+   Voluptate officia adipisicing voluptate amet dolore ad tempor aliquip reprehenderit Lorem. Ad dolor id minim occaecat ea non nulla. Ullamco exercitation consectetur duis tempor incididunt qui id. Sunt voluptate qui ex do Lorem consectetur laborum mollit culpa sunt anim occaecat esse. Velit deserunt eiusmod deserunt. Anim ullamco ad minim velit nulla aliquip culpa consequat laboris quis ad Lorem pariatur. Occaecat sunt irure reprehenderit. 
+
+   query {
+  article(
+    input: { mediaHash: \\"zdpuAxP6uSfum74VS3pYmzBR9xvPbrBcX3J8BPpB3xdRGjVsX\\" }
+  ) {
+    id
+    title
+    summary
+  }
+}
+ 
+
+   Officia amet minim proident labore 
+   Proident fugiat amet 
+   Duis eiusmod mollit ipsum exercitation voluptate sit ullamco. 
+   Labore aute ea irure 
+   
+     
+       Adipisicing nisi deserunt velit proident nostrud et ipsum amet mollit. 
+     
+     
+       Esse nostrud deserunt Lorem pariatur incididunt. 
+     
+     
+       Non minim esse qui mollit consequat. 
+       
+         
+           Exercitation dolor fugiat esse officia cupidatat anim. 
+         
+         
+           Esse eu anim irure voluptate non laborum laborum dolore dolore. 
+         
+       
+     
+     
+       Laboris et excepteur est adipisicing magna qui do sit eiusmod. 
+     
+   
+   Qui aute voluptate 
+   Labore dolor laboris anim. Laborum ut eiusmod et et minim duis aliquip deserunt laboris. 
+  "
+`;
