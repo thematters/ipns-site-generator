@@ -9,7 +9,7 @@ export type MakeHomepageData = HomepageContext
 /**
  * Make Homepage HTML from articles data
  */
-export const makeHomepage = async (data: MakeHomepageData) => {
+export const makeHomepage = (data: MakeHomepageData) => {
   const html = renderHomepage(data)
 
   return html
