@@ -13,7 +13,7 @@
 
       <ul>
       {% for article in articles %}
-        {{ components.articleDigest(article.title, article.description, article.date, article.uri) }}
+        {{ components.articleDigest(article.title, article.summary, article.date, article.uri) }}
       {% endfor %}
       </ul>
     </main>

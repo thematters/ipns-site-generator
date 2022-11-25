@@ -1,8 +1,8 @@
-{% macro articleDigest(title, description, date, uri) %}
+{% macro articleDigest(title, summary, date, uri) %}
 <li>
   <section class="articleDigest">
     <h2><a href="{{ uri }}">{{ title }}</a></h2>
-    <p>{{ description }}</p>
+    <p>{{ summary }}</p>
     <time itemprop="datePublished" datetime="{{ date }}">{{ date | shortDate }}</time>
   </section>
 </li>
