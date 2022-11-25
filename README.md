@@ -14,6 +14,25 @@ npm install --save @matters/ipns-site-generator
 
 ## Usage
 
+### Create HTML bundle for uploading to IPFS
+
+`makeArticlePage` returns an array of object that contains path and buffer data that can be added with IPFS API directly. See [test](./src/__tests__/makeArticlePage.test.ts) for more detail.
+
+```js
+import { makeArticlePage } from '@matters/ipns-site-generator'
+
+const article = {
+  meta: { ... },
+  byline: { ... },
+  rss: { ... },
+  article: { ... },
+}
+
+// this creates an array of object containing path and buffer data,
+// which IPFS recognizes as a folder
+const { bundle } = await makeArticlePage(article)
+```
+
 ### Create an encrypted HTML
 
 Pass in a HTML string as content, and return a HTML string with the content encrypted and the encrytion key. The returned HTML can be then written to a file or add to IPFS. During rendering, the HTML will be decrypted by adding `key=${encrytion-key}` in query parameter, and also include a simple UI to prompt key enter.
@@ -31,58 +50,6 @@ const { bundle, key } = await makeArticlePage({
   rss: { ... },
   article: { ... },
 })
-```
-
-### Create HTML bundle and metadata for uploading to IPFS
-
-`makeArticlePage` returns an array of object that contains path and buffer data that can be added with IPFS API directly. See [test](./src/__tests__/makeArticlePage.test.ts) for more detail.
-
-`makeMetaData` returns content metadata object used at Matters. See [test](./src/__tests__/makeMetaData.test.ts) for more detail.
-
-```js
-import {
-  makeArticlePage,
-  makeMetaData,
-} from '@matters/ipns-site-generator'
-
-const article = {
-  meta: { ... },
-  byline: { ... },
-  rss: { ... },
-  article: { ... },
-}
-
-// this creates an array of object containing path and buffer data,
-// which IPFS recognizes as a folder
-const { bundle } = await makeArticlePage(article)
-
-// this is the hash that will render out html content on IPFS gateways,
-// or use ipfs-only-hash if you only want to get the hash
-const contentHash = ipfs.add(htmlBundle, { pin: true })
-
-// additional information for article, including previously generated contentHash
-const articleInfo = {
-  contentHash,
-  author: {
-    name: 'test-user',
-    url: 'user-home-page',
-    description: 'this is a test user',
-  },
-  description: 'This is a piece of test content',
-  image: 'image-url',
-}
-
-// this create the standard format of meta data,
-// should be merged with ISCN standard in the future
-const metaData = makeMetaData(articleInfo)
-
-const cid = await ipfs.dag.put(metaData, {
-  format: 'dag-cbor',
-  pin: true,
-  hashAlg: 'sha2-256',
-})
-// this is the final media hash used in the end of article url at matters.news
-const mediaHash = cid.toV1().toString() // cid.toBaseEncodedString()
 ```
 
 ## Unit test
