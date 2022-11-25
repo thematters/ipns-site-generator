@@ -16,8 +16,14 @@ exports[`makeHomepage can generate basic HTML bundle 1`] = `
 <meta name=\\"twitter:title\\" content=\\"Excepteur Non&#39;s homepage\\">
 <meta name=\\"twitter:description\\" content=\\"Quis non enim sunt ut proident eu amet eiusmod do nulla ut laborum incididunt commodo officia.\\">
 <meta name=\\"twitter:image\\" content=\\"\\" />
+
+
 <link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" />
+
+
+
 <link rel=\\"alternate\\" type=\\"application/json\\" href\\"https://matters.news\\" />
+
 
 
     
@@ -444,6 +450,7 @@ ul > li {
   <nav>
     <section class=\\"rssEntrances\\">
   <ul>
+    
     <li>
       <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
 <path d=\\"M3.99995 2.40002C3.78778 2.40002 3.5843 2.48431 3.43427 2.63434C3.28424 2.78437 3.19995 2.98785 3.19995 3.20002C3.19995 3.4122 3.28424 3.61568 3.43427 3.76571C3.5843 3.91574 3.78778 4.00002 3.99995 4.00002C8.41835 4.00002 12 7.58162 12 12C12 12.2122 12.0842 12.4157 12.2343 12.5657C12.3843 12.7157 12.5878 12.8 12.8 12.8C13.0121 12.8 13.2156 12.7157 13.3656 12.5657C13.5157 12.4157 13.6 12.2122 13.6 12C13.6 6.69842 9.30155 2.40002 3.99995 2.40002Z\\" fill=\\"currentColor\\"/>
@@ -452,12 +459,19 @@ ul > li {
 
       <span aira-role=\\"button\\" aria-label=\\"IPNS address\\" data-clipboard=\\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\">IPNS</span>
     </li>
+    
+
+    
     <li>
       <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
+    
+
+    
     <li>
       <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
+    
   </ul>
 </section>
 
