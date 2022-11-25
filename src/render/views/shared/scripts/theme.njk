@@ -1,0 +1,21 @@
+<script type="text/javascript">
+function toggleDarkMode(on) {
+  var $root = document.querySelector(":root");
+
+  if (on) {
+    $root.classList.add("dark");
+  } else {
+    $root.classList.remove("dark");
+  }
+}
+
+// turn off
+document.querySelector(".themeSwitch .dark").addEventListener("click", () => {
+  toggleDarkMode(false);
+});
+
+// turn on
+document.querySelector(".themeSwitch .light").addEventListener("click", () => {
+  toggleDarkMode(true);
+});
+</script>

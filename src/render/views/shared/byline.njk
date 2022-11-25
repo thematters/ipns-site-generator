@@ -1,0 +1,15 @@
+<section class="byline" itemprops="provider" itemscope itemtype="http://schema.org/Organization">
+  <a href="{{ byline.author.uri }}" target="_blank">
+    {{ byline.author.name }}
+  </a>
+  &nbsp;
+
+  {% if byline.date %}
+    <time itemprop="datePublished" datetime="{{ byline.date }}">{{ byline.date | shortDate }}</time>
+  {% endif %}
+
+  &nbsp;from&nbsp;
+  <a href="{{ byline.website.uri }}" target="_blank">
+    {{ byline.website.name }}
+  </a>
+</section>

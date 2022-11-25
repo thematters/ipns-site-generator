@@ -1,0 +1,32 @@
+<script type="text/javascript">
+var $copyButtons = document.querySelectorAll('[data-clipboard]');
+
+for (var i = 0, len = $copyButtons.length; i < len; i++) {
+  $copyButtons[i].addEventListener('click', onCopyButtonClick, false);
+}
+
+function onCopyButtonClick(event) {
+  var target = event.target;
+  var text = target.dataset.clipboard;
+  copyTextToClipboard(text, target);
+}
+
+function copyTextToClipboard(text, $el) {
+  var originalInnerText = $el.innerText;
+
+  try {
+    navigator.clipboard.writeText(text).then(function() {
+      $el.classList.add('copied');
+      $el.innerText = 'Copied';
+      setTimeout(function() {
+        $el.classList.remove('copied');
+        $el.innerText = originalInnerText;
+      }, 3000);
+    }, function(err) {
+      alert(text);
+    });
+  } catch (error) {
+    alert(text);
+  }
+}
+</script>

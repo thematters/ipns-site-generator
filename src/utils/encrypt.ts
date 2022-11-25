@@ -2,7 +2,7 @@ import { Crypto } from '@peculiar/webcrypto'
 
 const crypto = new Crypto()
 
-export default async (content: string) => {
+export const encrypt = async (content: string) => {
   const buf2hex = (buf: ArrayBuffer) => {
     return Array.prototype.map
       .call(new Uint8Array(buf), (x) => ('00' + x.toString(16)).slice(-2))

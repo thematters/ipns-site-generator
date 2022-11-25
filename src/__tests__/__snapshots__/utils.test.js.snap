@@ -2,42 +2,78 @@
 
 exports[`utils "makeSummary" can produce summary text from HTML 1`] = `
 "
-  Hello World
-  This is some test text.
-Together with some test quotations
   
-  And test code
-  
-  Contrary to popular belief, Lorem Ipsum ..."
+    
+    Reprehenderit proident sit consectetur id consequat officia.
+Duis ea voluptate cupidatat ad
+  Elit consequat labore tempor Lore..."
 `;
 
 exports[`utils "stripHtml" can generate clean text from HTML 1`] = `
 "
-   Hello World 
-   This is some test text. 
-   
-     Together with some test quotations 
-   
-     And  test  code 
-    
-   Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32. 
-   The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. 
    
      
-     This is a fine dog hosted on another domain. 
+      Reprehenderit proident sit consectetur id consequat officia.  
    
+
+   Duis ea voluptate cupidatat ad 
+   Elit consequat labore tempor Lorem voluptate occaecat nostrud laborum minim. Cillum veniam ea cupidatat nulla commodo sunt amet magna amet sit culpa nulla deserunt  reprehenderit  duis. Et nostrud sunt ad cupidatat laboris. Reprehenderit dolor dolore elit voluptate ex. Fugiat in in officia non eiusmod irure et. Velit ut aliquip ipsum exercitation exercitation nisi voluptate enim amet exercitation. Et consectetur ex nisi anim id consequat eiusmod veniam ipsum ullamco nulla deserunt nostrud. 
+
    
      
-     This is a random figure from matters.news production. 
+       
+       
+     
+      Nulla in fugiat labore ad.  
    
+
+   Cupidatat amet fugiat culpa id 
+   Et ut dolore dolore ex. Deserunt adipisicing id dolor eiusmod minim ea. Pariatur veniam velit ad culpa nisi sit. Non nostrud irure nulla pariatur ipsum irure fugiat anim id Lorem duis. Ullamco incididunt ex ullamco elit. Amet voluptate minim laborum anim duis aliquip officia enim Lorem mollit aliquip laboris.  Mollit pariatur sunt pariatur occaecat deserunt esse . Est eu ut elit id nisi duis id magna  commodo ex et id sint laboris . 
+
+   
+     Enim aliqua est proident commodo dolor incididunt eiusmod. Anim anim eu pariatur aliqua qui. Sit non commodo enim ut aute officia eu. Adipisicing proident eu velit id proident. 
+   
+
+   Voluptate officia adipisicing voluptate amet dolore ad tempor aliquip reprehenderit Lorem. Ad dolor id minim occaecat ea non nulla. Ullamco exercitation consectetur duis tempor incididunt qui id. Sunt voluptate qui ex do Lorem consectetur laborum mollit culpa sunt anim occaecat esse. Velit deserunt eiusmod deserunt. Anim ullamco ad minim velit nulla aliquip culpa consequat laboris quis ad Lorem pariatur. Occaecat sunt irure reprehenderit. 
+
+   query {
+  article(
+    input: { mediaHash: \\"zdpuAxP6uSfum74VS3pYmzBR9xvPbrBcX3J8BPpB3xdRGjVsX\\" }
+  ) {
+    id
+    title
+    summary
+  }
+}
+ 
+
+   Officia amet minim proident labore 
+   Proident fugiat amet 
+   Duis eiusmod mollit ipsum exercitation voluptate sit ullamco. 
+   Labore aute ea irure 
    
      
-     This is a random figure from matters.news development. 
+       Adipisicing nisi deserunt velit proident nostrud et ipsum amet mollit. 
+     
+     
+       Esse nostrud deserunt Lorem pariatur incididunt. 
+     
+     
+       Non minim esse qui mollit consequat. 
+       
+         
+           Exercitation dolor fugiat esse officia cupidatat anim. 
+         
+         
+           Esse eu anim irure voluptate non laborum laborum dolore dolore. 
+         
+       
+     
+     
+       Laboris et excepteur est adipisicing magna qui do sit eiusmod. 
+     
    
-   
-        
-     And this is a cat video. 
-   
-   Good bye. 
+   Qui aute voluptate 
+   Labore dolor laboris anim. Laborum ut eiusmod et et minim duis aliquip deserunt laboris. 
   "
 `;

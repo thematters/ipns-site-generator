@@ -1,0 +1,121 @@
+<style>
+{# header #}
+header nav {
+  margin-top: var(--spacing-x-large);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .backToHomepage > a {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--spacing-medium);
+}
+
+header .backToHomepage svg {
+  color: var(--text-color);
+  margin-right: var(--spacing-xx-small);
+}
+
+header h1 {
+  margin-top: var(--spacing-medium);
+}
+
+{# article #}
+figure {
+  margin: 0;
+}
+figure.summary {
+  margin: var(--spacing-xx-large) 0;
+  color: var(--color-grey);
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+  line-height: 1.78;
+}
+
+{# article content #}
+article {
+  position: relative;
+  font-size: var(--font-size-medium);
+  line-height: 1.78;
+}
+
+article > * {
+  margin-top: var(--spacing-large);
+  margin-bottom: var(--spacing-medium);
+}
+
+article blockquote {
+  padding-left: var(--spacing-medium);
+  padding-right: var(--spacing-medium);
+  color: var(--color-grey-darker);
+  border-left: 4px solid var(--color-grey-darker);
+}
+
+article pre {
+  background-color: var(--code-background-color);
+  padding: var(--spacing-base);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+article figure figcaption {
+  margin-top: var(--spacing-xx-small);
+  font-size: var(--font-size-small);
+  color: var(--color-grey);
+}
+
+article figure .iframe-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+}
+article figure .iframe-container iframe {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+article ul,
+arrticle ol {
+  padding-left: var(--spacing-medium);
+}
+article li {
+  padding-left: var(--spacing-x-small);
+}
+
+{# encrypted content #}
+{% if encrypted %}
+article.encrypted {
+  display: flex;
+  justify-content: center;
+  word-break: break-all;
+  color: transparent;
+  text-shadow: var(--text-color) 0px 0px 10px;
+}
+article.encrypted form {
+  position: absolute;
+  top: var(--spacing-medium);
+  padding: var(--spacing-base);
+  max-width: 100%;
+  width: 320px;
+  background: var(--background-color);
+  border: 1px solid var(--text-color);
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-align: center;
+  color: var(--text-color);
+}
+article.encrypted form input {
+  padding: var(--spacing-xx-small) 0;
+  background: var(--background-color);
+  border-bottom: 1px solid var(--text-color);
+}
+article.encrypted form button {
+  margin-top: var(--spacing-base);
+}
+{% endif %}
+</style>

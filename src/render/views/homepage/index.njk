@@ -1,0 +1,25 @@
+{% import "./articleDigest.njk" as components %}
+
+<html>
+  <head>
+    {% include "../shared/meta.njk" %}
+    {% include "../shared/styles/index.njk" %}
+    {% include "./styles.njk" %}
+  </head>
+
+  <body>
+    <main>
+      {% include "./header.njk" %}
+
+      <ul>
+      {% for article in articles %}
+        {{ components.articleDigest(article.title, article.description, article.date, article.uri) }}
+      {% endfor %}
+      </ul>
+    </main>
+
+    {% include "../shared/scripts/theme.njk" %}
+    {% include "../shared/scripts/clipboard.njk" %}
+    {% include "../shared/scripts/ga.njk" %}
+  </body>
+</html>

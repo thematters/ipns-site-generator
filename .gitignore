@@ -12,3 +12,4 @@ npm-install.log
 coverage/
 .husky/
 tags
+demo
