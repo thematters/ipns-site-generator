@@ -228,6 +228,21 @@ body {
   color: var(--text-color);
 }
 
+a {
+  &:link {
+    color: #0070E0;
+    text-decoration: none;
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #7D1BFA;
+    text-decoration: none;
+  }
+}
+
 hr { height: 1px; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -260,6 +275,9 @@ audio {
 
 .copied {
   color: var(--color-grey);
+}
+[data-clipboard] {
+  cursor: pointer;
 }
 </style>
 
@@ -372,6 +390,7 @@ main {
 .rssEntrances a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .rssEntrances svg {
@@ -558,7 +577,7 @@ article li {
 
       <article class=\\"\\" itemprop=\\"articleBody\\">
   <html><head></head><body><figure class=\\"image\\">
-    <img src=\\"aa57a1ce-8926-4512-81d8-462f68fa3917.webp\\" data-asset-id=\\"aa57a1ce-8926-4512-81d8-462f68fa3917\\">
+    <img src=\\"./aa57a1ce-8926-4512-81d8-462f68fa3917.webp\\" data-asset-id=\\"aa57a1ce-8926-4512-81d8-462f68fa3917\\">
     <figcaption><span>Reprehenderit proident sit consectetur id consequat officia.</span></figcaption>
   </figure>
 
@@ -920,6 +939,21 @@ body {
   color: var(--text-color);
 }
 
+a {
+  &:link {
+    color: #0070E0;
+    text-decoration: none;
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #7D1BFA;
+    text-decoration: none;
+  }
+}
+
 hr { height: 1px; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -952,6 +986,9 @@ audio {
 
 .copied {
   color: var(--color-grey);
+}
+[data-clipboard] {
+  cursor: pointer;
 }
 </style>
 
@@ -1064,6 +1101,7 @@ main {
 .rssEntrances a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .rssEntrances svg {
@@ -1250,7 +1288,7 @@ article li {
 
       <article class=\\"\\" itemprop=\\"articleBody\\">
   <html><head></head><body><figure class=\\"image\\">
-    <img src=\\"aa57a1ce-8926-4512-81d8-462f68fa3917.webp\\" data-asset-id=\\"aa57a1ce-8926-4512-81d8-462f68fa3917\\">
+    <img src=\\"./aa57a1ce-8926-4512-81d8-462f68fa3917.webp\\" data-asset-id=\\"aa57a1ce-8926-4512-81d8-462f68fa3917\\">
     <figcaption><span>Reprehenderit proident sit consectetur id consequat officia.</span></figcaption>
   </figure>
 
@@ -1612,6 +1650,21 @@ body {
   color: var(--text-color);
 }
 
+a {
+  &:link {
+    color: #0070E0;
+    text-decoration: none;
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #7D1BFA;
+    text-decoration: none;
+  }
+}
+
 hr { height: 1px; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1644,6 +1697,9 @@ audio {
 
 .copied {
   color: var(--color-grey);
+}
+[data-clipboard] {
+  cursor: pointer;
 }
 </style>
 
@@ -1756,6 +1812,7 @@ main {
 .rssEntrances a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .rssEntrances svg {
@@ -2064,740 +2121,6 @@ function copyTextToClipboard(text, $el) {
     alert(text);
   }
 }
-</script>
-
-    
-    <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
-<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>
-
-  </body>
-</html>
-",
-    "path": "index.html",
-  },
-]
-`;
-
-exports[`makeArticlePage can generate encrypted HTML bundle 1`] = `
-Array [
-  Object {
-    "content": "<html>
-  <head>
-    <meta charset=\\"UTF-8\\" />
-<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
-<title>Excepteur in consequat mollit consectetur.</title>
-<meta name=\\"description\\" content=\\"Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.\\">
-<meta property=\\"og:title\\" content=\\"Excepteur in consequat mollit consectetur.\\">
-<meta property=\\"og:description\\" content=\\"Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.\\">
-<meta property=\\"og:image\\" content=\\"{ {meta.image }}\\" />
-<meta property=\\"article:author\\" content=\\"Excepteur Non\\">
-<meta name=\\"twitter:title\\" content=\\"Excepteur in consequat mollit consectetur.\\">
-<meta name=\\"twitter:description\\" content=\\"Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.\\">
-<meta name=\\"twitter:image\\" content=\\"https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp\\" />
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" />
-<link rel=\\"alternate\\" type=\\"application/json\\" href\\"https://matters.news\\" />
-
-
-    
-<style>
-:root {
-  /* typography: font-size, font-weight, line-height, font-family */
-  --font-size-x-small: 11px;
-  --font-size-small: 13px;
-  --font-size-base: 16px;
-  --font-size-medium: 18px;
-  --font-size-large: 24px;
-  --font-size-x-large: 32px;
-
-  --line-height-base: 1.5;
-
-  --font-weight-base: 400;
-  --font-weight-medium: 500;
-
-  --font-family: -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, \\"Helvetica Neue\\", sans-serif;
-
-  /* colors */
-  --color-grey-lighter: #f7f7f7;
-  --color-grey-light: #DDDDDD;
-  --color-grey: #B3B3B3;
-  --color-grey-darker: #808080;
-  --color-black: #000000;
-  --color-white: #fff;
-
-  /* spacings */
-  --spacing-xx-small: 8px;
-  --spacing-x-small: 8px;
-  --spacing-small: 12px;
-  --spacing-base: 16px;
-  --spacing-medium: 24px;
-  --spacing-large: 32px;
-  --spacing-x-large: 40px;
-  --spacing-xx-large: 48px;
-
-}
-</style>
-
-<style>
-/* reset */
-/* Document
-   ========================================================================== */
-html {
-  box-sizing: border-box;
-  border-collapse: collapse;
-  -webkit-text-size-adjust: 100%;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-* {
-  border-collapse: inherit;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-/* Sections
-   ========================================================================== */
-main {
-  display: block;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-ol,
-ul,
-li {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-/* Text-level semantics
-   ========================================================================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-code {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-code,
-kbd,
-samp,
-pre {
-  font-family: monospace;
-  font-size: 1em;
-}
-
-pre {
-  white-space: pre-wrap;
-}
-
-a {
-  background-color: transparent;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-small {
-  font-size: 80%;
-}
-
-/* Embedded content
-   ========================================================================== */
-img {
-  border-style: none;
-}
-
-/* Forms
-   ========================================================================== */
-form {
-  width: 100%;
-}
-
-input,
-select,
-textarea,
-button {
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  line-height: 1.15;
-  color: inherit;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  appearance: none;
-}
-
-button {
-  display: inline-block;
-  width: auto;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
-  background: transparent;
-}
-
-button > * {
-  vertical-align: middle;
-}
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-button:disabled,
-button[aria-disabled='true'] {
-  cursor: default;
-  cursor: not-allowed;
-}
-
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-input,
-select,
-textarea {
-  display: block;
-  width: 100%;
-}
-
-/* base */
-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  background: var(--background-color);
-  color: var(--text-color);
-}
-
-hr { height: 1px; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-weight-medium);
-  line-height: 1.4;
-}
-h1 { font-size: var(--font-size-x-large); }
-h2 { font-size: var(--font-size-large); }
-h3 { font-size: var(--font-size-medium); }
-h4 { font-size: var(--font-size-base); }
-h5 { font-size: var(--font-size-small); }
-h6 { font-size: var(--font-size-x-small); }
-
-li ul, li ol { margin: 0 var(--spacing-base); }
-li { margin: var(--spacing-base) 0; }
-ul { list-style-type: disc; }
-ol { list-style-type: decimal; }
-ol ol { list-style: upper-alpha; }
-ol ol ol { list-style: lower-roman; }
-ol ol ol ol { list-style: lower-alpha; }
-
-img, video, audio {
-  display: block;
-  max-width: 100%;
-  margin: 0 auto;
-}
-audio {
-  width: 100%;
-}
-
-.copied {
-  color: var(--color-grey);
-}
-</style>
-
-<style>
-main {
-  max-width: 673px;
-  width: 100%;
-  padding: 0 var(--spacing-base);
-  margin: 0 auto;
-}
-</style>
-
-<style>
-/* light mode */
-:root {
-  --text-color: var(--color-black);
-  --background-color: var(--color-white);
-  --date-color: var(--color-grey);
-  --border-color: var(--color-grey-light);
-  --code-background-color: var(--color-grey-lighter);
-}
-
-/* dark mode */
-:root.dark {
-  --text-color: var(--color-white);
-  --background-color: var(--color-black);
-  --date-color: var(--color-grey);
-  --border-color: var(--color-grey-darker);
-  --code-background-color: var(--color-grey-darker);
-}
-</style>
-
-
-
-<style>
-.themeSwitch {
-  display: inline-flex;
-}
-
-.themeSwitch svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* light mode */
-:root:not(.dark) .themeSwitch .dark {
-  display: none;
-}
-
-/* dark mode */
-:root.dark .themeSwitch .light {
-  display: none;
-}
-</style>
-
-<style>
-.byline {
-  margin-top: var(--spacing-base);
-  margin-bottom: var(--spacing-medium);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
-}
-
-.byline time {
-  color: var(--date-color);
-}
-
-@media(min-width: 706px) {
-  .byline {
-    margin-bottom: var(--spacing-x-large);
-  }
-}
-</style>
-
-<style>
-.rssEntrances {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
-}
-
-.rssEntrances ul,
-.rssEntrances li {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.rssEntrances ul {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rssEntrances li {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 var(--spacing-x-small);
-}
-
-.rssEntrances li:first-child {
-  padding-left: 0;
-}
-
-.rssEntrances li + li {
-  border-left: 2px solid var(--border-color);
-}
-
-.rssEntrances a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.rssEntrances svg {
-  margin-right: var(--spacing-xx-small);
-  color: var(--border-color);
-}
-</style>
-
-
-    <style>
-
-header nav {
-  margin-top: var(--spacing-x-large);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header .backToHomepage > a {
-  display: inline-flex;
-  align-items: center;
-  margin-top: var(--spacing-medium);
-}
-
-header .backToHomepage svg {
-  color: var(--text-color);
-  margin-right: var(--spacing-xx-small);
-}
-
-header h1 {
-  margin-top: var(--spacing-medium);
-}
-
-
-figure {
-  margin: 0;
-}
-figure.summary {
-  margin: var(--spacing-xx-large) 0;
-  color: var(--color-grey);
-  font-size: var(--font-size-medium);
-  font-weight: 500;
-  line-height: 1.78;
-}
-
-
-article {
-  position: relative;
-  font-size: var(--font-size-medium);
-  line-height: 1.78;
-}
-
-article > * {
-  margin-top: var(--spacing-large);
-  margin-bottom: var(--spacing-medium);
-}
-
-article blockquote {
-  padding-left: var(--spacing-medium);
-  padding-right: var(--spacing-medium);
-  color: var(--color-grey-darker);
-  border-left: 4px solid var(--color-grey-darker);
-}
-
-article pre {
-  background-color: var(--code-background-color);
-  padding: var(--spacing-base);
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-article figure figcaption {
-  margin-top: var(--spacing-xx-small);
-  font-size: var(--font-size-small);
-  color: var(--color-grey);
-}
-
-article figure .iframe-container {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 56.25%;
-}
-article figure .iframe-container iframe {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-article ul,
-arrticle ol {
-  padding-left: var(--spacing-medium);
-}
-article li {
-  padding-left: var(--spacing-x-small);
-}
-
-
-
-article.encrypted {
-  display: flex;
-  justify-content: center;
-  word-break: break-all;
-  color: transparent;
-  text-shadow: var(--text-color) 0px 0px 10px;
-}
-article.encrypted form {
-  position: absolute;
-  top: var(--spacing-medium);
-  padding: var(--spacing-base);
-  max-width: 100%;
-  width: 320px;
-  background: var(--background-color);
-  border: 1px solid var(--text-color);
-  box-sizing: border-box;
-  border-radius: 8px;
-  text-align: center;
-  color: var(--text-color);
-}
-article.encrypted form input {
-  padding: var(--spacing-xx-small) 0;
-  background: var(--background-color);
-  border-bottom: 1px solid var(--text-color);
-}
-article.encrypted form button {
-  margin-top: var(--spacing-base);
-}
-
-</style>
-
-  </head>
-
-  <body>
-    <main>
-      <header>
-  <nav>
-    <section class=\\"rssEntrances\\">
-  <ul>
-    <li>
-      <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
-<path d=\\"M3.99995 2.40002C3.78778 2.40002 3.5843 2.48431 3.43427 2.63434C3.28424 2.78437 3.19995 2.98785 3.19995 3.20002C3.19995 3.4122 3.28424 3.61568 3.43427 3.76571C3.5843 3.91574 3.78778 4.00002 3.99995 4.00002C8.41835 4.00002 12 7.58162 12 12C12 12.2122 12.0842 12.4157 12.2343 12.5657C12.3843 12.7157 12.5878 12.8 12.8 12.8C13.0121 12.8 13.2156 12.7157 13.3656 12.5657C13.5157 12.4157 13.6 12.2122 13.6 12C13.6 6.69842 9.30155 2.40002 3.99995 2.40002Z\\" fill=\\"currentColor\\"/>
-<path d=\\"M3.1999 7.20002C3.1999 6.98785 3.28419 6.78437 3.43422 6.63434C3.58425 6.48431 3.78773 6.40002 3.9999 6.40002C5.48511 6.40002 6.9095 6.99002 7.9597 8.04023C9.0099 9.09043 9.5999 10.5148 9.5999 12C9.5999 12.2122 9.51562 12.4157 9.36559 12.5657C9.21556 12.7157 9.01208 12.8 8.7999 12.8C8.58773 12.8 8.38425 12.7157 8.23422 12.5657C8.08419 12.4157 7.9999 12.2122 7.9999 12C7.9999 10.9392 7.57847 9.92174 6.82833 9.1716C6.07818 8.42145 5.06077 8.00002 3.9999 8.00002C3.78773 8.00002 3.58425 7.91574 3.43422 7.76571C3.28419 7.61568 3.1999 7.4122 3.1999 7.20002ZM2.3999 12C2.3999 11.5757 2.56847 11.1687 2.86853 10.8687C3.16859 10.5686 3.57556 10.4 3.9999 10.4C4.42425 10.4 4.83122 10.5686 5.13127 10.8687C5.43133 11.1687 5.5999 11.5757 5.5999 12C5.5999 12.4244 5.43133 12.8313 5.13127 13.1314C4.83122 13.4315 4.42425 13.6 3.9999 13.6C3.57556 13.6 3.16859 13.4315 2.86853 13.1314C2.56847 12.8313 2.3999 12.4244 2.3999 12Z\\" fill=\\"currentColor\\"/>
-</svg>
-
-      <span aira-role=\\"button\\" aria-label=\\"IPNS address\\" data-clipboard=\\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\">IPNS</span>
-    </li>
-    <li>
-      <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
-    </li>
-    <li>
-      <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
-    </li>
-  </ul>
-</section>
-
-    <section class=\\"themeSwitch\\">
-  <button class=\\"light\\" type=\\"button\\" aira-label=\\"switch to dark mode\\">
-    <svg width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\">
-<circle cx=\\"10.5\\" cy=\\"10\\" r=\\"7.375\\" stroke=\\"#333333\\" stroke-width=\\"1.25\\"/>
-<path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M10.4646 5.2108C10.3559 5.20365 10.2462 5.20001 10.1357 5.20001C7.41112 5.20001 5.20239 7.40874 5.20239 10.1333C5.20239 12.858 7.41112 15.0667 10.1357 15.0667C10.2462 15.0667 10.3559 15.063 10.4646 15.0559V5.2108Z\\" fill=\\"#333333\\"/>
-</svg>
-
-  </button>
-
-  <button class=\\"dark\\" type=\\"button\\" aira-label=\\"switch to light mode\\">
-    <svg width=\\"20\\" height=\\"20\\" viewBox=\\"0 0 20 20\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\">
-  <circle cx=\\"10\\" cy=\\"10\\" r=\\"7.5\\" stroke=\\"white\\"/>
-  <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M9.2356 15.0507C9.36756 15.0613 9.50099 15.0667 9.63568 15.0667C12.3603 15.0667 14.569 12.858 14.569 10.1333C14.569 7.40874 12.3603 5.20001 9.63568 5.20001C9.50099 5.20001 9.36756 5.20541 9.2356 5.216V15.0507Z\\" fill=\\"white\\"/>
-</svg>
-
-  </button>
-</section>
-
-  </nav>
-
-  <section class=\\"backToHomepage\\">
-    <a href=\\"../\\">
-      <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
-<path d=\\"M10.5303 3.53033C10.8232 3.23744 10.8232 2.76256 10.5303 2.46967C10.2374 2.17678 9.76256 2.17678 9.46967 2.46967L10.5303 3.53033ZM5 8L4.46967 7.46967C4.17678 7.76256 4.17678 8.23744 4.46967 8.53033L5 8ZM9.46967 13.5303C9.76256 13.8232 10.2374 13.8232 10.5303 13.5303C10.8232 13.2374 10.8232 12.7626 10.5303 12.4697L9.46967 13.5303ZM9.46967 2.46967L4.46967 7.46967L5.53033 8.53033L10.5303 3.53033L9.46967 2.46967ZM4.46967 8.53033L9.46967 13.5303L10.5303 12.4697L5.53033 7.46967L4.46967 8.53033Z\\" fill=\\"currentColor\\"/>
-</svg>
-
-      View All Articles
-    </a>
-  </section>
-
-  <h1 itemprop=\\"headline\\">Excepteur in consequat mollit consectetur.</h1>
-
-  <section class=\\"byline\\" itemprops=\\"provider\\" itemscope itemtype=\\"http://schema.org/Organization\\">
-  <a href=\\"https://matters.news/@Anim\\" target=\\"_blank\\">
-    Excepteur Non
-  </a>
-  &nbsp;
-
-  
-    <time itemprop=\\"datePublished\\" datetime=\\"2022-11-18T08:42:04.146Z\\">2022-11-18</time>
-  
-
-  &nbsp;from&nbsp;
-  <a href=\\"https://matters.news\\" target=\\"_blank\\">
-    Matters
-  </a>
-</section>
-
-</header>
-
-
-      
-      <figure class=\\"summary\\">
-        <p>Ad cupidatat adipisicing consequat ad sint cillum dolore.</p>
-      </figure>
-      
-
-      <article class=\\"encrypted\\" itemprop=\\"articleBody\\">
-  992e0bdc000628f10bc693f65a09a735beff13cfbdbec0aa685a06856a3b76ed45e10d7dcd5793f2cc26470bec101db6d9ec36642e69dc852cc6457d4af1c51d6a9cdd19328e8e1be1c002d8f666ebf8b75de559f45b0832cada05ad178c58258d8c8f72ffdee5726c6af85d5d27d7c00c20709216333edf6fad2ccaaa7a3292f5be9cadfdc3d00a9c5772cae723f3babaf2d376f2cded81d9190427456c8e88083d878f5aeaa0004b9652bf6715908bbf05c9641d83b799d2c604ca7bcd98cd0df222fe2134dd3782ed36249460b381b63e994f126d6115000459d69e3d65981e002e8524c953fd93a238a1a212093032585bbc44b4f927cf86d1735d23ab0b1fd16ec513c6e937082882088494447bfe295e0919061a8c252d689e500e405bc5e7503cc4efc42b087229a621384e133f97d9e76b20966e857a5c930d86e10229111830ac98883133e7e18b1f0353b38a66f2aaa8c0542f99d84b73edeea2ff9791c8184dbcbe289ce4577dd09fe2a5c9d7b38f4187bb45223409dcc333a5d93f8b37a7291ac6eead49e7d1d50aea30af968349dceddca9a3c044943d27a589b446adbc4af5129122d9f369435b67851da63f0e96584fb3d9d704ee251d3fd04fc10e6a5a56267544b8fa139d2c046e24c0086021d229ca549c067dfcc4557c2ad5b4d071bdc946124f6705976f773e65922c3fe20047627b266c482702475a656fad56e1ffb4c6fe5227c5355725fc2ebbdb43c697a459a0b173b0421cb0e4d23653f11ce83ea371a5754c0dc0241ef9eeb8a3ceeb6e8ce2b4d09dab4435c802984f2ba60129b39548fc670931b96e48e01cb0b9485fbb4f25191c8e4733bd3e683d388d619ac61c94c2e0c75035524f513ec3bb0c1ab3556e0642479e9c7b8d6b7757c328b371aa1647abdbf6f8743e9998e740e212ff9ab613054185978f47fc878c9f2f42699e154e4b7475cd2da2e0cffbebc095477fea69b899ac70c78d633a7d1a7fe54c220d6789185dacc402ffaced920e4e9edbedf609331587299399e7e89de77a018759a4b078fa84ee707ec948bcf05107ade8e59e7d4a329506a61efd6d060c2525cb448bccb41b5c73b10a3908788898b113f49d088197cb3f8dad3cb6ddc484fc8c5ffd5bbafe6cfad921ee8fefdf752e2abb1558a85d7eb58893a1503de01638efa159cb46874a530f175d64c23c3c22dd3d143cfade18747b478f7b13d2efa81685e0288505fb03bebe44f473e256ba0d12186f2932e289e3b0799cffa75df324eb4ae9115c42d915dc64c16d8da97f6e5e2bb5c526cbaa96f3371f3614341cb9c57f9c393062b126337b08d27b93fbfb0752c5f87753cc85ed431700c3421e8a386194a77d7bc7371b3a7b9abf9e8db1eff363a463f163005f9ab5fb7e2ab5136d5d31429085cf60f173ae9a4400572f060b02e442c77926d92faaa0ef192cbdd573c84eaa68971c1bd3120965f7451d55a6bcce2597f2e7f1d3e8b86f2f4333d783c05ad7ccae58c80a020c2db0a31378d3d3da35630b1de4a64f84af3b2e61135995d346db34f678d9d2e27205439acb6ce53c95311c84a78ce693fd45143de53a36cdc03e47b61a43b28fce31ba34d6d74626f46ea7b36069435c3dbffc33df42e841b18b3d1141249ba2a634de037cc8bb36177d71ded4c5f22714c5776503b131c60c973505339fc37f0150aa4a43d7b25f4a3c92ff6885242ae2b5352494440360a85c5b210304e5ae3e76ff026e6c889b4f5ebb7ddc24d2fc2c890d539604e647ebbc991ad1e6acf274e90d1ed7b0a193c08cdbe932d8907e93f328562b531260e508d5e93d688235d5b3886f760d3e6c493e4151c171d7dc60fdc7341a311bbe9daaa718f32daa171fe9a7f2fe99e020d4f424d4ce9d725c6a79739adf924697354f198c3653fc736a7e0ac183c0c1200eb535bc05e1d740007ec7c80718be946d4daa39d15a50f53a97b01608577df3893cfbdc4126edd8da63d9cae398a838fb5d4a5502699374b5494bea240572923b92d6198bf2920631ef78f054bb13e56af51690b92bc31264c0e6003e57dc81b6091d1dc7f89f7c63beed512ab01081d17cc0694c181be0afda80d7a11c05d83e312eeb04c249af4c799cfb2b109740dc2e493cbc152b556e7787b15ee20286bf73fa21f6a026f89f828548655345c13d86409130b20634f46531f3f1eca39b58095576c265f100101e0188d5b455259e904363c9e6c318575bbd5e7ea335948f9ba58d1c17bb51823633f201e3617ffef0adaa7b6b1bedc48ea2bda17d8060890256e0b5771b565476aa834068c42a22b0be0ba5f8cad1a355e704b98cf0484bb2b054d99073945fd435f1153d1af94ff57f4b77235bf05e44965647ec4bce6486426688d982400f950a1c885e986e72672999a13d7f64a8923a2e74b84ee41289800a96d1fbb0b6244a6c5987a8717aadf597e5437bd9cd12ce446196531fc4a0bc20faf720d63dd978a91216c725f14caf4cae9030d32d2f0c24171ced8da6ce0d08e5b7e36f21925a256beb3a7a2d6b0a63384e81bbda281dc584b9e68133f82bdea0bc3c7ec078d43d71aeb5808b592051abd956cf9d7156e5ad81c7c63ae5baac4613b215c8fe67e866b1f82a2ff5f7720024c97545287b8a360d101edef0db3a83824004b3e44b3ebe6cc23d03688959bef3c9ed5db636a117fd345cec5cb3a2c9537e149116a6f2eff42b0e4beef990b64bf660cd8eda808c1d170c96569a6ff13922bbef1cbc3aa2a1d833a5e3b960d2d24737dd7427e411ed9e70f3889e32c064284a4b652faf37ae5e9d62bf9606140d8870945d48cbed34ee2755f0ec484ba492418275dc4eb45ddb369016885ae25cab9119e13516ec0dd52dd8d784405fad0313a69abb8ad973b716469103d64ffcb7e5ef1aeca141f2427dcd6380719d86f45ee60f8123fe0ca5c50460b6369a8d986ce3ce1c43c0721806c7e8e11898a8002cae5e400d7e42a4025b950917d5025f4bb5c47397f3ddc38b7c6f49552ff3b7edb92de1b1167495bdcad134a8807f93a9f558f438d491d9c507bbe75ef7f7fa10db6e00c8b75cff7a1d53bc9ba364316f4f35f7e6acfa13567bb636b2ddccaa326c237332cbebf6633dc9c4e06eeeac944002a8e5010777082f05b3e0cc7deb9ec1f8ddeaca94ff5a1d3cac6915a2319627a3cd5b9c72e45c357d518d5f26f02cde6b9e6e433e0efe517d078f6a10de7ad0afbc555e3e3ea3a7d36231ec181423761ad600826a5e23166482bd8ec34f99fe691983ddc67ba9eb9ea4b0ebc16ec77ce62754fa711763eb1d59d2c61903a6a0eed3c0eab4e07d9e1197165f1e13e297c59917ab6eb7630b6a95e0e181932cc815c13eb3a0798370c8ba8a41cd7180c0292a2b95134e93e4595618e8f4463ca1e296bf24e59fb481af797e531b03fad599ecbccc44e7f6ab2e03a5cf58ec8f2231cad6296b668369a490b364645d69afc0bb61c13e91ab171cb28d94e295e291e34efc5df44c79c7c4c9cf8204a8291c99824cbde6c094e50d33c87dbe6ef6437a3ce1750be550be2f6737efe9ed4fcf47acfd3e6111ce2ec07d4c2b71278414129b1aa51e37cabafa8e3311f27152a676656d9d50b7a1669b38fac8c31d8894614fa7160543f80d2fdd3670831015588326e43376f3ae6cdd1ba72de7fdd2d7f130f2dfd51293c72f0d9c1b125e48100305b77d7ee72a98d95fa17925ab895d7caaffc07b9ebe43c00c437746671e7f5a5a1478ecfc0a0fc459fdd042f3a59898aceddce50427166dd3c6dbd24db78b6278fd858374fb39116318fdf0187fb8f4b671b9558364936e229e73615f89baad96823305617bafa4980e56a55faa919a31365e33496a0163f81046fc5bb9ec3d58af7cbff7ddd7891b2c3e1139e662029a0821481fd0add651cd02aa60a610a499336cbb87ef7dc1b2ff021b05d21dbce1661e7a98190e4749bb541484240d956db12685e169efbce67ca96e9672f59edf58334cd4ea1ade4c7ec29d86602c63c0528bd2c0f770e6175dfbfdcfd5c13e79da1f60b14638c8c00c19f94c58aa219e171686ba9b8d6cb6fc13d9eda986e3e75f160dc10f3472996f66b67d1f1c44c978fb3b721be5079c7795c7369eb4cb7212c0343381d45ebd5574e20e87e1af18ae9131093218204890c3069080aee345dcc75a553514c87639971150a86bb0432bf715aefb21a6d5faa9f594897aaf09d48b54630c070798e0ddfebd7e62062de4230032d73c1a0d3bf4c84eb7a48e1c2ca0b8675f16ef657b9f4e474d53d4d16f2fa40705761f09de5474384629d685f497f55c0b72285bad9b40160b58de5bed3d271288e482fcce483d2246cffae756a4ac31e2c650702f8cf1bf186c8f310f96c91f31addf3c55760dd1f1e83cf2aa4af0c8ac6caf69a090feb27aac09c2b52fcf3534a3b95dd935f60da184847f692f0e77df56cd109c8ef524e514e49661a09a2247bbbdb017c4a91cd34e007d1c17de3a9e38b75246bc6f5aedce81fceb9aaeda1b82f507fb25f5dee41e2e3d63e407ad3461e9d14f48c94ad9ab234f15d5d2b2f9476f1b606a31335a4bb7685df68b6bfe85ef0cb0efcbb82c359b8729c8204c224d127bf162e2f76aa44551342b5dfd834814f19de93b6853c2dc573d2de10f17d3d5b0a990c65578fad6823ce94fce22459e340061a447e4f5fcd121b6d0880eb8b9135e3be2b15d12d1f0c5f1d5d0d1b9e16f9524a0707894f55c360a555f261428187a49dc770995fd34794b52f245cac2d1860cc9dd9ca06607f9329d9764b7cd17c24e3944d2d924a68e68f1035ace77fd56817b774431d574fa37f5309603d10bc74ffd5f6e15532cc7e443e1323fd46146cb4eea7a55da7de5de0ff85a9b9734e28eb2697df624d604a7af60f460b7dc57090fab6a88dbcf5ef435390efb945425a9531b09f04228f1d76a884d3a3eff2f59d71c7256a19a6eaab9de3ea6fdbe716b62dc578c
-</article>
-
-    </main>
-
-    
-    <script type=\\"text/javascript\\">
-function toggleDarkMode(on) {
-  var $root = document.querySelector(\\":root\\");
-
-  if (on) {
-    $root.classList.add(\\"dark\\");
-  } else {
-    $root.classList.remove(\\"dark\\");
-  }
-}
-
-// turn off
-document.querySelector(\\".themeSwitch .dark\\").addEventListener(\\"click\\", () => {
-  toggleDarkMode(false);
-});
-
-// turn on
-document.querySelector(\\".themeSwitch .light\\").addEventListener(\\"click\\", () => {
-  toggleDarkMode(true);
-});
-</script>
-
-    <script type=\\"text/javascript\\">
-var $copyButtons = document.querySelectorAll('[data-clipboard]');
-
-for (var i = 0, len = $copyButtons.length; i < len; i++) {
-  $copyButtons[i].addEventListener('click', onCopyButtonClick, false);
-}
-
-function onCopyButtonClick(event) {
-  var target = event.target;
-  var text = target.dataset.clipboard;
-  copyTextToClipboard(text, target);
-}
-
-function copyTextToClipboard(text, $el) {
-  var originalInnerText = $el.innerText;
-
-  try {
-    navigator.clipboard.writeText(text).then(function() {
-      $el.classList.add('copied');
-      $el.innerText = 'Copied';
-      setTimeout(function() {
-        $el.classList.remove('copied');
-        $el.innerText = originalInnerText;
-      }, 3000);
-    }, function(err) {
-      alert(text);
-    });
-  } catch (error) {
-    alert(text);
-  }
-}
-</script>
-
-    
-      <script type=\\"text/javascript\\">
-// reference implementation of decryption
-async function decrypt(content, keyString) {
-    // translate hex string to buffer
-    function hex2buf(hex) {
-        const bytes = [];
-        for (let i = 0; i < hex.length; i += 2) {
-            bytes.push(Number.parseInt(hex.slice(i, i + 2), 16));
-        }
-        return new Uint8Array(bytes);
-    }
-    // import key from keyString
-    const key = await crypto.subtle.importKey('jwk', {
-        alg: 'A128CTR',
-        ext: true,
-        k: keyString,
-        key_ops: ['encrypt', 'decrypt'],
-        kty: 'oct',
-    }, {
-        name: 'AES-CTR',
-        length: 128,
-    }, true, ['encrypt', 'decrypt']);
-    // decrypt and return
-    return new TextDecoder('utf-8').decode(await crypto.subtle.decrypt({
-        name: 'AES-CTR',
-        counter: new Uint8Array(16),
-        length: 16 * 8,
-    }, key, hex2buf(content)));
-}
-</script>
-
-      <script type=\\"text/javascript\\">
-// handle input UI
-function showInput(hasKey) {
-  var $encrypted = document.querySelector('.encrypted');
-
-  if ($encrypted) {
-    var $form = document.createElement('form');
-    $form.innerHTML = \`
-      <input type=\\"password\\" name=\\"key\\" placeholder=\\"Enter key to decrypt the content...\\" />
-      <button type=\\"submit\\">Submit</button>
-    \`;
-    $encrypted.appendChild($form)
-  }
-};
-</script>
-
-      <script type=\\"text/javascript\\">
-// global parameter name
-const paramName = 'key'
-
-document.addEventListener('DOMContentLoaded', async () => {
-  // get secret
-  const urlParams = new URLSearchParams(window.location.search)
-  const keyString = urlParams.get(paramName)
-
-  const $encrypted = document.querySelector('.encrypted')
-
-  if ($encrypted) {
-    if (!keyString) {
-      showInput(false)
-    } else {
-      try {
-        const decrypted = await decrypt($encrypted.innerHTML.trim(), keyString)
-        // write to decrypted section
-        $encrypted.innerHTML = decrypted
-        // update classname
-        $encrypted.className = $encrypted.classList.remove('encrypted')
-      } catch (err) {
-        showInput(true)
-      }
-    }
-  }
-})
 </script>
 
     
