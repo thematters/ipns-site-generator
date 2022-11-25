@@ -32,3 +32,13 @@ makeArticlePage({ ...MOCK_ARTICLE_PAGE, encrypted: true }).then((data) => {
   fs.promises.mkdir(paths.out, { recursive: true }).catch(console.error)
   fs.writeFileSync(path.resolve(paths.out, 'article-encrypted.html'), content)
 })
+
+// article page w/o rss entrances
+makeArticlePage({ ...MOCK_ARTICLE_PAGE, rss: undefined }).then((data) => {
+  const content = data.bundle[0]?.content.toString() || ''
+  fs.promises.mkdir(paths.out, { recursive: true }).catch(console.error)
+  fs.writeFileSync(
+    path.resolve(paths.out, 'article-no-entrances.html'),
+    content
+  )
+})

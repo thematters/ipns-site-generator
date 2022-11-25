@@ -1,14 +1,22 @@
 <section class="rssEntrances">
   <ul>
+    {% if rss.ipns %}
     <li>
       {% include "./icons/rss.njk" %}
       <span aira-role="button" aria-label="IPNS address" data-clipboard="{{ rss.ipns }}">IPNS</span>
     </li>
+    {% endif %}
+
+    {% if rss.xml %}
     <li>
       <a href="{{ rss.xml }}" target="_blank" aria-label="subscribe RSS feed">RSS</a>
     </li>
+    {% endif %}
+
+    {% if rss.json %}
     <li>
       <a href="{{ rss.json }}" target="_blank" aria-label="subscribe JSON feed">JSON</a>
     </li>
+    {% endif %}
   </ul>
 </section>
