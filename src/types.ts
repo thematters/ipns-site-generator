@@ -6,7 +6,6 @@ type Author = {
 type Article = {
   author: Author
   title: string
-  description: string
   summary: string
   date: string
   uri: string

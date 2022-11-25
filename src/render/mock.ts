@@ -8,9 +8,8 @@ const MOCK_AUTHOR = {
 const MOCK_ARTICLE = {
   author: MOCK_AUTHOR,
   title: 'Excepteur in consequat mollit consectetur.',
-  description:
+  summary:
     'Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.',
-  summary: 'Ad cupidatat adipisicing consequat ad sint cillum dolore.',
   date: '2022-11-18T08:42:04.146Z',
   uri: './Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB',
   content: `
@@ -109,7 +108,7 @@ export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
   encrypted: false,
   meta: {
     title: MOCK_ARTICLE.title,
-    description: MOCK_ARTICLE.description,
+    description: MOCK_ARTICLE.summary,
     authorName: MOCK_ARTICLE.author.displayName,
     image:
       'https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp',
