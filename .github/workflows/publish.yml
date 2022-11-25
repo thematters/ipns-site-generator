@@ -45,7 +45,7 @@ jobs:
       # === `main` branch ===
       - name: Publish to NPM
         if: github.ref == 'refs/heads/main'
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
