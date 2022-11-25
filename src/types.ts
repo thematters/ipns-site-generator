@@ -3,14 +3,20 @@ type Author = {
   displayName: string
 }
 
-type Article = {
+type ArticleDigest = {
   author: Author
   title: string
   summary: string
   date: string
-  uri: string
-  content: string
   tags: string[]
+}
+
+type Article = ArticleDigest & {
+  content: string
+}
+
+type HomepageArticleDigest = ArticleDigest & {
+  uri: string
 }
 
 type PageMeta = {
@@ -40,7 +46,7 @@ type PageMeta = {
 }
 
 export type HomepageContext = PageMeta & {
-  articles: Article[]
+  articles: HomepageArticleDigest[]
 }
 
 export type ArticlePageContext = PageMeta & {
