@@ -8,11 +8,11 @@ type ArticleDigest = {
   title: string
   summary: string
   date: string
-  tags: string[]
 }
 
 type Article = ArticleDigest & {
   content: string
+  tags: string[]
 }
 
 type HomepageArticleDigest = ArticleDigest & {
