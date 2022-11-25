@@ -31,7 +31,7 @@ type PageMeta = {
       uri: string
     }
   }
-  rss: {
+  rss?: {
     ipns: string
     xml: string
     json: string
