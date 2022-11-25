@@ -69,6 +69,7 @@ const MOCK_ARTICLE = {
   <h3>Qui aute voluptate</h3>
   <p>Labore dolor laboris anim. Laborum ut eiusmod et et minim duis aliquip deserunt laboris.</p>
   `,
+  tags: ['tag1', 'tag2', 'tag3'],
 }
 
 export const MOCK_HOMEPAGE: HomepageContext = {

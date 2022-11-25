@@ -10,6 +10,7 @@ type Article = {
   date: string
   uri: string
   content: string
+  tags: string[]
 }
 
 type PageMeta = {
