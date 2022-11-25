@@ -5,7 +5,7 @@ import { uniqBy } from 'lodash'
 import getAsset from './getAsset'
 import { ArticlePageContext } from '../types'
 import { renderArticlePage } from '../render'
-import { encrypt } from '../utils'
+import { cleanHTML, encrypt } from '../utils'
 
 export type MakeArticlePageData = ArticlePageContext
 
@@ -61,7 +61,7 @@ export const makeArticlePage = async (data: MakeArticlePageData) => {
   )
 
   // generate html
-  let content = $.html()
+  let content = cleanHTML($.html())
 
   // paywalled content
   let key = null
