@@ -14,10 +14,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc && mkdir -p dist/render/views && cp -R src/render/views/* dist/render/views",
+    "build:demo": "ts-node ./bin/build-demo.ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "test": "rm -rf dist && npm run build && mkdir -p dist/render/views && cp -R src/render/views/* dist/render/views && jest --config jestconfig.json",
+    "test": "jest --config jestconfig.json",
     "prepare": "husky install",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",

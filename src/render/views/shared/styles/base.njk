@@ -165,6 +165,21 @@ body {
   color: var(--text-color);
 }
 
+a {
+  &:link {
+    color: #0070E0;
+    text-decoration: none;
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: #7D1BFA;
+    text-decoration: none;
+  }
+}
+
 hr { height: 1px; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -197,5 +212,8 @@ audio {
 
 .copied {
   color: var(--color-grey);
+}
+[data-clipboard] {
+  cursor: pointer;
 }
 </style>

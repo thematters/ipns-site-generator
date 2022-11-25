@@ -34,7 +34,7 @@ export const makeArticlePage = async (data: MakeArticlePageData) => {
       const assetPath =
         elementSrc.split('/').pop() || `${index.toString()}-${tagName}`
 
-      const updateSrc = () => $(element).attr('src', assetPath)
+      const updateSrc = () => $(element).attr('src', `./${assetPath}`)
 
       assetsPromises.push(
         getAsset({
