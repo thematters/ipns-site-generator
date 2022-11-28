@@ -12,6 +12,7 @@ const MOCK_ARTICLE = {
     'Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.',
   date: '2022-11-18T08:42:04.146Z',
   uri: './Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB',
+  sourceUri: `https://matters.news/@${MOCK_AUTHOR.userName}/1-slug-Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB`,
   content: `
   <figure class="image">
     <img src="https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp" data-asset-id="aa57a1ce-8926-4512-81d8-462f68fa3917">
@@ -95,13 +96,14 @@ export const MOCK_HOMEPAGE: HomepageContext = {
     json: './feed.json',
   },
   articles: [
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
-    MOCK_ARTICLE,
+    { ...MOCK_ARTICLE, id: '1' },
+    { ...MOCK_ARTICLE, id: '2' },
+    { ...MOCK_ARTICLE, id: '3' },
+    { ...MOCK_ARTICLE, id: '4' },
+    { ...MOCK_ARTICLE, id: '5' },
+    { ...MOCK_ARTICLE, id: '6' },
+    { ...MOCK_ARTICLE, id: '7' },
+    { ...MOCK_ARTICLE, id: '8' },
   ],
 }
 
@@ -130,7 +132,7 @@ export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
     xml: '../rss.xml',
     json: '../feed.json',
   },
-  article: MOCK_ARTICLE,
+  article: { ...MOCK_ARTICLE, id: '1' },
 }
 
 export const MOCK_META_DATA = {

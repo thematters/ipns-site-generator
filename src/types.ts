@@ -3,20 +3,20 @@ type Author = {
   displayName: string
 }
 
-type ArticleDigest = {
+type Article = {
+  id: string
   author: Author
   title: string
   summary: string
   date: string
-}
-
-type Article = ArticleDigest & {
+  image?: string
   content: string
   tags: string[]
 }
 
-type HomepageArticleDigest = ArticleDigest & {
+type HomepageArticleDigest = Article & {
   uri: string
+  sourceUri: string
 }
 
 type PageMeta = {
