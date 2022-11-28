@@ -9,11 +9,11 @@ const paths = {
 }
 
 // homepage
+const { html, xml, json } = makeHomepage(MOCK_HOMEPAGE)
 fs.promises.mkdir(paths.out, { recursive: true }).catch(console.error)
-fs.writeFileSync(
-  path.resolve(paths.out, 'homepage.html'),
-  makeHomepage(MOCK_HOMEPAGE)
-)
+fs.writeFileSync(path.resolve(paths.out, 'homepage.html'), html)
+fs.writeFileSync(path.resolve(paths.out, 'rss.xml'), xml)
+fs.writeFileSync(path.resolve(paths.out, 'feed.json'), json)
 
 // article page
 makeArticlePage(MOCK_ARTICLE_PAGE).then((data) => {

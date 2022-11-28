@@ -6,12 +6,14 @@ jest.mock('isomorphic-fetch')
 const mockedFetch = fetch as jest.Mock
 
 describe('makeHomepage', () => {
-  test('can generate basic HTML bundle', async () => {
+  test('can generate HTML, XML and JSON of homepage', async () => {
     mockedFetch.mockResolvedValue({
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const html = await makeHomepage(MOCK_HOMEPAGE)
+    const { html, xml, json } = await makeHomepage(MOCK_HOMEPAGE)
     expect(html).toMatchSnapshot()
+    expect(xml).toMatchSnapshot()
+    expect(json).toMatchSnapshot()
   })
 })
