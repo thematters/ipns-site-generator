@@ -19,11 +19,11 @@ exports[`makeHomepage can generate basic HTML bundle 1`] = `
 <meta name=\\"keywords\\" content=\\"Matters,matters.news\\" />
 
 
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" data-rss-type=\\"xml\\" />
+<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"./rss.xml\\" data-link-type=\\"rss-xml\\" />
 
 
 
-<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"https://matters.news\\" data-rss-type=\\"json\\" />
+<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"./feed.json\\" data-link-type=\\"rss-json\\" />
 
 
 
@@ -465,13 +465,13 @@ ul > li {
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
+      <a href=\\"./rss.xml\\" data-link-type=\\"rss-xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
     
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
+      <a href=\\"./feed.json\\" data-link-type=\\"rss-json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
     
   </ul>
@@ -647,6 +647,45 @@ function copyTextToClipboard(text, $el) {
 </script>
 
     
+<script type=\\"text/javascript\\">
+/**
+ * Gateway URLs:
+ *   - **Homepage**: ipfs.io/ipns/{IPNS_HASH}
+ *   - **Article Page**: ipfs.io/ipns/{IPNS_HASH}/...
+ *   - **Article Page**: ipfs.io/ipfs/{IPFS_HASH}
+ *
+ * ENS reverse proxy URLs:
+ *   - **Homepage**: example.eth.limo
+ *   - **Article Page**: example.eth.limo/...
+ */
+var ipnsKey = \\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\";
+var url = window.location.href;
+var host = window.location.host;
+var protocol = window.location.protocol;
+var isGateway = url.indexOf('/ipfs') >= 0 || url.indexOf('/ipns') >= 0;
+
+// correct links
+var $links = document.querySelectorAll('[data-link-type]');
+Array.prototype.forEach.call($links, function($el) {
+  var type = $el.getAttribute('data-link-type');
+  var href = $el.getAttribute('href');
+  var filename = href.split('/').pop().replace(/\\\\.\\\\//g, '').trim();
+
+  correctLink($el, type === 'back-to-article' ? '' : filename);
+});
+
+function correctLink($el, filename) {
+  // e.g. -> ipfs.io/ipns/rss.xml
+  if (isGateway) {
+    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    return;
+  }
+
+  // e.g. -> example.eth.limo/rss.xml
+  $el.setAttribute('href', protocol + host + '/' + filename);
+}
+</script>
+
 
     <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>
