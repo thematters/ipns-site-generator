@@ -4,7 +4,7 @@
 <meta name="description" content="{{ meta.description }}">
 <meta property="og:title" content="{{ meta.title }}">
 <meta property="og:description" content="{{ meta.description }}">
-<meta property="og:image" content="{ {meta.image }}" />
+<meta property="og:image" content="{{ meta.image }}" />
 <meta property="article:author" content="{{ meta.authorName }}">
 <meta name="twitter:title" content="{{ meta.title }}">
 <meta name="twitter:description" content="{{ meta.description }}">
@@ -12,11 +12,11 @@
 <meta name="keywords" content="Matters,matters.news{% for tag in article.tags %},{{ tag }}{% endfor %}" />
 
 {% if rss.xml %}
-<link rel="alternate" type="application/atom+xml" href="{{ rss.xml }}" />
+<link rel="alternate" type="application/atom+xml" href="{{ rss.xml }}" data-link-type="rss-xml" />
 {% endif %}
 
 {% if rss.json %}
-<link rel="alternate" type="application/json" href"{{ rss.json }}" />
+<link rel="alternate" type="application/json" href="{{ rss.json }}" data-link-type="rss-json" />
 {% endif %}
 
 {% if paymentPointer %}

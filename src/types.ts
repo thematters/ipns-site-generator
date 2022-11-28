@@ -38,7 +38,7 @@ type PageMeta = {
     }
   }
   rss?: {
-    ipns: string
+    ipnsKey: string
     xml: string
     json: string
   }
