@@ -19,11 +19,11 @@ Array [
 <meta name=\\"keywords\\" content=\\"Matters,matters.news,tag1,tag2,tag3\\" />
 
 
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" data-rss-type=\\"xml\\" />
+<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" />
 
 
 
-<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"https://matters.news\\" data-rss-type=\\"json\\" />
+<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"../feed.json\\" data-link-type=\\"rss-json\\" />
 
 
 
@@ -522,13 +522,13 @@ article li {
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
+      <a href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
     
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
+      <a href=\\"../feed.json\\" data-link-type=\\"rss-json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
     
   </ul>
@@ -555,7 +555,7 @@ article li {
   </nav>
 
   <section class=\\"backToHomepage\\">
-    <a href=\\"../\\">
+    <a href=\\"../\\" data-link-type=\\"back-to-article\\">
       <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
 <path d=\\"M10.5303 3.53033C10.8232 3.23744 10.8232 2.76256 10.5303 2.46967C10.2374 2.17678 9.76256 2.17678 9.46967 2.46967L10.5303 3.53033ZM5 8L4.46967 7.46967C4.17678 7.76256 4.17678 8.23744 4.46967 8.53033L5 8ZM9.46967 13.5303C9.76256 13.8232 10.2374 13.8232 10.5303 13.5303C10.8232 13.2374 10.8232 12.7626 10.5303 12.4697L9.46967 13.5303ZM9.46967 2.46967L4.46967 7.46967L5.53033 8.53033L10.5303 3.53033L9.46967 2.46967ZM4.46967 8.53033L9.46967 13.5303L10.5303 12.4697L5.53033 7.46967L4.46967 8.53033Z\\" fill=\\"currentColor\\"/>
 </svg>
@@ -718,6 +718,45 @@ function copyTextToClipboard(text, $el) {
 </script>
 
     
+<script type=\\"text/javascript\\">
+/**
+ * Gateway URLs:
+ *   - **Homepage**: ipfs.io/ipns/{IPNS_HASH}
+ *   - **Article Page**: ipfs.io/ipns/{IPNS_HASH}/...
+ *   - **Article Page**: ipfs.io/ipfs/{IPFS_HASH}
+ *
+ * ENS reverse proxy URLs:
+ *   - **Homepage**: example.eth.limo
+ *   - **Article Page**: example.eth.limo/...
+ */
+var ipnsKey = \\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\";
+var url = window.location.href;
+var host = window.location.host;
+var protocol = window.location.protocol;
+var isGateway = url.indexOf('/ipfs') >= 0 || url.indexOf('/ipns') >= 0;
+
+// correct links
+var $links = document.querySelectorAll('[data-link-type]');
+Array.prototype.forEach.call($links, function($el) {
+  var type = $el.getAttribute('data-link-type');
+  var href = $el.getAttribute('href');
+  var filename = href.split('/').pop().replace(/\\\\.\\\\//g, '').trim();
+
+  correctLink($el, type === 'back-to-article' ? '' : filename);
+});
+
+function correctLink($el, filename) {
+  // e.g. -> ipfs.io/ipns/rss.xml
+  if (isGateway) {
+    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    return;
+  }
+
+  // e.g. -> example.eth.limo/rss.xml
+  $el.setAttribute('href', protocol + host + '/' + filename);
+}
+</script>
+
 
     
     <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
@@ -750,11 +789,11 @@ Array [
 <meta name=\\"keywords\\" content=\\"Matters,matters.news,tag1,tag2,tag3\\" />
 
 
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" data-rss-type=\\"xml\\" />
+<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" />
 
 
 
-<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"https://matters.news\\" data-rss-type=\\"json\\" />
+<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"../feed.json\\" data-link-type=\\"rss-json\\" />
 
 
 
@@ -1251,13 +1290,13 @@ article li {
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
+      <a href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
     
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
+      <a href=\\"../feed.json\\" data-link-type=\\"rss-json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
     
   </ul>
@@ -1284,7 +1323,7 @@ article li {
   </nav>
 
   <section class=\\"backToHomepage\\">
-    <a href=\\"../\\">
+    <a href=\\"../\\" data-link-type=\\"back-to-article\\">
       <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
 <path d=\\"M10.5303 3.53033C10.8232 3.23744 10.8232 2.76256 10.5303 2.46967C10.2374 2.17678 9.76256 2.17678 9.46967 2.46967L10.5303 3.53033ZM5 8L4.46967 7.46967C4.17678 7.76256 4.17678 8.23744 4.46967 8.53033L5 8ZM9.46967 13.5303C9.76256 13.8232 10.2374 13.8232 10.5303 13.5303C10.8232 13.2374 10.8232 12.7626 10.5303 12.4697L9.46967 13.5303ZM9.46967 2.46967L4.46967 7.46967L5.53033 8.53033L10.5303 3.53033L9.46967 2.46967ZM4.46967 8.53033L9.46967 13.5303L10.5303 12.4697L5.53033 7.46967L4.46967 8.53033Z\\" fill=\\"currentColor\\"/>
 </svg>
@@ -1447,6 +1486,45 @@ function copyTextToClipboard(text, $el) {
 </script>
 
     
+<script type=\\"text/javascript\\">
+/**
+ * Gateway URLs:
+ *   - **Homepage**: ipfs.io/ipns/{IPNS_HASH}
+ *   - **Article Page**: ipfs.io/ipns/{IPNS_HASH}/...
+ *   - **Article Page**: ipfs.io/ipfs/{IPFS_HASH}
+ *
+ * ENS reverse proxy URLs:
+ *   - **Homepage**: example.eth.limo
+ *   - **Article Page**: example.eth.limo/...
+ */
+var ipnsKey = \\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\";
+var url = window.location.href;
+var host = window.location.host;
+var protocol = window.location.protocol;
+var isGateway = url.indexOf('/ipfs') >= 0 || url.indexOf('/ipns') >= 0;
+
+// correct links
+var $links = document.querySelectorAll('[data-link-type]');
+Array.prototype.forEach.call($links, function($el) {
+  var type = $el.getAttribute('data-link-type');
+  var href = $el.getAttribute('href');
+  var filename = href.split('/').pop().replace(/\\\\.\\\\//g, '').trim();
+
+  correctLink($el, type === 'back-to-article' ? '' : filename);
+});
+
+function correctLink($el, filename) {
+  // e.g. -> ipfs.io/ipns/rss.xml
+  if (isGateway) {
+    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    return;
+  }
+
+  // e.g. -> example.eth.limo/rss.xml
+  $el.setAttribute('href', protocol + host + '/' + filename);
+}
+</script>
+
 
     
     <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
@@ -1479,11 +1557,11 @@ Array [
 <meta name=\\"keywords\\" content=\\"Matters,matters.news,tag1,tag2,tag3\\" />
 
 
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" data-rss-type=\\"xml\\" />
+<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" />
 
 
 
-<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"https://matters.news\\" data-rss-type=\\"json\\" />
+<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"../feed.json\\" data-link-type=\\"rss-json\\" />
 
 
 
@@ -1980,13 +2058,13 @@ article li {
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
+      <a href=\\"../rss.xml\\" data-link-type=\\"rss-xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
     
 
     
     <li>
-      <a href=\\"https://matters.news\\" data-rss-type=\\"json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
+      <a href=\\"../feed.json\\" data-link-type=\\"rss-json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
     
   </ul>
@@ -2013,7 +2091,7 @@ article li {
   </nav>
 
   <section class=\\"backToHomepage\\">
-    <a href=\\"../\\">
+    <a href=\\"../\\" data-link-type=\\"back-to-article\\">
       <svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\">
 <path d=\\"M10.5303 3.53033C10.8232 3.23744 10.8232 2.76256 10.5303 2.46967C10.2374 2.17678 9.76256 2.17678 9.46967 2.46967L10.5303 3.53033ZM5 8L4.46967 7.46967C4.17678 7.76256 4.17678 8.23744 4.46967 8.53033L5 8ZM9.46967 13.5303C9.76256 13.8232 10.2374 13.8232 10.5303 13.5303C10.8232 13.2374 10.8232 12.7626 10.5303 12.4697L9.46967 13.5303ZM9.46967 2.46967L4.46967 7.46967L5.53033 8.53033L10.5303 3.53033L9.46967 2.46967ZM4.46967 8.53033L9.46967 13.5303L10.5303 12.4697L5.53033 7.46967L4.46967 8.53033Z\\" fill=\\"currentColor\\"/>
 </svg>
@@ -2176,6 +2254,45 @@ function copyTextToClipboard(text, $el) {
 </script>
 
     
+<script type=\\"text/javascript\\">
+/**
+ * Gateway URLs:
+ *   - **Homepage**: ipfs.io/ipns/{IPNS_HASH}
+ *   - **Article Page**: ipfs.io/ipns/{IPNS_HASH}/...
+ *   - **Article Page**: ipfs.io/ipfs/{IPFS_HASH}
+ *
+ * ENS reverse proxy URLs:
+ *   - **Homepage**: example.eth.limo
+ *   - **Article Page**: example.eth.limo/...
+ */
+var ipnsKey = \\"k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot\\";
+var url = window.location.href;
+var host = window.location.host;
+var protocol = window.location.protocol;
+var isGateway = url.indexOf('/ipfs') >= 0 || url.indexOf('/ipns') >= 0;
+
+// correct links
+var $links = document.querySelectorAll('[data-link-type]');
+Array.prototype.forEach.call($links, function($el) {
+  var type = $el.getAttribute('data-link-type');
+  var href = $el.getAttribute('href');
+  var filename = href.split('/').pop().replace(/\\\\.\\\\//g, '').trim();
+
+  correctLink($el, type === 'back-to-article' ? '' : filename);
+});
+
+function correctLink($el, filename) {
+  // e.g. -> ipfs.io/ipns/rss.xml
+  if (isGateway) {
+    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    return;
+  }
+
+  // e.g. -> example.eth.limo/rss.xml
+  $el.setAttribute('href', protocol + host + '/' + filename);
+}
+</script>
+
 
     
     <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
