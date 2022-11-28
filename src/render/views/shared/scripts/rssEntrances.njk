@@ -1,0 +1,40 @@
+{% if rss.ipnsKey %}
+<script type="text/javascript">
+/**
+ * Gateway URLs:
+ *   - **Homepage**: ipfs.io/ipns/{IPNS_HASH}
+ *   - **Article Page**: ipfs.io/ipns/{IPNS_HASH}/...
+ *   - **Article Page**: ipfs.io/ipfs/{IPFS_HASH}
+ *
+ * ENS reverse proxy URLs:
+ *   - **Homepage**: example.eth.limo
+ *   - **Article Page**: example.eth.limo/...
+ */
+var ipnsKey = "{{ rss.ipnsKey }}";
+var url = window.location.href;
+var host = window.location.host;
+var protocol = window.location.protocol;
+var isGateway = url.indexOf('/ipfs') >= 0 || url.indexOf('/ipns') >= 0;
+
+// correct links
+var $links = document.querySelectorAll('[data-link-type]');
+Array.prototype.forEach.call($links, function($el) {
+  var type = $el.getAttribute('data-link-type');
+  var href = $el.getAttribute('href');
+  var filename = href.split('/').pop().replace(/\.\//g, '').trim();
+
+  correctLink($el, type === 'back-to-article' ? '' : filename);
+});
+
+function correctLink($el, filename) {
+  // e.g. -> ipfs.io/ipns/rss.xml
+  if (isGateway) {
+    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    return;
+  }
+
+  // e.g. -> example.eth.limo/rss.xml
+  $el.setAttribute('href', protocol + host + '/' + filename);
+}
+</script>
+{% endif %}

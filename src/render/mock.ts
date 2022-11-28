@@ -90,9 +90,9 @@ export const MOCK_HOMEPAGE: HomepageContext = {
     },
   },
   rss: {
-    ipns: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
-    xml: 'https://matters.news',
-    json: 'https://matters.news',
+    ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
+    xml: './rss.xml',
+    json: './feed.json',
   },
   articles: [
     MOCK_ARTICLE,
@@ -126,9 +126,9 @@ export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
     },
   },
   rss: {
-    ipns: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
-    xml: 'https://matters.news',
-    json: 'https://matters.news',
+    ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
+    xml: '../rss.xml',
+    json: '../feed.json',
   },
   article: MOCK_ARTICLE,
 }

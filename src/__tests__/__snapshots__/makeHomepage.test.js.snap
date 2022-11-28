@@ -11,7 +11,7 @@ exports[`makeHomepage can generate basic HTML bundle 1`] = `
 <meta name=\\"description\\" content=\\"Quis non enim sunt ut proident eu amet eiusmod do nulla ut laborum incididunt commodo officia.\\">
 <meta property=\\"og:title\\" content=\\"Excepteur Non&#39;s homepage\\">
 <meta property=\\"og:description\\" content=\\"Quis non enim sunt ut proident eu amet eiusmod do nulla ut laborum incididunt commodo officia.\\">
-<meta property=\\"og:image\\" content=\\"{ {meta.image }}\\" />
+<meta property=\\"og:image\\" content=\\"\\" />
 <meta property=\\"article:author\\" content=\\"Excepteur Non\\">
 <meta name=\\"twitter:title\\" content=\\"Excepteur Non&#39;s homepage\\">
 <meta name=\\"twitter:description\\" content=\\"Quis non enim sunt ut proident eu amet eiusmod do nulla ut laborum incididunt commodo officia.\\">
@@ -19,11 +19,12 @@ exports[`makeHomepage can generate basic HTML bundle 1`] = `
 <meta name=\\"keywords\\" content=\\"Matters,matters.news\\" />
 
 
-<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" />
+<link rel=\\"alternate\\" type=\\"application/atom+xml\\" href=\\"https://matters.news\\" data-rss-type=\\"xml\\" />
 
 
 
-<link rel=\\"alternate\\" type=\\"application/json\\" href\\"https://matters.news\\" />
+<link rel=\\"alternate\\" type=\\"application/json\\" href=\\"https://matters.news\\" data-rss-type=\\"json\\" />
+
 
 
 
@@ -464,13 +465,13 @@ ul > li {
 
     
     <li>
-      <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
+      <a href=\\"https://matters.news\\" data-rss-type=\\"xml\\" target=\\"_blank\\" aria-label=\\"subscribe RSS feed\\">RSS</a>
     </li>
     
 
     
     <li>
-      <a href=\\"https://matters.news\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
+      <a href=\\"https://matters.news\\" data-rss-type=\\"json\\" target=\\"_blank\\" aria-label=\\"subscribe JSON feed\\">JSON</a>
     </li>
     
   </ul>
@@ -644,6 +645,8 @@ function copyTextToClipboard(text, $el) {
   }
 }
 </script>
+
+    
 
     <script async src=\\"https://www.googletagmanager.com/gtag/js?id=G-K4KK55LL24\\"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date); gtag('config', 'G-K4KK55LL24');</script>

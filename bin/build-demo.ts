@@ -1,8 +1,6 @@
 import path from 'path'
 import fs from 'fs'
 
-import nunjucks from 'nunjucks'
-
 import { makeArticlePage, makeHomepage } from '../src'
 import { MOCK_ARTICLE_PAGE, MOCK_HOMEPAGE } from '../src/render/mock'
 
