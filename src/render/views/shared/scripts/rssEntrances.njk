@@ -29,7 +29,7 @@ Array.prototype.forEach.call($links, function($el) {
 function correctLink($el, filename) {
   // e.g. -> ipfs.io/ipns/rss.xml
   if (isGateway) {
-    $el.setAttribute('href', protocol + host + '/ipns/' + ipnsKey + '/' + filename);
+    $el.setAttribute('href', protocol + '//' + host + '/ipns/' + ipnsKey + '/' + filename);
     return;
   }
 
