@@ -1,6 +1,6 @@
 {
   "name": "@matters/ipns-site-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "IPNS site generator for matters.news",
   "author": "https://github.com/thematters",
   "homepage": "https://github.com/matters-ipns-site-generator",
@@ -49,5 +49,10 @@
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.20",
     "nunjucks": "^3.2.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
