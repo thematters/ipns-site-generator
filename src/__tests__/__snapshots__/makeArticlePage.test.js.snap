@@ -752,7 +752,7 @@ function correctLink($el, filename) {
   }
 
   // e.g. -> example.eth.limo/rss.xml
-  $el.setAttribute('href', protocol + host + '/' + filename);
+  $el.setAttribute('href', protocol + '//' + host + '/' + filename);
 }
 </script>
 
@@ -1519,7 +1519,7 @@ function correctLink($el, filename) {
   }
 
   // e.g. -> example.eth.limo/rss.xml
-  $el.setAttribute('href', protocol + host + '/' + filename);
+  $el.setAttribute('href', protocol + '//' + host + '/' + filename);
 }
 </script>
 
@@ -2286,7 +2286,7 @@ function correctLink($el, filename) {
   }
 
   // e.g. -> example.eth.limo/rss.xml
-  $el.setAttribute('href', protocol + host + '/' + filename);
+  $el.setAttribute('href', protocol + '//' + host + '/' + filename);
 }
 </script>
 
