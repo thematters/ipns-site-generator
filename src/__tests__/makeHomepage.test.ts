@@ -11,7 +11,9 @@ describe('makeHomepage', () => {
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const { html, xml, json } = await makeHomepage(MOCK_HOMEPAGE)
+    const { html, xml, json } = await makeHomepage(
+      MOCK_HOMEPAGE('matters.news')
+    )
     expect(html).toMatchSnapshot()
     expect(xml).toMatchSnapshot()
     expect(json).toMatchSnapshot()

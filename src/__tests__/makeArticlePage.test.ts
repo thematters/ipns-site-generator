@@ -6,13 +6,15 @@ import { deserializeHtmlBundle } from './utils'
 jest.mock('isomorphic-fetch')
 const mockedFetch = fetch as jest.Mock
 
+const MOCK_ARTICLE_PAGE_DATA = MOCK_ARTICLE_PAGE('matters.news')
+
 describe('makeArticlePage', () => {
   test('can generate basic HTML bundle', async () => {
     mockedFetch.mockResolvedValue({
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE)
+    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE_DATA)
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 
@@ -21,7 +23,7 @@ describe('makeArticlePage', () => {
       throw new Error()
     })
 
-    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE)
+    const { bundle } = await makeArticlePage(MOCK_ARTICLE_PAGE_DATA)
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()
   })
 
@@ -31,7 +33,7 @@ describe('makeArticlePage', () => {
     })
 
     const { bundle } = await makeArticlePage({
-      ...MOCK_ARTICLE_PAGE,
+      ...MOCK_ARTICLE_PAGE_DATA,
       paymentPointer: '$pay-me',
     })
     expect(deserializeHtmlBundle(bundle)).toMatchSnapshot()

@@ -5,14 +5,14 @@ const MOCK_AUTHOR = {
   displayName: 'Excepteur Non',
 }
 
-const MOCK_ARTICLE = {
+const MOCK_ARTICLE = (siteDomain = 'matters.town') => ({
   author: MOCK_AUTHOR,
   title: 'Excepteur in consequat mollit consectetur.',
   summary:
     'Aliquip reprehenderit elit nulla commodo sit. Aute deserunt quis cupidatat ea quis. Adipisicing magna tempor esse ea anim. Veniam aliquip laborum aliquip est laborum irure duis irure adipisicing dolore laboris in irure. Non sunt esse cillum consequat. Cupidatat qui ex fugiat ullamco cupidatat eu eu eu labore excepteur. Tempor tempor mollit nulla qui Lorem aute consectetur sint sint. Nostrud cupidatat ullamco ea elit in voluptate do mollit veniam.',
   date: '2022-11-18T08:42:04.146Z',
   uri: './Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB',
-  sourceUri: `https://matters.news/@${MOCK_AUTHOR.userName}/1-slug-Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB`,
+  sourceUri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}/1-slug-Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB`,
   content: `
   <figure class="image">
     <img src="https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp" data-asset-id="aa57a1ce-8926-4512-81d8-462f68fa3917">
@@ -71,10 +71,13 @@ const MOCK_ARTICLE = {
   <p>Labore dolor laboris anim. Laborum ut eiusmod et et minim duis aliquip deserunt laboris.</p>
   `,
   tags: ['tag1', 'tag2', 'tag3'],
-}
+})
 
-export const MOCK_HOMEPAGE: HomepageContext = {
+export const MOCK_HOMEPAGE = (
+  siteDomain: string = 'matters.town'
+): HomepageContext => ({
   meta: {
+    siteDomain,
     title: `${MOCK_AUTHOR.displayName}'s homepage`,
     description:
       'Quis non enim sunt ut proident eu amet eiusmod do nulla ut laborum incididunt commodo officia.',
@@ -83,11 +86,11 @@ export const MOCK_HOMEPAGE: HomepageContext = {
   byline: {
     author: {
       name: MOCK_AUTHOR.displayName,
-      uri: `https://matters.news/@${MOCK_AUTHOR.userName}`,
+      uri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}`,
     },
     website: {
       name: 'Matters',
-      uri: 'https://matters.news',
+      uri: `https://${siteDomain}`,
     },
   },
   rss: {
@@ -96,23 +99,28 @@ export const MOCK_HOMEPAGE: HomepageContext = {
     json: './feed.json',
   },
   articles: [
-    { ...MOCK_ARTICLE, id: '1' },
-    { ...MOCK_ARTICLE, id: '2' },
-    { ...MOCK_ARTICLE, id: '3' },
-    { ...MOCK_ARTICLE, id: '4' },
-    { ...MOCK_ARTICLE, id: '5' },
-    { ...MOCK_ARTICLE, id: '6' },
-    { ...MOCK_ARTICLE, id: '7' },
-    { ...MOCK_ARTICLE, id: '8' },
+    { ...MOCK_ARTICLE(siteDomain), id: '1' },
+    { ...MOCK_ARTICLE(siteDomain), id: '2' },
+    { ...MOCK_ARTICLE(siteDomain), id: '3' },
+    { ...MOCK_ARTICLE(siteDomain), id: '4' },
+    { ...MOCK_ARTICLE(siteDomain), id: '5' },
+    { ...MOCK_ARTICLE(siteDomain), id: '6' },
+    { ...MOCK_ARTICLE(siteDomain), id: '7' },
+    { ...MOCK_ARTICLE(siteDomain), id: '8' },
   ],
-}
+})
 
-export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
+const MOCK_ARTICLE_DATA = MOCK_ARTICLE()
+
+export const MOCK_ARTICLE_PAGE = (
+  siteDomain: string = 'matters.town'
+): ArticlePageContext => ({
   encrypted: false,
   meta: {
-    title: MOCK_ARTICLE.title,
-    description: MOCK_ARTICLE.summary,
-    authorName: MOCK_ARTICLE.author.displayName,
+    siteDomain,
+    title: MOCK_ARTICLE_DATA.title,
+    description: MOCK_ARTICLE_DATA.summary,
+    authorName: MOCK_ARTICLE_DATA.author.displayName,
     image:
       'https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp',
   },
@@ -120,11 +128,11 @@ export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
     date: '2022-11-18T08:42:04.146Z',
     author: {
       name: MOCK_AUTHOR.displayName,
-      uri: `https://matters.news/@${MOCK_AUTHOR.userName}`,
+      uri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}`,
     },
     website: {
       name: 'Matters',
-      uri: 'https://matters.news',
+      uri: `https://${siteDomain}`,
     },
   },
   rss: {
@@ -132,8 +140,8 @@ export const MOCK_ARTICLE_PAGE: ArticlePageContext = {
     xml: '../rss.xml',
     json: '../feed.json',
   },
-  article: { ...MOCK_ARTICLE, id: '1' },
-}
+  article: { ...MOCK_ARTICLE(siteDomain), id: '1' },
+})
 
 export const MOCK_META_DATA = {
   contentHash: 'ipfs-hash',

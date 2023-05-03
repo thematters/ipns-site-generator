@@ -13,10 +13,12 @@ export default async ({
   path,
   updateSrc,
   domain = 'matters.news',
+  onlyDomains = ['imagedelivery.net', 'matters.news', 'matters.town'],
 }: {
   url: string
   path: string
   domain?: string
+  onlyDomains?: string[]
   updateSrc?: () => void
 }) => {
   if (!url) {
@@ -28,7 +30,15 @@ export default async ({
     if (url.indexOf('://') < 0) {
       // relative path
       fullUrl = new URL(url, `https://${domain}/`).href
-    } else if (!new URL(url).hostname.endsWith(domain)) {
+    }
+
+    const parsedUrl = new URL(fullUrl)
+    if (
+      Array.isArray(onlyDomains) &&
+      onlyDomains.some((d) => parsedUrl.hostname.endsWith(domain))
+    ) {
+      // to next
+    } else if (!parsedUrl.hostname.endsWith(domain)) {
       // skip assets from other domain
       return
     }

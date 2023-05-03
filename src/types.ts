@@ -21,6 +21,7 @@ type HomepageArticleDigest = Article & {
 
 type PageMeta = {
   meta: {
+    siteDomain?: string
     title: string
     description: string
     authorName?: string

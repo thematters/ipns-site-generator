@@ -1,6 +1,6 @@
 # Matters IPNS Site Generator
 
-Matters IPNS Site Generator is currently used by matters.news, to genereate HTML files of article & user homepage before adding to IPFS & IPNS.
+Matters IPNS Site Generator is currently used by matters.town, to genereate HTML files of article & user homepage before adding to IPFS & IPNS.
 
 It can be used to create encrypted HTML page with decryption code embedded, generate HTML bundle, and create content metadata.
 

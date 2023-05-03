@@ -57,7 +57,7 @@ export const makeArticlePage = async (data: MakeArticlePageData) => {
   })
 
   const assets = await Promise.all(assetsPromises).then((results) =>
-    results.filter((asset) => asset)
+    results.filter(Boolean)
   )
 
   // generate html
