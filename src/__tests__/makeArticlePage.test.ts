@@ -6,7 +6,7 @@ import { deserializeHtmlBundle } from './utils'
 jest.mock('isomorphic-fetch')
 const mockedFetch = fetch as jest.Mock
 
-const MOCK_ARTICLE_PAGE_DATA = MOCK_ARTICLE_PAGE('matters.news')
+const MOCK_ARTICLE_PAGE_DATA = MOCK_ARTICLE_PAGE('matters.town')
 
 describe('makeArticlePage', () => {
   test('can generate basic HTML bundle', async () => {

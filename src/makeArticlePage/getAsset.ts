@@ -35,9 +35,9 @@ export default async ({
     const parsedUrl = new URL(fullUrl)
     if (
       Array.isArray(onlyDomains) &&
-      onlyDomains.some((d) => parsedUrl.hostname.endsWith(domain))
+      onlyDomains.some((d) => parsedUrl.hostname.endsWith(d))
     ) {
-      // to next
+      // to next fetch'ing
     } else if (!parsedUrl.hostname.endsWith(domain)) {
       // skip assets from other domain
       return

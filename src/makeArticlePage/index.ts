@@ -30,9 +30,15 @@ export const makeArticlePage = async (data: MakeArticlePageData) => {
       if ('tagName' in element) {
         tagName = element.tagName
       }
+
+      // e.g. https://imagedelivery.net/kDRCxxx-pYA/prod/embed/82cb20da-9fe0-4a73-bb33-b1d0ef353994.jpeg/public
+      const isImageDelivery = elementSrc.startsWith('https://imagedelivery.net')
       // assuming it's http url
       const assetPath =
-        elementSrc.split('/').pop() || `${index.toString()}-${tagName}`
+        (isImageDelivery
+          ? elementSrc.split('/').splice(-2).shift() // get the 2nd last section of pathname
+          : elementSrc.split('/').pop()) || // get the last section of pathname
+        `${index}-${tagName}`
 
       const updateSrc = () => $(element).attr('src', `./${assetPath}`)
 

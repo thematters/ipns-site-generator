@@ -15,7 +15,7 @@ const MOCK_ARTICLE = (siteDomain = 'matters.town') => ({
   sourceUri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}/1-slug-Qmc919SaZGj1yeDCLHx7KMY7WMzy1PF6UjixuapcG1bfAB`,
   content: `
   <figure class="image">
-    <img src="https://assets.matters.news/processed/1080w/profileCover/aa57a1ce-8926-4512-81d8-462f68fa3917.webp" data-asset-id="aa57a1ce-8926-4512-81d8-462f68fa3917">
+    <img src="https://imagedelivery.net/kDRCxxxx-pYA/prod/embed/82cb20da-xxxxx4a73-xxxx3994.jpeg/public">
     <figcaption><span>Reprehenderit proident sit consectetur id consequat officia.</span></figcaption>
   </figure>
 
