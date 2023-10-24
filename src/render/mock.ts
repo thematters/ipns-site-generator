@@ -86,7 +86,11 @@ export const MOCK_HOMEPAGE = (
   byline: {
     author: {
       name: MOCK_AUTHOR.displayName,
+      userName: MOCK_AUTHOR.userName,
+      displayName: MOCK_AUTHOR.displayName,
       uri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}`,
+      ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
+      webfDomain: 'example.eth.limo',
     },
     website: {
       name: 'Matters',
@@ -94,7 +98,6 @@ export const MOCK_HOMEPAGE = (
     },
   },
   rss: {
-    ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
     xml: './rss.xml',
     json: './feed.json',
   },
@@ -128,7 +131,10 @@ export const MOCK_ARTICLE_PAGE = (
     date: '2022-11-18T08:42:04.146Z',
     author: {
       name: MOCK_AUTHOR.displayName,
+      userName: MOCK_AUTHOR.userName,
+      displayName: MOCK_AUTHOR.displayName,
       uri: `https://${siteDomain}/@${MOCK_AUTHOR.userName}`,
+      ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
     },
     website: {
       name: 'Matters',
@@ -136,7 +142,6 @@ export const MOCK_ARTICLE_PAGE = (
     },
   },
   rss: {
-    ipnsKey: 'k51qzi5uqu5dhihcpntbdym8g6desc80za48wshqs85no166wq3c8ee26cysot',
     xml: '../rss.xml',
     json: '../feed.json',
   },

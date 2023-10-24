@@ -1,17 +1,20 @@
 type Author = {
   userName: string
   displayName: string
+  description?: string
 }
 
 type Article = {
   id: string
   author: Author
   title: string
+  slug?: string
   summary: string
   date: string
   image?: string
   content: string
   tags: string[]
+  createdAt?: Date | string
 }
 
 type HomepageArticleDigest = Article & {
@@ -29,9 +32,11 @@ type PageMeta = {
   }
   byline: {
     date?: string
-    author: {
-      name: string
+    author: Author & {
+      name: string // byline composed name, like `{displayName} (@{userName})`
       uri: string
+      ipnsKey?: string
+      webfDomain?: string // webfinger host, e.g. can be the ENS name at limo
     }
     website: {
       name: string
@@ -39,9 +44,8 @@ type PageMeta = {
     }
   }
   rss?: {
-    ipnsKey: string
-    xml: string
-    json: string
+    xml: string // path to xml rss; default to './rss.xml'
+    json: string // path to json feed; default to './feed.json'
   }
   paymentPointer?: string
 }

@@ -1,6 +1,6 @@
 # Matters IPNS Site Generator
 
-Matters IPNS Site Generator is currently used by matters.town, to genereate HTML files of article & user homepage before adding to IPFS & IPNS.
+Matters IPNS Site Generator is currently used by matters.town, to genereate HTML files of article & user homepage & static activitypub files before adding to IPFS & IPNS.
 
 It can be used to create encrypted HTML page with decryption code embedded, generate HTML bundle, and create content metadata.
 
@@ -51,6 +51,31 @@ const { bundle, key } = await makeArticlePage({
   article: { ... },
 })
 ```
+
+### Create HTML bundle for user homepage & static activitypub files
+```js
+import { 
+  HomepageContext,
+  makeHomepageBundles,
+  makeActivityPubBundles,
+} from '@matters/ipns-site-generator'
+
+const context: HomepageContext = {
+  meta: { title, description, authorName, siteDomain, image, ... },
+  byline: { author: { userName, displayName, ipnsKey, webfDomain, }, ... },
+  rss: { ... },
+  articles: [ { id, title, createdAt, ... }, ... ],
+}
+
+const contents = [
+  ...makeHomepageBundles(context),
+  ...makeActivityPubBundles(context),
+]
+
+const bundles = await ipfs.addAll(contents) // get the top dir CID
+```
+
+![Screenshot of Matty shown on Mastodon](./img/mastodon-social-hi176-matters-ens.png)
 
 ## Unit test
 

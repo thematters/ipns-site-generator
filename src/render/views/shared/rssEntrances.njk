@@ -1,9 +1,9 @@
 <section class="rssEntrances">
   <ul>
-    {% if rss.ipnsKey %}
+    {% if byline.author.ipnsKey %}
     <li>
       {% include "./icons/rss.njk" %}
-      <span aira-role="button" aria-label="IPNS address" data-clipboard="{{ rss.ipnsKey }}">IPNS</span>
+      <span aira-role="button" aria-label="IPNS address" data-clipboard="{{ byline.author.ipnsKey }}">IPNS</span>
     </li>
     {% endif %}
 
