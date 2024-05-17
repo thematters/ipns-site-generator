@@ -1,6 +1,6 @@
 {
   "name": "@matters/ipns-site-generator",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "IPNS site generator for matters.town",
   "author": "https://github.com/thematters <tech@matters.town>",
   "homepage": "https://github.com/thematters/ipns-site-generator",

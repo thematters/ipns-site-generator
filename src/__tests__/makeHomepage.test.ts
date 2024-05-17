@@ -1,5 +1,9 @@
 import fetch from 'isomorphic-fetch'
-import { makeHomepage, makeHomepageBundles, makeActivityPubBundles } from '../makeHomepage'
+import {
+  makeHomepage,
+  makeHomepageBundles,
+  makeActivityPubBundles,
+} from '../makeHomepage'
 import { MOCK_HOMEPAGE } from '../render/mock'
 
 jest.mock('isomorphic-fetch')
@@ -24,18 +28,22 @@ describe('makeHomepage', () => {
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const bundles = await makeHomepageBundles(
-      MOCK_HOMEPAGE('matters.news')
-    )
+    const bundles = await makeHomepageBundles(MOCK_HOMEPAGE('matters.news'))
 
     let html = ''
-   let xml = ''
-  let json = ''
+    let xml = ''
+    let json = ''
     for (const { path, content } of bundles) {
       switch (path) {
-        case 'index.html': html = content; break;
-        case 'rss.xml': xml = content; break;
-        case 'feed.json': json = content; break;
+        case 'index.html':
+          html = content
+          break
+        case 'rss.xml':
+          xml = content
+          break
+        case 'feed.json':
+          json = content
+          break
       }
     }
     expect(html).toMatchSnapshot()
@@ -48,14 +56,14 @@ describe('makeHomepage', () => {
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(1)),
     })
 
-    const bundles = await makeActivityPubBundles(
-      MOCK_HOMEPAGE('matters.news')
-    )
+    const bundles = await makeActivityPubBundles(MOCK_HOMEPAGE('matters.news'))
 
     let webfinger: string = ''
     for (const { path, content } of bundles) {
       switch (path) {
-        case '.well-known/webfinger': webfinger = content; break;
+        case '.well-known/webfinger':
+          webfinger = content
+          break
       }
     }
     expect(webfinger).toMatchSnapshot()

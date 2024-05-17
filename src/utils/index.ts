@@ -16,14 +16,33 @@ export const cleanHTML = (html: string) => {
 }
 
 /**
- * Strip html tags from html string to get text.
+ * Strip HTML tags from HTML string to get plain text.
  * @param html - html string
- * @param replacement - string to replace tags
+ * @param tagReplacement - string to replace tags
+ * @param lineReplacement - string to replace tags
+ *
+ * @see {@url https://github.com/thematters/ipns-site-generator/blob/main/src/utils/index.ts}
  */
-export const stripHtml = (html: string, replacement = ' ') =>
-  (String(html) || '')
-    .replace(/(<\/p><p>|&nbsp;)/g, ' ') // replace line break and space first
-    .replace(/(<([^>]+)>)/gi, replacement)
+export const stripHtml = (
+  html: string,
+  tagReplacement = '',
+  lineReplacement = '\n'
+) => {
+  html = String(html) || ''
+
+  html = html.replace(/\&nbsp\;/g, ' ')
+
+  // Replace block-level elements with newlines
+  html = html.replace(/<(\/?p|\/?blockquote|br\/?)>/gi, lineReplacement)
+
+  // Remove remaining HTML tags
+  let plainText = html.replace(/<\/?[^>]+(>|$)/g, tagReplacement)
+
+  // Normalize multiple newlines and trim the result
+  plainText = plainText.replace(/\n\s*\n/g, '\n').trim()
+
+  return plainText
+}
 
 /**
  * Return beginning of text in html as summary, split on sentence break within buffer range.
@@ -33,7 +52,7 @@ export const stripHtml = (html: string, replacement = ' ') =>
  */
 export const makeSummary = (html: string, length = 140, buffer = 20) => {
   // split on sentence breaks
-  const sections = stripHtml(html, '')
+  const sections = stripHtml(html, '', ' ')
     .replace(/([?!。？！]|(\.\s))\s*/g, '$1|')
     .split('|')
 
@@ -44,7 +63,7 @@ export const makeSummary = (html: string, length = 140, buffer = 20) => {
 
     const addition =
       el.length + summary.length > length + buffer
-        ? `${el.substring(0, length - summary.length)}...`
+        ? `${el.substring(0, length - summary.length)}…`
         : el
 
     summary = summary.concat(addition)
