@@ -16,13 +16,13 @@ Et ut dolore dolore ex. Deserunt adipisicing id dolor eiusmod minim ea. Pariatur
     Enim aliqua est proident commodo dolor incididunt eiusmod. Anim anim eu pariatur aliqua qui. Sit non commodo enim ut aute officia eu. Adipisicing proident eu velit id proident.
 Voluptate officia adipisicing voluptate amet dolore ad tempor aliquip reprehenderit Lorem. Ad dolor id minim occaecat ea non nulla. Ullamco exercitation consectetur duis tempor incididunt qui id. Sunt voluptate qui ex do Lorem consectetur laborum mollit culpa sunt anim occaecat esse. Velit deserunt eiusmod deserunt. Anim ullamco ad minim velit nulla aliquip culpa consequat laboris quis ad Lorem pariatur. Occaecat sunt irure reprehenderit.
   query {
-&nbsp; article(
-&nbsp; &nbsp; input: { mediaHash: \\"zdpuAxP6uSfum74VS3pYmzBR9xvPbrBcX3J8BPpB3xdRGjVsX\\" }
-&nbsp; ) {
-&nbsp; &nbsp; id
-&nbsp; &nbsp; title
-&nbsp; &nbsp; summary
-&nbsp; }
+  article(
+    input: { mediaHash: \\"zdpuAxP6uSfum74VS3pYmzBR9xvPbrBcX3J8BPpB3xdRGjVsX\\" }
+  ) {
+    id
+    title
+    summary
+  }
 }
   Officia amet minim proident labore
   Proident fugiat amet

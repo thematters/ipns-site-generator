@@ -30,6 +30,9 @@ export const stripHtml = (
 ) => {
   html = String(html) || ''
 
+  html = html.replace(/\&nbsp\;/g, ' ')
+
+  // Replace block-level elements with newlines
   html = html.replace(/<(\/?p|\/?blockquote|br\/?)>/gi, lineReplacement)
 
   // Remove remaining HTML tags
