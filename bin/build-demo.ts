@@ -27,6 +27,21 @@ makeArticlePage(MOCK_ARTICLE_PAGE_DATA).then((data) => {
   fs.writeFileSync(path.resolve(paths.out, 'article.html'), content)
 })
 
+// article page without RSS/JSON header
+makeArticlePage({
+  ...MOCK_ARTICLE_PAGE_DATA,
+  rss: undefined,
+  byline: {
+    ...MOCK_ARTICLE_PAGE_DATA.byline,
+    author: { ...MOCK_ARTICLE_PAGE_DATA.byline.author, ipnsKey: undefined },
+  },
+}).then((data) => {
+  const content = data.bundle[0]?.content.toString() || ''
+
+  fs.promises.mkdir(paths.out, { recursive: true }).catch(console.error)
+  fs.writeFileSync(path.resolve(paths.out, 'article-no-header.html'), content)
+})
+
 // encrypted article page
 makeArticlePage({ ...MOCK_ARTICLE_PAGE_DATA, encrypted: true }).then((data) => {
   const content = data.bundle[0]?.content.toString() || ''
