@@ -1,15 +1,21 @@
 <header>
   <nav>
-    {% include "../shared/rssEntrances.njk" %}
+    {% if rss or byline.author.ipnsKey %}
+      {% include "../shared/rssEntrances.njk" %}
+    {% else %}
+      <span></span>
+    {% endif %}
     {% include "../shared/themeSwitch.njk" %}
   </nav>
 
-  <section class="backToHomepage">
-    <a href="../" data-link-type="back-to-article">
+  {% if rss or byline.author.ipnsKey %}
+    <section class="backToHomepage">
+      <a href="../" data-link-type="back-to-article">
       {% include "../shared/icons/back.njk" %}
       View All Articles
-    </a>
-  </section>
+      </a>
+    </section>
+  {% endif %}
 
   <h1 itemprop="headline">{{ article.title }}</h1>
 
