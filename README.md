@@ -37,14 +37,11 @@ const { bundle } = await makeArticlePage(article)
 
 Pass in a HTML string as content, and return a HTML string with the content encrypted and the encrytion key. The returned HTML can be then written to a file or add to IPFS. During rendering, the HTML will be decrypted by adding `key=${encrytion-key}` in query parameter, and also include a simple UI to prompt key enter.
 
-Support payment pointer for Web Monetization. See [test](./src/__tests__/makeArticlePage.test.ts) for more detail.
-
 ```js
 import { makeArticlePage } from '@matters/ipns-site-generator'
 
 const { bundle, key } = await makeArticlePage({
   encrypted: true, // argument for whether encrypt or not, if false returned key will be null
-  paymentPointer: '$pay-me', // used for Web Monetization
   meta: { ... },
   byline: { ... },
   rss: { ... },

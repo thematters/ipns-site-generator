@@ -47,7 +47,6 @@ type PageMeta = {
     xml: string // path to xml rss; default to './rss.xml'
     json: string // path to json feed; default to './feed.json'
   }
-  paymentPointer?: string
 }
 
 export type HomepageContext = PageMeta & {

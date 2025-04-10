@@ -27,7 +27,6 @@ exports[`makeHomepage can generate HTML, XML and JSON of homepage 1`] = `
 
 
 
-
     
 <style>
 :root {
@@ -967,7 +966,6 @@ exports[`makeHomepage can generate bundles of HTML, XML and JSON 1`] = `
 
 
 <link rel=\\"alternate\\" type=\\"application/json\\" href=\\"./feed.json\\" data-link-type=\\"rss-json\\" />
-
 
 
 
