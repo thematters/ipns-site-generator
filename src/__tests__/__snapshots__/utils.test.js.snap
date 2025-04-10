@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`utils "makeSummary" can produce summary text from HTML 1`] = `
-"Reprehenderit proident sit consectetur id consequat officia.
-Duis ea voluptate cupidatat ad
-   Elit consequat labore tempor Lorem voluptate …"
-`;
+exports[`utils "makeSummary" can produce summary text from HTML 1`] = `"Reprehenderit proident sit consectetur id consequat officia. Duis ea voluptate cupidatat ad Elit consequat labore tempor Lorem voluptate occaecat nostrud laborum minim. Cillum veniam ea cupidatat nulla commodo sunt amet magna amet sit culpa nulla deserunt reprehenderit duis. Et nostrud sunt ad cupidatat laboris. Reprehenderit dolor dolore elit voluptate ex. Fugiat in in officia non eiusmod irure et. Velit ut aliquip ipsum exercitation exercitation nisi voluptate enim amet exercitation. Et consectetur ex nisi anim id consequat eiusmod veniam ipsum ullamco nulla deserunt nostrud. Nulla in fugiat labore ad. Cupidatat amet fugiat culpa id Et ut dolore dolore ex. Deserunt adipisicing id dolor eiusmod minim ea. Pariatur veniam velit ad culpa nisi sit. Non nostrud irure nulla pariatur ipsum irure fugiat anim id Lorem duis. Ullamco incididunt ex ullamco elit. Amet voluptate minim laborum anim duis aliquip officia enim Lorem mollit…"`;
 
 exports[`utils "stripHtml" can generate clean text from HTML 1`] = `
 "Reprehenderit proident sit consectetur id consequat officia.

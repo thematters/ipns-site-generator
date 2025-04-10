@@ -10,7 +10,7 @@ describe('utils', () => {
 
   test(`"makeSummary" can produce summary text from HTML`, () => {
     expect(
-      makeSummary(MOCK_ARTICLE_PAGE_DATA.article.content)
+      makeSummary(MOCK_ARTICLE_PAGE_DATA.article.content, 140)
     ).toMatchSnapshot()
   })
 })
