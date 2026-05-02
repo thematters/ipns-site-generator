@@ -15,6 +15,21 @@ type Article = {
   content: string
   tags: string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
+  visibility?: string
+  access?: string
+  status?: string
+  publicationStatus?: string
+  encrypted?: boolean
+  private?: boolean
+  paid?: boolean
+  paywalled?: boolean
+  draft?: boolean
+  isEncrypted?: boolean
+  isPrivate?: boolean
+  isPaid?: boolean
+  isDraft?: boolean
+  type?: string
 }
 
 type HomepageArticleDigest = Article & {

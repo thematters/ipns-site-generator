@@ -56,44 +56,163 @@ export const makeHomepageBundles = (data: MakeHomepageData) => {
   ] as { path: string; content: string }[]
 }
 
+const PUBLIC_AUDIENCE = 'https://www.w3.org/ns/activitystreams#Public'
+const NON_PUBLIC_TOKENS = new Set([
+  'paid',
+  'paywalled',
+  'subscription',
+  'member',
+  'members',
+  'private',
+  'protected',
+  'followers',
+  'direct',
+  'encrypted',
+  'draft',
+  'unpublished',
+])
+const MESSAGE_LIKE_TYPES = new Set([
+  'message',
+  'chatmessage',
+  'directmessage',
+  'encryptedmessage',
+])
+
+const normalizeToken = (value?: string) =>
+  typeof value === 'string' && value.trim() ? value.trim().toLowerCase() : null
+
+const hasTruthyFlag = (...values: (boolean | undefined)[]) =>
+  values.some((value) => value === true)
+
+const isFederationPublicArticle = (
+  article: MakeHomepageData['articles'][number]
+) => {
+  const visibility = normalizeToken(article.visibility)
+  const access = normalizeToken(article.access)
+  const status = normalizeToken(article.status ?? article.publicationStatus)
+  const type = normalizeToken(article.type)
+
+  if (visibility && visibility !== 'public') {
+    return false
+  }
+  if (access && NON_PUBLIC_TOKENS.has(access)) {
+    return false
+  }
+  if (status && NON_PUBLIC_TOKENS.has(status)) {
+    return false
+  }
+  if (type && MESSAGE_LIKE_TYPES.has(type)) {
+    return false
+  }
+  if (
+    hasTruthyFlag(
+      article.encrypted,
+      article.isEncrypted,
+      article.private,
+      article.isPrivate,
+      article.paid,
+      article.isPaid,
+      article.paywalled,
+      article.draft,
+      article.isDraft
+    )
+  ) {
+    return false
+  }
+
+  return true
+}
+
+const toIsoString = (value?: Date | string) => {
+  if (!value) {
+    return new Date().toISOString()
+  }
+  return new Date(value).toISOString()
+}
+
+const buildArticleUrl = (
+  webfDomain: string,
+  article: MakeHomepageData['articles'][number]
+) =>
+  `https://${webfDomain}/${article.id}-${
+    article.slug ?? slugify(article.title)
+  }/`
+
+const inferMediaType = (url: string) => {
+  const lower = url.toLowerCase()
+  if (lower.endsWith('.png')) return 'image/png'
+  if (lower.endsWith('.gif')) return 'image/gif'
+  if (lower.endsWith('.webp')) return 'image/webp'
+  if (lower.endsWith('.svg')) return 'image/svg+xml'
+  return 'image/jpeg'
+}
+
+const buildAttachment = (article: MakeHomepageData['articles'][number]) =>
+  article.image
+    ? [
+        {
+          type: 'Document',
+          mediaType: inferMediaType(article.image),
+          url: article.image,
+          name: article.title,
+        },
+      ]
+    : []
+
+const buildTag = (article: MakeHomepageData['articles'][number]) =>
+  article.tags.map((tag) => ({
+    type: 'Hashtag',
+    name: tag.startsWith('#') ? tag : `#${tag}`,
+  }))
+
 export const makeActivityPubBundles = (data: MakeHomepageData) => {
   const webfDomain = data.byline.author.webfDomain
+  if (!webfDomain) {
+    throw new Error(
+      'byline.author.webfDomain is required for ActivityPub bundles'
+    )
+  }
   const actor = `https://${webfDomain}/about.jsonld`
+  const outbox = `https://${webfDomain}/outbox.jsonld`
+  const publicArticles = data.articles.filter(isFederationPublicArticle)
+  const excludedCount = data.articles.length - publicArticles.length
 
   const outboxContent = {
     '@context': 'https://www.w3.org/ns/activitystreams',
-    id: actor,
+    id: outbox,
     type: 'OrderedCollection',
-    totalItems: data.articles.length,
-    orderedItems: data.articles.map((arti) => {
-      const url = `https://${webfDomain}/${arti.id}-${
-        arti.slug ?? slugify(arti.title)
-      }/`
+    totalItems: publicArticles.length,
+    orderedItems: publicArticles.map((arti) => {
+      const url = buildArticleUrl(webfDomain, arti)
+      const published = toIsoString(arti.createdAt ?? arti.date)
+      const updated = toIsoString(arti.updatedAt ?? arti.date)
 
       return {
         '@context': 'https://www.w3.org/ns/activitystreams',
         type: 'Create',
         actor,
-        published: arti.createdAt,
-        to: ['https://www.w3.org/ns/activitystreams#Public'],
+        published,
+        to: [PUBLIC_AUDIENCE],
         cc: [`https://${webfDomain}/followers.jsonld`],
         object: {
           '@context': 'https://www.w3.org/ns/activitystreams',
 
           id: url,
-          type: 'Note',
+          type: 'Article',
+          name: arti.title,
           summary: arti.summary,
-          published: arti.createdAt as Date,
-          content: `${arti.title}<br>${arti.summary}`,
+          published,
+          updated,
+          content: arti.content,
           url,
           attributedTo: actor,
-          to: ['https://www.w3.org/ns/activitystreams#Public'],
+          to: [PUBLIC_AUDIENCE],
           cc: [],
           sensitive: false,
           atomUri: url,
           inReplyToAtomUri: null,
-          attachment: [],
-          tag: arti.tags,
+          attachment: buildAttachment(arti),
+          tag: buildTag(arti),
         },
       }
     }),
@@ -151,7 +270,7 @@ export const makeActivityPubBundles = (data: MakeHomepageData) => {
           type: 'Person',
           id: actor,
           inbox: `https://${webfDomain}/inbox.jsonld`, // TO accept POST
-          outbox: `https://${webfDomain}/outbox.jsonld`,
+          outbox,
 
           preferredUsername: data.byline.author.userName,
           name: `${data.byline.author.displayName}`.trim(),
@@ -183,6 +302,40 @@ export const makeActivityPubBundles = (data: MakeHomepageData) => {
     {
       path: 'outbox.jsonld',
       content: JSON.stringify(outboxContent, null, 2),
+    },
+    {
+      path: 'activitypub-manifest.json',
+      content: JSON.stringify(
+        {
+          version: 1,
+          generator: 'ipns-site-generator',
+          actor: {
+            handle: data.byline.author.userName,
+            sourceActorId: actor,
+            webfingerSubject: `acct:${data.byline.author.userName}@${webfDomain}`,
+            profileUrl: `https://${webfDomain}`,
+          },
+          files: {
+            actor: 'about.jsonld',
+            outbox: 'outbox.jsonld',
+            webfinger: '.well-known/webfinger',
+            jsonFeed: 'feed.json',
+            rss: 'rss.xml',
+          },
+          visibility: {
+            federatedPublicOnly: true,
+            defaultPolicy: 'missing-visibility-is-public',
+            excluded: ['paid', 'encrypted', 'private', 'draft', 'message'],
+          },
+          stats: {
+            totalArticles: data.articles.length,
+            includedArticles: publicArticles.length,
+            excludedArticles: excludedCount,
+          },
+        },
+        null,
+        2
+      ),
     },
   ] as { path: string; content: string }[]
 }
